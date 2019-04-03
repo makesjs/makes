@@ -1,0 +1,8 @@
+{
+  "include": [
+    "lib/**/*.js"
+  ],
+  "exclude": [
+    "lib/prompts/**/*.js"
+  ]
+}

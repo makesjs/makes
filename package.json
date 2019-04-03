@@ -1,0 +1,38 @@
+{
+  "name": "makes",
+  "version": "0.0.1",
+  "description": "A tool to scaffold new projects, simple enough that you would want to define your own generators.",
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "lib"
+  ],
+  "scripts": {
+    "test": "ava"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/huochunpeng/makes.git"
+  },
+  "keywords": [
+    "scaffold",
+    "app",
+    "boilerplate"
+  ],
+  "author": "Chunpeng Huo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/huochunpeng/makes/issues"
+  },
+  "homepage": "https://github.com/huochunpeng/makes#readme",
+  "devDependencies": {
+    "ava": "^1.3.1",
+    "eslint": "^5.15.3",
+    "mock-fs": "^4.8.0",
+    "nyc": "^13.3.0"
+  },
+  "dependencies": {
+    "ansi-colors": "^3.2.4",
+    "sisteransi": "^1.0.0"
+  }
+}
