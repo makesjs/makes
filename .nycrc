@@ -2,7 +2,7 @@
   "include": [
     "lib/**/*.js"
   ],
-  "exclude": [
-    "lib/prompts/**/*.js"
+  "reporter": [
+    "lcov"
   ]
 }
