@@ -24,10 +24,18 @@ function wrap(prompt) {
     const debugIn = new Readable({read() {}});
     const nullOut = new Writable({write(c, e, cb) {cb();}});
     pressKeys(debugIn, keys);
-    return prompt({...opts, in: debugIn, out: nullOut}).finally(() => {
-      debugIn.destroy();
-      nullOut.destroy();
-    });
+    return prompt({...opts, in: debugIn, out: nullOut}).then(
+      answer => {
+        debugIn.destroy();
+        nullOut.destroy();
+        return answer;
+      },
+      e => {
+        debugIn.destroy();
+        nullOut.destroy();
+        throw e;
+      }
+    );
   };
 }
 

@@ -127,20 +127,17 @@ test('multiselect prompt can reset', async (t) => {
   t.deepEqual(answer, []);
 });
 
-test('multiselect prompt can abort', t => {
-  return multiselect({
+test('multiselect prompt can abort', async (t) => {
+  await t.throwsAsync(multiselect({
     message: 'prompt',
     choices: [
       {value: 'one', title: 'One'},
       {value: 'two', title: 'Two'},
       {value: 'three', title: 'Three'}
     ]
-  }, ['3', {name: 'c', ctrl: true}]).then(
-    t.fail,
-    answer => {
-      t.deepEqual(answer, ['three']);
-    }
-  );
+  }, ['1', '3', {name: 'c', ctrl: true}]), {
+    message: 'abort with answer one,three'
+  });
 });
 
 test('multiselect prompt supports terminal short-cut to start', async (t) => {

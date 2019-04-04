@@ -37,14 +37,12 @@ test('text prompt returns user input', async (t) => {
 });
 
 test('text prompt rejects invalid input', async (t) => {
-  try {
-    await text({
-      message: 'prompt',
-      validate: input => !input.includes('*')
-    }, ['a', '*', 'c', {name: 'return'}, {name: 'abort'}]);
-  } catch (e) {
-    t.pass();
-  }
+  await t.throwsAsync(text({
+    message: 'prompt',
+    validate: input => !input.includes('*')
+  }, ['a', '*', 'c', {name: 'return'}, {name: 'abort'}]), {
+    message: 'abort with answer a*c'
+  });
 });
 
 test('text prompt rejects invalid input, allows correction', async (t) => {
