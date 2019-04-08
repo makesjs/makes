@@ -1,5 +1,5 @@
 {
-  "presets": [
-    ["@babel/env", {"loose": true, "targets": {"node": "8"}}]
+  "plugins": [
+    ["@babel/plugin-transform-modules-commonjs", {"loose": true}]
   ]
 }
