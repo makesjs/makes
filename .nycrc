@@ -3,6 +3,7 @@
     "lib/**/*.js"
   ],
   "reporter": [
-    "lcov"
+    "lcov",
+    "text-summary"
   ]
 }
