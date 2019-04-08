@@ -1,6 +1,7 @@
 import strip from './strip';
 
 export default function(str, lead = 0, perLine = process.stdout.columns) {
+  if (lead === 0) return str;
   str = strip(str).replace('\r\n', '\n');
   const cap = perLine - lead;
   lead = ' '.repeat(lead);
@@ -18,8 +19,10 @@ export default function(str, lead = 0, perLine = process.stdout.columns) {
     let count = 0;
     let char;
     while (pos < len && (char = str.charAt(pos)) !== '\n') {
-      output += char;
       pos += 1;
+      // don't add up leading spaces
+      if (char === ' ' && count === 0) continue;
+      output += char;
       count += 1;
       if (count === cap) break;
     }
