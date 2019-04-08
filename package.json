@@ -4,8 +4,7 @@
   "description": "A tool to scaffold new projects, simple enough that you would want to define your own generators.",
   "main": "index.js",
   "files": [
-    "index.js",
-    "lib"
+    "index.js"
   ],
   "scripts": {
     "test": "ava",
