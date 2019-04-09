@@ -31,8 +31,10 @@
     "ansi-colors": "^3.2.4",
     "ava": "^1.4.1",
     "eslint": "^5.16.0",
+    "lodash": "^4.17.11",
     "mock-fs": "^4.8.0",
     "nyc": "^13.3.0",
-    "sisteransi": "^1.0.0"
+    "sisteransi": "^1.0.0",
+    "xregexp": "^4.2.4"
   }
 }
