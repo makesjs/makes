@@ -42,4 +42,4 @@ function wrap(prompt) {
 const text = wrap(_text);
 const select = wrap(_select);
 const multiselect = wrap(_multiselect);
-export {text, select, multiselect};
+export {delay, pressKeys, text, select, multiselect};
