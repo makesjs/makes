@@ -25,7 +25,7 @@ test.serial.cb('whenFileExists marks readme file with append write policy, when 
   ts.end();
   ts.once('data', file => {
     t.truthy(file.isBuffer());
-    t.is(file.relative, 'folder/some-readme.md');
+    t.is(file.relative.replace(/\\/g, '/'), 'folder/some-readme.md');
     t.is(file.writePolicy, 'append');
     t.is(file.contents.toString(), 'abc');
     t.end();
@@ -51,7 +51,7 @@ test.serial.cb('whenFileExists keeps existing readme file write policy mark, whe
   ts.end();
   ts.once('data', file => {
     t.truthy(file.isBuffer());
-    t.is(file.relative, 'folder/some-readme.md');
+    t.is(file.relative.replace(/\\/g, '/'), 'folder/some-readme.md');
     t.is(file.writePolicy, 'ask');
     t.is(file.contents.toString(), 'abc');
     t.end();
@@ -74,7 +74,7 @@ test.serial.cb('whenFileExists does not mark readme file with append write polic
   ts.end();
   ts.once('data', file => {
     t.truthy(file.isBuffer());
-    t.is(file.relative, 'folder/some-readme.md');
+    t.is(file.relative.replace(/\\/g, '/'), 'folder/some-readme.md');
     t.is(file.writePolicy, undefined);
     t.is(file.contents.toString(), 'abc');
     t.end();
@@ -100,7 +100,7 @@ test.serial.cb('whenFileExists merges package.json no matter what is existing wr
   ts.end();
   ts.once('data', file => {
     t.truthy(file.isBuffer());
-    t.is(file.relative, 'package.json');
+    t.is(file.relative.replace(/\\/g, '/'), 'package.json');
     t.falsy(file.writePolicy);
     t.deepEqual(JSON.parse(file.contents.toString()), {
       name: 'app',
@@ -128,7 +128,7 @@ test.serial.cb('whenFileExists passes through package.json, when target file doe
   ts.end();
   ts.once('data', file => {
     t.truthy(file.isBuffer());
-    t.is(file.relative, 'package.json');
+    t.is(file.relative.replace(/\\/g, '/'), 'package.json');
     t.is(file.writePolicy, 'skip');
     t.deepEqual(JSON.parse(file.contents.toString()), {
       name: 'app',
@@ -157,7 +157,7 @@ test.serial.cb('whenFileExists does not ask, when target file does not exist', t
   ts.end();
   ts.once('data', file => {
     t.truthy(file.isBuffer());
-    t.is(file.relative, 'some.file');
+    t.is(file.relative.replace(/\\/g, '/'), 'some.file');
     t.is(file.writePolicy, 'ask');
     t.is(file.contents.toString(), 'abc');
     t.end();
@@ -183,7 +183,7 @@ test.serial.cb('whenFileExists does not ask in unattended mode, but keep existin
   ts.end();
   ts.once('data', file => {
     t.truthy(file.isBuffer());
-    t.is(file.relative, 'some.file__makes');
+    t.is(file.relative.replace(/\\/g, '/'), 'some.file__makes');
     t.is(file.writePolicy, null);
     t.is(file.contents.toString(), 'abc');
     t.end();
@@ -209,7 +209,7 @@ test.serial.cb('whenFileExists ask user, when user decided to keep existing file
   ts.end();
   ts.once('data', file => {
     t.truthy(file.isBuffer());
-    t.is(file.relative, 'some.file__makes');
+    t.is(file.relative.replace(/\\/g, '/'), 'some.file__makes');
     t.is(file.writePolicy, null);
     t.is(file.contents.toString(), 'abc');
     t.end();
@@ -235,7 +235,7 @@ test.serial.cb('whenFileExists ask user, when user decided to replace existing f
   ts.end();
   ts.once('data', file => {
     t.truthy(file.isBuffer());
-    t.is(file.relative, 'some.file');
+    t.is(file.relative.replace(/\\/g, '/'), 'some.file');
     t.is(file.writePolicy, null);
     t.is(file.contents.toString(), 'abc');
     t.end();
