@@ -17,7 +17,7 @@ test('multiselect prompt allows empty string value, toggle with space', async (t
   const answer = await multiselect({
     message: 'prompt',
     choices: [
-      {value: '', title: 'One'},
+      {value: '', title: 'One', hint: 'Lorem ipsum dolor sit amet.'},
       {value: 'two', title: 'Two'}
     ]
   }, [' ', {name: 'return'}]);

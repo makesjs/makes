@@ -217,7 +217,7 @@ test('run runs through questionnaire with preselectedFeatures and predefinedProp
 });
 
 test('run rejects missing name/choices', async t => {
-  await t.throwsAsync(async () => run([{}]));
+  await t.throwsAsync(async () => run([{}], {}));
 });
 
 test('run ignores name field on selection question', async t => {

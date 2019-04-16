@@ -49,10 +49,6 @@ export default class MultiselectPrompt extends Prompt {
     this.render();
   }
 
-  selected() {
-    return this.choices.filter(v => v.selected);
-  }
-
   abort() {
     this.done = this.aborted = true;
     this.fire();
