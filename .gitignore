@@ -4,3 +4,4 @@ node_modules
 coverage
 /__play.js
 /index.js
+/tmp
