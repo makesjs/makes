@@ -1,5 +1,5 @@
 import test from 'ava';
-import filterByFeatures from '../../src/write-project/2-filter-by-features';
+import filterByFeatures from '../../lib/write-project/2-filter-by-features';
 import Vinyl from 'vinyl';
 
 const filter = filterByFeatures(['a', 'b']);

@@ -1,5 +1,5 @@
 import test from 'ava';
-import preprocess from '../../src/write-project/3-preprocess';
+import preprocess from '../../lib/write-project/3-preprocess';
 import Vinyl from 'vinyl';
 
 const pp = preprocess({name: 'app'}, ['a', 'b']);

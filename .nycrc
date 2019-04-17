@@ -1,6 +1,6 @@
 {
   "include": [
-    "src/**/*.js"
+    "lib/**/*.js"
   ],
   "reporter": [
     "lcov",

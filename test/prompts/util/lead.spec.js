@@ -1,5 +1,5 @@
 import test from 'ava';
-import lead from '../../../src/prompts/util/lead';
+import lead from '../../../lib/prompts/util/lead';
 import color from 'ansi-colors';
 
 test('lead returns original string if no lead required', t => {

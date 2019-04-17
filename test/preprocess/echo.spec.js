@@ -1,5 +1,5 @@
 import test from 'ava';
-import preprocess from '../../src/preprocess';
+import preprocess from '../../lib/preprocess';
 
 test('@echo resolves and echoes variable in html syntax', t => {
   t.is(

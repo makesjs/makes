@@ -5,3 +5,4 @@ coverage
 /__play.js
 /index.js
 /tmp
+/dist

@@ -1,7 +1,7 @@
 import test from 'ava';
 import {Readable, Writable} from 'stream';
 import {pressKeys} from './prompts/_prompt-under-test';
-import run, {textPrompt, selectPrompt} from '../src/run-questionnaire';
+import run, {textPrompt, selectPrompt} from '../lib/run-questionnaire';
 
 test('textPrompt rejects invalid name', async t => {
   await t.throwsAsync(async () => textPrompt({name: 'a&b'}, {predefinedProperties: {}}));

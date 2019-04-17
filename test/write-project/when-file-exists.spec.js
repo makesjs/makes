@@ -1,5 +1,5 @@
 import test from 'ava';
-import whenFileExists from '../../src/write-project/when-file-exists';
+import whenFileExists from '../../lib/write-project/when-file-exists';
 import Vinyl from 'vinyl';
 import mockfs from 'mock-fs';
 

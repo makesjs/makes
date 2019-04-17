@@ -1,5 +1,5 @@
 import test from 'ava';
-import applicable from '../src/applicable';
+import applicable from '../lib/applicable';
 
 test('applicable supports logical not', t => {
   t.true(applicable(['a', 'b'], 'not_c'));

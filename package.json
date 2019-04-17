@@ -2,13 +2,22 @@
   "name": "makes",
   "version": "0.0.1",
   "description": "A tool to scaffold new projects, simple enough that you would want to define your own generators.",
-  "main": "index.js",
+  "main": "lib/index.js",
   "files": [
-    "index.js"
+    "lib",
+    "bin"
   ],
+  "bin": {
+    "makes": "bin/makes.js"
+  },
   "scripts": {
     "test": "ava",
-    "coverage": "nyc ava"
+    "coverage": "nyc ava",
+    "lint": "eslint lib test",
+    "preversion": "npm test",
+    "version": "standard-changelog && git add CHANGELOG.md",
+    "postversion": "git push && git push --tags && npm publish",
+    "pretest": "npm run lint"
   },
   "repository": {
     "type": "git",
@@ -25,27 +34,28 @@
     "url": "https://github.com/huochunpeng/makes/issues"
   },
   "homepage": "https://github.com/huochunpeng/makes#readme",
-  "devDependencies": {
-    "@babel/plugin-transform-modules-commonjs": "^7.4.3",
-    "@babel/register": "^7.4.0",
+  "dependencies": {
     "@pnpm/git-resolver": "^2.0.3",
     "ansi-colors": "^3.2.4",
-    "ava": "^1.4.1",
-    "eslint": "^5.16.0",
+    "getopts": "^2.2.4",
     "got": "^9.6.0",
     "graceful-git": "^2.0.0",
     "gunzip-maybe": "^1.4.1",
     "isutf8": "^2.0.3",
     "lodash": "^4.17.11",
-    "mock-fs": "^4.8.0",
-    "nock": "^10.0.6",
-    "nyc": "^14.0.0",
-    "rimraf": "^2.6.3",
     "sisteransi": "^1.0.0",
     "tar-fs": "^2.0.0",
     "through2": "^3.0.1",
     "vinyl": "^2.2.0",
     "vinyl-fs": "^3.0.3",
     "xregexp": "^4.2.4"
+  },
+  "devDependencies": {
+    "ava": "^1.4.1",
+    "eslint": "^5.16.0",
+    "mock-fs": "^4.8.0",
+    "nyc": "^14.0.0",
+    "rimraf": "^2.6.3",
+    "standard-changelog": "^2.0.7"
   }
 }

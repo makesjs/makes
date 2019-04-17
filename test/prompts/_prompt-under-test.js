@@ -1,4 +1,4 @@
-import {text as _text, select as _select, multiselect as _multiselect} from '../../src/prompts';
+import {text as _text, select as _select, multiselect as _multiselect} from '../../lib/prompts';
 import {Readable, Writable} from 'stream';
 
 function delay() {

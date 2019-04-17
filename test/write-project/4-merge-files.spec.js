@@ -1,5 +1,5 @@
 import test from 'ava';
-import mergeFiles from '../../src/write-project/4-merge-files';
+import mergeFiles from '../../lib/write-project/4-merge-files';
 import Vinyl from 'vinyl';
 
 test.cb('mergeFiles bypasses unique file', t => {

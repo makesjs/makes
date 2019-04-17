@@ -1,5 +1,5 @@
 import test from 'ava';
-import writeProject from '../../src/write-project';
+import writeProject from '../../lib/write-project';
 import mockfs from 'mock-fs';
 import fs from 'fs';
 import path from 'path';

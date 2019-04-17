@@ -1,5 +1,5 @@
 import test from 'ava';
-import wrap from '../../src/write-project/wrap-transform';
+import wrap from '../../lib/write-project/wrap-transform';
 import Vinyl from 'vinyl';
 
 test.cb('transform touches file', t => {

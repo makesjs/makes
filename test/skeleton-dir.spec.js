@@ -1,5 +1,5 @@
 import test from 'ava';
-import skeletonDir from '../src/skeleton-dir';
+import skeletonDir from '../lib/skeleton-dir';
 import mockfs from 'mock-fs';
 import path from 'path';
 import fs from 'fs';

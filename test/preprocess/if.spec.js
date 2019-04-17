@@ -1,5 +1,5 @@
 import test from 'ava';
-import preprocess from '../../src/preprocess';
+import preprocess from '../../lib/preprocess';
 
 test('@if works in html syntax', t => {
   const source = `a

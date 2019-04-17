@@ -1,5 +1,5 @@
 import test from 'ava';
-import markWritePolicy from '../../src/write-project/1-mark-write-policy';
+import markWritePolicy from '../../lib/write-project/1-mark-write-policy';
 import Vinyl from 'vinyl';
 
 test('markWritePolicy skips file without policy mark', t => {
