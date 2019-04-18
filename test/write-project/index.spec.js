@@ -24,7 +24,7 @@ test.serial.cb('writeProject merges all features folders', t => {
     skeletonDir: 'skeleton',
     targetDir: 'here'
   }).once('error', t.end)
-    .once('end', () => {
+    .once('finish', () => {
       t.deepEqual(
         fs.readdirSync('here').sort(),
         ['file-a.js', 'file-b.js', 'file-d.js', 'folder']
@@ -60,7 +60,7 @@ test.serial.cb('writeProject filters, preprocess, skips/appends file', t => {
     skeletonDir: 'skeleton',
     targetDir: 'here'
   }).once('error', t.end)
-    .once('end', () => {
+    .once('finish', () => {
       t.deepEqual(
         fs.readdirSync('here').sort(),
         ['file-a.js', 'file-a2.js', 'file-b.js', 'file-d.js', 'folder']
@@ -122,7 +122,7 @@ test.serial.cb('writeProject supports prependTransforms and appendTransforms', t
       }
     ]
   }).once('error', t.end)
-    .once('end', () => {
+    .once('finish', () => {
       t.deepEqual(
         fs.readdirSync('here').sort(),
         ['folder', 'intro.md']

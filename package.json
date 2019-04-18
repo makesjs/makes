@@ -36,17 +36,16 @@
   "homepage": "https://github.com/huochunpeng/makes#readme",
   "dependencies": {
     "ansi-colors": "^3.2.4",
-    "getopts": "^2.2.4",
     "got": "^9.6.0",
     "gunzip-maybe": "^1.4.1",
     "hosted-git-info": "^2.7.1",
     "isutf8": "^2.0.3",
     "lodash": "^4.17.11",
+    "minimist": "^1.2.0",
     "sisteransi": "^1.0.0",
     "tar-fs": "^2.0.0",
     "through2": "^3.0.1",
     "vinyl": "^2.2.0",
-    "vinyl-fs": "^3.0.3",
     "xregexp": "^4.2.4"
   },
   "devDependencies": {

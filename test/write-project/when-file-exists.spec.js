@@ -241,3 +241,54 @@ test.serial.cb('whenFileExists ask user, when user decided to replace existing f
     t.end();
   });
 });
+
+test.serial.cb('whenFileExists passes through file with skip write policy, when target file does not exist', t => {
+  mockfs();
+
+  const file = new Vinyl({
+    cwd: '/',
+    base: '/test/',
+    path: '/test/folder/some-readme.md',
+    contents: Buffer.from('abc'),
+    writePolicy: 'skip'
+  });
+
+  const ts = whenFileExists('here');
+
+  ts.write(file);
+  ts.end();
+  ts.once('data', file => {
+    t.truthy(file.isBuffer());
+    t.is(file.relative.replace(/\\/g, '/'), 'folder/some-readme.md');
+    t.is(file.writePolicy, 'skip');
+    t.is(file.contents.toString(), 'abc');
+    t.end();
+  });
+});
+
+test.serial.cb('whenFileExists skips file with skip write policy, when target file exists', t => {
+  mockfs({
+    'here/folder/some-readme.md': 'lorem'
+  });
+
+  const file = new Vinyl({
+    cwd: '/',
+    base: '/test/',
+    path: '/test/folder/some-readme.md',
+    contents: Buffer.from('abc'),
+    writePolicy: 'skip'
+  });
+
+  const ts = whenFileExists('here');
+
+  ts.write(file);
+  ts.end();
+  ts.once('data', () => {
+    t.fail('should not see file');
+    t.end();
+  });
+  ts.once('finish', () => {
+    t.pass('finish without file');
+    t.end();
+  });
+});
