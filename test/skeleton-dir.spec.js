@@ -47,3 +47,6 @@ test.serial('skeletonDir returns tmp folder untar git repo, and caches it', asyn
   t.truthy(fs.readFileSync(path.join(dir2, 'README.md'), 'utf8').includes('debug repo for npm'));
 });
 
+test.serial('skeletonDir complains about non-existing repo', async t => {
+  await t.throwsAsync(async() => skeletonDir('huochunpeng/not-exist'));
+});

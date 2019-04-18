@@ -36,7 +36,6 @@
   "homepage": "https://github.com/huochunpeng/makes#readme",
   "dependencies": {
     "ansi-colors": "^3.2.4",
-    "got": "^9.6.0",
     "gunzip-maybe": "^1.4.1",
     "hosted-git-info": "^2.7.1",
     "isutf8": "^2.0.3",
