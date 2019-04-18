@@ -3,7 +3,6 @@
 'use strict';
 
 const makes = require('../dist');
-const {warn, error} = require('../lib/log');
 const minimist = require("minimist");
 const options = minimist(process.argv.slice(2), {
   alias: {s: 'select', h: 'here'},
@@ -57,12 +56,12 @@ EXAMPLES
 }
 
 if (options._.length < 1) {
-  error('Please provide a skeleton repo. For instance "npx makes dumberjs"');
+  console.error('Please provide a skeleton repo. For instance "npx makes dumberjs"');
   process.exit(1);
 }
 
 if (options._.length > 2) {
-  warn(`Skip unknown arguments: "${options._.slice(2).join(' ')}"`);
+  console.warn(`Skip unknown arguments: "${options._.slice(2).join(' ')}"`);
 }
 
 const supplier = options._[0];
