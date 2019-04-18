@@ -5,7 +5,6 @@
 const makes = require('../lib');
 const {warn, error} = require('../lib/log');
 const minimist = require("minimist");
-const _ = require('lodash');
 const options = minimist(process.argv.slice(2), {
   alias: {s: 'select', h: 'here'},
   string: ['select'],
@@ -75,12 +74,20 @@ if (options._.length > 1) {
   predefinedProperties.name = options._[1];
 }
 
+function camelCase(str) {
+  const parts = str.split(/-|_/);
+  return parts.filter(p => p).map((p, i) => {
+    if (i === 0) return p.toLowerCase();
+    return p[0].toUpperCase() + p.slice(1).toLowerCase();
+  }).join('');
+}
+
 Object.keys(options).forEach(k => {
   if (k === '_' || k === 's' || k === 'select') return;
   // for --some-name 'Lorem ipsum' or --some-name='Lorem ipsum'
   // add property 'some-name' and 'someName'
   predefinedProperties[k] = options[k];
-  const ck = _.camelCase(k);
+  const ck = camelCase(k);
   if (ck !== k) {
     predefinedProperties[ck] = options[k];
   }

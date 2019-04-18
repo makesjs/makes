@@ -3,7 +3,7 @@ import writeProject from '../../lib/write-project';
 import mockfs from 'mock-fs';
 import fs from 'fs';
 import path from 'path';
-import through2 from 'through2';
+import {Transform} from 'stream';
 
 test.afterEach(() => {
   mockfs.restore();
@@ -99,25 +99,31 @@ test.serial.cb('writeProject supports prependTransforms and appendTransforms', t
     targetDir: 'here',
     prependTransforms: [
       function(properties, features) {
-        return through2.obj(function(file, enc, cb) {
-          if (file.isBuffer() && features.includes('feature3') && file.basename === 'intro.md') {
-            file.basename += '__append-if-exists';
+        return new Transform({
+          objectMode: true,
+          transform: function(file, enc, cb) {
+            if (file.isBuffer() && features.includes('feature3') && file.basename === 'intro.md') {
+              file.basename += '__append-if-exists';
+            }
+            cb(null, file);
           }
-          cb(null, file);
         });
       }
     ],
     appendTransforms: [
       function(properties, features) {
-        return through2.obj(function(file, enc, cb) {
-          if (file.isBuffer() && file.extname === '.ext') {
-            if (features.includes('feature3')) {
-              file.extname = '.f3';
-            } else {
-              file.extname = '.f1';
+        return new Transform({
+          objectMode: true,
+          transform: function(file, enc, cb) {
+            if (file.isBuffer() && file.extname === '.ext') {
+              if (features.includes('feature3')) {
+                file.extname = '.f3';
+              } else {
+                file.extname = '.f1';
+              }
             }
+            cb(null, file);
           }
-          cb(null, file);
         });
       }
     ]

@@ -1,18 +1,21 @@
 import test from 'ava';
 import src from '../../lib/write-project/src';
 import mockfs from 'mock-fs';
-import through2 from 'through2';
+import {Transform} from 'stream';
 import _ from 'lodash';
 
 const gatherFiles = function(box) {
-  return through2.obj((file, enc, cb) => {
-    if (file.isBuffer()) {
-      box.push({
-        path: file.relative.replace(/\\/g, '/'),
-        contents: file.contents.toString('utf8')
-      });
+  return new Transform({
+    objectMode: true,
+    transform: (file, enc, cb) => {
+      if (file.isBuffer()) {
+        box.push({
+          path: file.relative.replace(/\\/g, '/'),
+          contents: file.contents.toString('utf8')
+        });
+      }
+      cb();
     }
-    cb();
   });
 };
 

@@ -248,7 +248,7 @@ test.serial.cb('whenFileExists passes through file with skip write policy, when 
   const file = new Vinyl({
     cwd: '/',
     base: '/test/',
-    path: '/test/folder/some-readme.md',
+    path: '/test/folder/some.md',
     contents: Buffer.from('abc'),
     writePolicy: 'skip'
   });
@@ -259,7 +259,7 @@ test.serial.cb('whenFileExists passes through file with skip write policy, when 
   ts.end();
   ts.once('data', file => {
     t.truthy(file.isBuffer());
-    t.is(file.relative.replace(/\\/g, '/'), 'folder/some-readme.md');
+    t.is(file.relative.replace(/\\/g, '/'), 'folder/some.md');
     t.is(file.writePolicy, 'skip');
     t.is(file.contents.toString(), 'abc');
     t.end();
@@ -268,13 +268,13 @@ test.serial.cb('whenFileExists passes through file with skip write policy, when 
 
 test.serial.cb('whenFileExists skips file with skip write policy, when target file exists', t => {
   mockfs({
-    'here/folder/some-readme.md': 'lorem'
+    'here/folder/some.md': 'lorem'
   });
 
   const file = new Vinyl({
     cwd: '/',
     base: '/test/',
-    path: '/test/folder/some-readme.md',
+    path: '/test/folder/some.md',
     contents: Buffer.from('abc'),
     writePolicy: 'skip'
   });

@@ -22,13 +22,6 @@ test('@echo resolves and echoes variable (line comment) in js syntax', t => {
   );
 });
 
-test('multiple @echo without overreaching in html syntax', t => {
-  t.is(
-    preprocess('a<!-- @echo deep.FOO -->b<!-- @echo BAR -->c', {deep: {FOO: 1}, BAR: 2}, null, 'html'),
-    'a1b2c'
-  );
-});
-
 test('multiple @echo without overreaching in js syntax', t => {
   t.is(
     preprocess('a/* @echo FOO */b/* @echo BAR */c', {FOO: 1, BAR: 2}),
