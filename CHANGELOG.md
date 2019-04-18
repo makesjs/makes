@@ -1,3 +1,12 @@
+## [0.0.4](https://github.com/huochunpeng/makes/compare/v0.0.3...v0.0.4) (2019-04-18)
+
+
+### Bug Fixes
+
+* fix runtime dep on minimist ([61bd1f0](https://github.com/huochunpeng/makes/commit/61bd1f0))
+
+
+
 ## [0.0.3](https://github.com/huochunpeng/makes/compare/v0.0.2...v0.0.3) (2019-04-18)
 
 
