@@ -2,7 +2,7 @@
 /* eslint-disable no-console */
 'use strict';
 
-const makes = require('../lib');
+const makes = require('../dist');
 const {warn, error} = require('../lib/log');
 const minimist = require("minimist");
 const options = minimist(process.argv.slice(2), {
