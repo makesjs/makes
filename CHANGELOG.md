@@ -1,3 +1,12 @@
+## [0.0.3](https://github.com/huochunpeng/makes/compare/v0.0.2...v0.0.3) (2019-04-18)
+
+
+### Bug Fixes
+
+* fix bin file ([977565e](https://github.com/huochunpeng/makes/commit/977565e))
+
+
+
 ## 0.0.2 (2019-04-18)
 
 
