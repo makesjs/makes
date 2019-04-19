@@ -3,7 +3,8 @@
 'use strict';
 
 const makes = require('../dist');
-const minimist = require("minimist");
+const minimist = require('minimist');
+const camelCase = require('lodash.camelcase');
 const options = minimist(process.argv.slice(2), {
   alias: {s: 'select', h: 'here'},
   string: ['select'],
@@ -71,14 +72,6 @@ let predefinedProperties = Object.create(null);
 if (options._.length > 1) {
   // projectName
   predefinedProperties.name = options._[1];
-}
-
-function camelCase(str) {
-  const parts = str.split(/-|_/);
-  return parts.filter(p => p).map((p, i) => {
-    if (i === 0) return p.toLowerCase();
-    return p[0].toUpperCase() + p.slice(1).toLowerCase();
-  }).join('');
 }
 
 Object.keys(options).forEach(k => {

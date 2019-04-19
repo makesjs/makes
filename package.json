@@ -37,6 +37,7 @@
   },
   "homepage": "https://github.com/huochunpeng/makes#readme",
   "dependencies": {
+    "lodash.camelcase": "^4.3.0",
     "minimist": "^1.2.0"
   },
   "devDependencies": {
