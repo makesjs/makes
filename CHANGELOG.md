@@ -1,3 +1,12 @@
+## [0.0.7](https://github.com/huochunpeng/makes/compare/v0.0.6...v0.0.7) (2019-04-19)
+
+
+### Bug Fixes
+
+* fix missing waiting on select prompt ([a6360d8](https://github.com/huochunpeng/makes/commit/a6360d8))
+
+
+
 ## [0.0.6](https://github.com/huochunpeng/makes/compare/v0.0.5...v0.0.6) (2019-04-19)
 
 
