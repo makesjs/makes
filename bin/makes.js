@@ -5,20 +5,23 @@
 const makes = require('../dist');
 const minimist = require('minimist');
 const camelCase = require('lodash.camelcase');
+const {version} = require('../package.json');
+console.log(`makes v${version}`);
+
 const options = minimist(process.argv.slice(2), {
-  alias: {s: 'select', h: 'here'},
+  alias: {s: 'select', h: 'help'},
   string: ['select'],
   boolean: ['help', 'here']
 });
 
 if (options.help) {
-  console.log(`USAGE: makes [--help] [-h | --here] [-s | --select=<feature1,feature2>]
+  console.log(`USAGE: makes [-h | --help] [--here] [-s | --select=<feature1,feature2>]
              <skeleton-repo> [<project-name>]
 
 OPTIONS
-  --help        Print this help page.
+  -h, --help    Print this help page.
 
-  -h, --here    Generate project in current folder, otherwise in folder
+  --here        Generate project in current folder, otherwise in folder
                 project-name.
 
   -s, --select  Preselect features (provided by skeleton repo). This also
@@ -75,7 +78,7 @@ if (options._.length > 1) {
 }
 
 Object.keys(options).forEach(k => {
-  if (k === '_' || k === 's' || k === 'select') return;
+  if (k === '_' || k === 's' || k === 'select' || k === 'here') return;
   // for --some-name 'Lorem ipsum' or --some-name='Lorem ipsum'
   // add property 'some-name' and 'someName'
   predefinedProperties[k] = options[k];

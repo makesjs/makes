@@ -1,6 +1,5 @@
 import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
-import json from 'rollup-plugin-json';
 import replace from 'rollup-plugin-replace';
 
 export default {
@@ -27,7 +26,6 @@ export default {
     format: 'cjs'
   },
   plugins: [
-    resolve({preferBuiltins: true}),
     replace({
       delimiters: ['', ''],
       values: {
@@ -38,6 +36,6 @@ export default {
       }
     }),
     commonjs(),
-    json()
+    resolve({preferBuiltins: true}),
   ]
 };
