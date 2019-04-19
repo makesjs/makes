@@ -35,7 +35,9 @@ export default {
         'require("readable-stream")': 'require(\'stream\')'
       }
     }),
-    commonjs(),
+    commonjs({
+      ignore: [ 'conditional-runtime-dependency' ]
+    }),
     resolve({preferBuiltins: true}),
   ]
 };
