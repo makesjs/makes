@@ -46,6 +46,7 @@
     "gunzip-maybe": "^1.4.1",
     "hosted-git-info": "^2.7.1",
     "isutf8": "^2.0.3",
+    "lodash.mergewith": "^4.6.1",
     "mock-fs": "^4.8.0",
     "nyc": "^14.0.0",
     "rollup": "^1.10.0",
