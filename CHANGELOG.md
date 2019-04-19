@@ -1,3 +1,12 @@
+## [0.0.6](https://github.com/huochunpeng/makes/compare/v0.0.5...v0.0.6) (2019-04-19)
+
+
+### Bug Fixes
+
+* bypass rollup for runtime require ([cb016cc](https://github.com/huochunpeng/makes/commit/cb016cc))
+
+
+
 ## [0.0.5](https://github.com/huochunpeng/makes/compare/v0.0.4...v0.0.5) (2019-04-19)
 
 
