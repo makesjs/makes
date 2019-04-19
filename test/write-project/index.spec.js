@@ -9,7 +9,7 @@ test.afterEach(() => {
   mockfs.restore();
 });
 
-test.serial.cb('writeProject merges all features folders', t => {
+test.serial('writeProject merges all features folders', async t => {
   mockfs({
     'skeleton/common/file-a.js': 'file-a',
     'skeleton/feature1/file-b.js': 'file-b',
@@ -18,30 +18,28 @@ test.serial.cb('writeProject merges all features folders', t => {
     'skeleton/feature3/file-d.js': 'file-d'
   });
 
-  writeProject({
+  await writeProject({
     properties: {name: 'app'},
     features: ['feature1', 'feature3'],
     skeletonDir: 'skeleton',
     targetDir: 'here'
-  }).once('error', t.end)
-    .once('finish', () => {
-      t.deepEqual(
-        fs.readdirSync('here').sort(),
-        ['file-a.js', 'file-b.js', 'file-d.js', 'folder']
-      );
-      t.deepEqual(
-        fs.readdirSync(path.join('here', 'folder')).sort(),
-        ['file-b2.js']
-      );
-      t.is(
-        fs.readFileSync(path.join('here', 'folder', 'file-b2.js'), 'utf8'),
-        'file-b2'
-      );
-      t.end();
-    });
+  });
+
+  t.deepEqual(
+    fs.readdirSync('here').sort(),
+    ['file-a.js', 'file-b.js', 'file-d.js', 'folder']
+  );
+  t.deepEqual(
+    fs.readdirSync(path.join('here', 'folder')).sort(),
+    ['file-b2.js']
+  );
+  t.is(
+    fs.readFileSync(path.join('here', 'folder', 'file-b2.js'), 'utf8'),
+    'file-b2'
+  );
 });
 
-test.serial.cb('writeProject filters, preprocess, skips/appends file', t => {
+test.serial('writeProject filters, preprocess, skips/appends file', async t => {
   mockfs({
     'skeleton/common/file-a.js__skip-if-exists': 'file-a',
     'skeleton/common/file-a2.js__append-if-exists__if_feature1': 'file-a2',
@@ -54,45 +52,43 @@ test.serial.cb('writeProject filters, preprocess, skips/appends file', t => {
     'here/file-a2.js': 'old-file-a2\n'
   });
 
-  writeProject({
+  await writeProject({
     properties: {name: 'app'},
     features: ['feature1', 'feature3'],
     skeletonDir: 'skeleton',
     targetDir: 'here'
-  }).once('error', t.end)
-    .once('finish', () => {
-      t.deepEqual(
-        fs.readdirSync('here').sort(),
-        ['file-a.js', 'file-a2.js', 'file-b.js', 'file-d.js', 'folder']
-      );
-      t.is(
-        fs.readFileSync(path.join('here', 'file-a.js'), 'utf8'),
-        'old-file-a'
-      );
-      t.is(
-        fs.readFileSync(path.join('here', 'file-a2.js'), 'utf8'),
-        'old-file-a2\nfile-a2'
-      );
-      t.deepEqual(
-        fs.readdirSync(path.join('here', 'folder')).sort(),
-        ['file-b2.js']
-      );
-      t.is(
-        fs.readFileSync(path.join('here', 'folder', 'file-b2.js'), 'utf8'),
-        'file-b2-app'
-      );
-      t.end();
-    });
+  });
+
+  t.deepEqual(
+    fs.readdirSync('here').sort(),
+    ['file-a.js', 'file-a2.js', 'file-b.js', 'file-d.js', 'folder']
+  );
+  t.is(
+    fs.readFileSync(path.join('here', 'file-a.js'), 'utf8'),
+    'old-file-a'
+  );
+  t.is(
+    fs.readFileSync(path.join('here', 'file-a2.js'), 'utf8'),
+    'old-file-a2\nfile-a2'
+  );
+  t.deepEqual(
+    fs.readdirSync(path.join('here', 'folder')).sort(),
+    ['file-b2.js']
+  );
+  t.is(
+    fs.readFileSync(path.join('here', 'folder', 'file-b2.js'), 'utf8'),
+    'file-b2-app'
+  );
 });
 
-test.serial.cb('writeProject supports prependTransforms and appendTransforms', t => {
+test.serial('writeProject supports prependTransforms and appendTransforms', async t => {
   mockfs({
     'skeleton/common/intro.md': 'intro',
     'skeleton/feature1/folder/file-b.ext__if_feature3': 'file-b',
     'here/intro.md': 'old intro\n'
   });
 
-  writeProject({
+  await writeProject({
     properties: {name: 'app'},
     features: ['feature1', 'feature3'],
     skeletonDir: 'skeleton',
@@ -127,24 +123,22 @@ test.serial.cb('writeProject supports prependTransforms and appendTransforms', t
         });
       }
     ]
-  }).once('error', t.end)
-    .once('finish', () => {
-      t.deepEqual(
-        fs.readdirSync('here').sort(),
-        ['folder', 'intro.md']
-      );
-      t.is(
-        fs.readFileSync(path.join('here', 'intro.md'), 'utf8'),
-        'old intro\nintro'
-      );
-      t.deepEqual(
-        fs.readdirSync(path.join('here', 'folder')).sort(),
-        ['file-b.f3']
-      );
-      t.is(
-        fs.readFileSync(path.join('here', 'folder', 'file-b.f3'), 'utf8'),
-        'file-b'
-      );
-      t.end();
-    });
+  });
+
+  t.deepEqual(
+    fs.readdirSync('here').sort(),
+    ['folder', 'intro.md']
+  );
+  t.is(
+    fs.readFileSync(path.join('here', 'intro.md'), 'utf8'),
+    'old intro\nintro'
+  );
+  t.deepEqual(
+    fs.readdirSync(path.join('here', 'folder')).sort(),
+    ['file-b.f3']
+  );
+  t.is(
+    fs.readFileSync(path.join('here', 'folder', 'file-b.f3'), 'utf8'),
+    'file-b'
+  );
 });
