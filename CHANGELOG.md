@@ -1,3 +1,12 @@
+## [0.0.8](https://github.com/huochunpeng/makes/compare/v0.0.7...v0.0.8) (2019-04-22)
+
+
+### Bug Fixes
+
+* properly cache github/bitbucket/gitlab repos ([c8ea05a](https://github.com/huochunpeng/makes/commit/c8ea05a))
+
+
+
 ## [0.0.7](https://github.com/huochunpeng/makes/compare/v0.0.6...v0.0.7) (2019-04-19)
 
 
