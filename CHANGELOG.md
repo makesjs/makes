@@ -1,3 +1,12 @@
+## [0.0.11](https://github.com/huochunpeng/makes/compare/v0.0.10...v0.0.11) (2019-04-23)
+
+
+### Bug Fixes
+
+* support more local folder variants ([7080beb](https://github.com/huochunpeng/makes/commit/7080beb))
+
+
+
 ## [0.0.10](https://github.com/huochunpeng/makes/compare/v0.0.9...v0.0.10) (2019-04-23)
 
 
