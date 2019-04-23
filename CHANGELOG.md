@@ -1,3 +1,7 @@
+## [0.0.12](https://github.com/huochunpeng/makes/compare/v0.0.11...v0.0.12) (2019-04-23)
+
+
+
 ## [0.0.11](https://github.com/huochunpeng/makes/compare/v0.0.10...v0.0.11) (2019-04-23)
 
 
