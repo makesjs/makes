@@ -1,3 +1,12 @@
+## [0.0.9](https://github.com/huochunpeng/makes/compare/v0.0.8...v0.0.9) (2019-04-23)
+
+
+### Bug Fixes
+
+* fix https.request call on nodejs before v10 ([f07b81d](https://github.com/huochunpeng/makes/commit/f07b81d))
+
+
+
 ## [0.0.8](https://github.com/huochunpeng/makes/compare/v0.0.7...v0.0.8) (2019-04-22)
 
 
