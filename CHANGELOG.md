@@ -1,3 +1,12 @@
+## [0.0.10](https://github.com/huochunpeng/makes/compare/v0.0.9...v0.0.10) (2019-04-23)
+
+
+### Features
+
+* support local dir starting with ~ ([0d2ed85](https://github.com/huochunpeng/makes/commit/0d2ed85))
+
+
+
 ## [0.0.9](https://github.com/huochunpeng/makes/compare/v0.0.8...v0.0.9) (2019-04-23)
 
 
