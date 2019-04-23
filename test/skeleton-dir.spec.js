@@ -12,9 +12,11 @@ test.serial('skeletonDir simply returns local dir', async t => {
   mockfs({
     '../my/dir/.keep': '',
     './my/dir/.keep': '',
+    '/my/dir/.keep': ''
   });
   t.is(await skeletonDir('../my/dir'), '../my/dir');
   t.is(await skeletonDir('./my/dir'), './my/dir');
+  t.is(await skeletonDir('/my/dir'), '/my/dir');
 });
 
 test.serial('skeletonDir complains about missing local dir', async t => {
