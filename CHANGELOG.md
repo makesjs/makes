@@ -1,3 +1,12 @@
+## [0.0.14](https://github.com/huochunpeng/makes/compare/v0.0.13...v0.0.14) (2019-04-26)
+
+
+### Bug Fixes
+
+* fix spawn call ([584986a](https://github.com/huochunpeng/makes/commit/584986a))
+
+
+
 ## [0.0.13](https://github.com/huochunpeng/makes/compare/v0.0.12...v0.0.13) (2019-04-26)
 
 
