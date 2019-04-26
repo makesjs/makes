@@ -29,6 +29,29 @@ test.serial('skeletonConfig runs npm install when required', async t => {
   });
 });
 
+test.serial('skeletonConfig does not run npm install for devDependencies', async t => {
+  mockfs({
+    'skeleton/package.json': '{"devDpendencies":{"foo":"1.0.0"}}'
+  });
+
+  let installed;
+  function npmInstall(dir) {
+    installed = dir;
+  }
+
+  const result = await config('skeleton', {_npmInstall: npmInstall});
+  t.falsy(installed);
+  t.deepEqual(result, {
+    questions: [{
+      name: 'name',
+      message: 'Please name this project:',
+      default: 'my-app'
+    }],
+    prependTransforms: [],
+    appendTransforms: []
+  });
+});
+
 test.serial('skeletonConfig skip npm install when not required', async t => {
   mockfs({
     'skeleton/package.json': '{}'
