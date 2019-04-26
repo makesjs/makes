@@ -1,3 +1,12 @@
+## [0.0.13](https://github.com/huochunpeng/makes/compare/v0.0.12...v0.0.13) (2019-04-26)
+
+
+### Features
+
+* only install skeleton dependencies, not devDependencies ([b307b16](https://github.com/huochunpeng/makes/commit/b307b16))
+
+
+
 ## [0.0.12](https://github.com/huochunpeng/makes/compare/v0.0.11...v0.0.12) (2019-04-23)
 
 
