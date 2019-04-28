@@ -144,10 +144,10 @@ test('selectPrompt (multiselect) prompts for user input', async t => {
 
 test('selectPrompt supports conditional choice', async t => {
   const pickedFeatures = ['w'];
-  await selectPrompt({choices:[{value: 'a', if: '!w'}, {value: 'b', if: 'w'}]}, pickedFeatures, {preselectedFeatures: ['b']});
+  await selectPrompt({choices:[{value: 'a', if: '!w'}, {value: 'b', if: 'w'}]}, pickedFeatures, {preselectedFeatures: []});
   t.deepEqual(pickedFeatures, ['w', 'b']);
-  await selectPrompt({choices:[{value: 'c', if: '!w'}, {value: 'd', if: 'w'}, {value: 'e'}]}, pickedFeatures, {preselectedFeatures: ['b'], _debug: [2]});
-  t.deepEqual(pickedFeatures, ['w', 'b', 'e']);
+  await selectPrompt({choices:[{value: 'c', if: '!w'}, {value: 'd', if: 'w'}, {value: 'e'}]}, pickedFeatures, {preselectedFeatures: [], _debug: [1]});
+  t.deepEqual(pickedFeatures, ['w', 'b', 'd']);
 });
 
 test('selectPrompt skip empty choices after condition', async t => {
