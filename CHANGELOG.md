@@ -1,3 +1,17 @@
+# [0.1.0](https://github.com/huochunpeng/makes/compare/v0.0.14...v0.1.0) (2019-04-29)
+
+
+### Bug Fixes
+
+* fix wrong select choices ([1302724](https://github.com/huochunpeng/makes/commit/1302724))
+
+
+### Features
+
+* verify target folder is available ([f9f86b4](https://github.com/huochunpeng/makes/commit/f9f86b4))
+
+
+
 ## [0.0.14](https://github.com/huochunpeng/makes/compare/v0.0.13...v0.0.14) (2019-04-26)
 
 
