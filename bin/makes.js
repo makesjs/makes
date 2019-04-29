@@ -101,7 +101,7 @@ if (options.s) {
   preselectedFeatures = options.s.split(/,|:| /);
 }
 
-const unattended = preselectedFeatures.length > 0;
+const unattended = options.hasOwnProperty('s');
 
 makes(supplier, {
   predefinedProperties,
