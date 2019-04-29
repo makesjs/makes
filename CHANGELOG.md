@@ -1,3 +1,17 @@
+# [0.2.0](https://github.com/huochunpeng/makes/compare/v0.1.0...v0.2.0) (2019-04-29)
+
+
+### Bug Fixes
+
+* fix loading relative local skeleton path ([b719abc](https://github.com/huochunpeng/makes/commit/b719abc))
+
+
+### Features
+
+* unattended mode even for empty "-s" option ([a9893e0](https://github.com/huochunpeng/makes/commit/a9893e0))
+
+
+
 # [0.1.0](https://github.com/huochunpeng/makes/compare/v0.0.14...v0.1.0) (2019-04-29)
 
 
