@@ -21,7 +21,7 @@ test.serial('skeletonConfig runs npm install when required', async t => {
   t.deepEqual(result, {
     questions: [{
       name: 'name',
-      message: 'Please name this project:',
+      message: 'Please name this new project:',
       default: 'my-app'
     }],
     prependTransforms: [],
@@ -44,7 +44,7 @@ test.serial('skeletonConfig does not run npm install for devDependencies', async
   t.deepEqual(result, {
     questions: [{
       name: 'name',
-      message: 'Please name this project:',
+      message: 'Please name this new project:',
       default: 'my-app'
     }],
     prependTransforms: [],
@@ -67,7 +67,7 @@ test.serial('skeletonConfig skip npm install when not required', async t => {
   t.deepEqual(result, {
     questions: [{
       name: 'name',
-      message: 'Please name this project:',
+      message: 'Please name this new project:',
       default: 'my-app'
     }],
     prependTransforms: [],
@@ -90,7 +90,7 @@ test.serial('skeletonConfig skip npm install when no packge.json', async t => {
   t.deepEqual(result, {
     questions: [{
       name: 'name',
-      message: 'Please name this project:',
+      message: 'Please name this new project:',
       default: 'my-app'
     }],
     prependTransforms: [],
@@ -125,7 +125,7 @@ test.serial('skeletonConfig reads questions, and transforms', async t => {
     questions: [
       {
         name: 'name',
-        message: 'Please name this project:',
+        message: 'Please name this new project:',
         default: 'my-app'
       },
       {name: 'description', message: 'Des'},
@@ -156,11 +156,10 @@ test.serial('skeletonConfig does not inject question for project name if user pr
     }
   }
 
-
   const result = await config('skeleton', {_require: mockRequire});
   t.deepEqual(result, {
     questions: [
-      {name: 'name', message: 'Name'},
+      {name: 'name', message: 'Name', default: 'my-app'},
       {name: 'description', message: 'Des'},
       {choices: [{value: 'one'}], message: 'Choose'}
     ],

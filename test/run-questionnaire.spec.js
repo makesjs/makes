@@ -18,6 +18,30 @@ test('textPrompt returns predefined value in unattended mode without prompting',
   t.is(value, 'foo');
 });
 
+test('textPrompt rejects invalid predefined value in unattended mode without prompting', async t => {
+  await t.throwsAsync(async () => textPrompt({
+    name: 'lorem',
+    default: 'bar',
+    validate: v => !!v.match(/^[a-z]+$/),
+  }, {predefinedProperties: {lorem: '123'}, unattended: true}), {
+    message: /Invalid value in "lorem"/
+  });
+});
+
+test('textPrompt rejects invalid predefined value with error message in unattended mode without prompting', async t => {
+  await t.throwsAsync(async () => textPrompt({
+    name: 'lorem',
+    default: 'bar',
+    validate: v => {
+      if (!v.match(/^[a-z]+$/)) {
+        return 'only accept letters';
+      }
+    }
+  }, {predefinedProperties: {lorem: '123'}, unattended: true}), {
+    message: /only accept letters/
+  });
+});
+
 test('textPrompt returns default value in unattended mode without prompting', async t => {
   const value = await textPrompt({name: 'lorem', default: 'bar'}, {predefinedProperties: {}, unattended: true});
   t.is(value, 'bar');
@@ -32,6 +56,24 @@ test('textPrompt prompts for user input', async t => {
   const value = await textPrompt({
     name: 'lorem',
     message: 'lorem',
+    default: 'bar',
+    in: debugIn,
+    out: nullOut
+  }, {predefinedProperties: {}});
+
+  t.is(value, 'abc');
+});
+
+test('textPrompt validates user input', async t => {
+  const debugIn = new Readable({read() {}});
+  const nullOut = new Writable({write(c, e, cb) {cb();}});
+
+  pressKeys(debugIn, ['a', 'b', '1', {name: 'return'}, {name: 'backspace'}, 'c', {name: 'return'}]);
+
+  const value = await textPrompt({
+    name: 'lorem',
+    message: 'lorem',
+    validate: v => !!v.match(/^[a-z]+$/),
     default: 'bar',
     in: debugIn,
     out: nullOut

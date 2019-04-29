@@ -2,7 +2,15 @@
 /* eslint-disable no-console */
 'use strict';
 
-const makes = require('../dist');
+let makes;
+try {
+  // only for local source debug
+  makes = require('../lib');
+} catch (e) {
+  // for production
+  makes = require('../dist');
+}
+
 const minimist = require('minimist');
 const camelCase = require('lodash.camelcase');
 const {version} = require('../package.json');
