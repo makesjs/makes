@@ -108,4 +108,7 @@ makes(supplier, {
   preselectedFeatures,
   unattended,
   here
+}).catch(error => {
+  console.error(error);
+  process.exit(1);
 });
