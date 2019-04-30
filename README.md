@@ -32,6 +32,8 @@ npx makes bitbucket:username_on_bitbucket
 npx makes bitbucket:username_on_bitbucket/new
 ```
 
+Note, private skeleton repo is not yet supported.
+
 # A quick play of "makes"
 
 Try `npx makes dumberjs` to see how we use "makes" to scaffold front-end SPA using dumber bundler.
