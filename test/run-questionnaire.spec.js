@@ -87,10 +87,6 @@ test('selectPrompt rejects invalid choice value', async t => {
   await t.throwsAsync(async () => selectPrompt({choices:[{value:'a b'}]}, [], {preselectedFeatures: []}));
 });
 
-test('selectPrompt rejects empty choice value on not-first choice', async t => {
-  await t.throwsAsync(async () => selectPrompt({choices:[{value:'a'},{}]}, [], {preselectedFeatures: []}));
-});
-
 test('selectPrompt returns value of the only choice without prompting', async t => {
   const pickedFeatures = [];
   await selectPrompt({choices:[{value:'a'}]}, pickedFeatures, {preselectedFeatures: []});
