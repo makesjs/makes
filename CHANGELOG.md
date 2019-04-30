@@ -1,3 +1,12 @@
+## [0.2.1](https://github.com/huochunpeng/makes/compare/v0.2.0...v0.2.1) (2019-04-30)
+
+
+### Bug Fixes
+
+* proper exit code when fail ([81ad62b](https://github.com/huochunpeng/makes/commit/81ad62b))
+
+
+
 # [0.2.0](https://github.com/huochunpeng/makes/compare/v0.1.0...v0.2.0) (2019-04-29)
 
 
