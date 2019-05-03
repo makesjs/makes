@@ -23,7 +23,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/huochunpeng/makes.git"
+    "url": "git+ssh://git@github.com/3cp/makes.git"
   },
   "keywords": [
     "scaffold",
@@ -33,9 +33,9 @@
   "author": "Chunpeng Huo",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/huochunpeng/makes/issues"
+    "url": "https://github.com/3cp/makes/issues"
   },
-  "homepage": "https://github.com/huochunpeng/makes#readme",
+  "homepage": "https://github.com/3cp/makes#readme",
   "dependencies": {
     "lodash.camelcase": "^4.3.0",
     "minimist": "^1.2.0"

@@ -1,4 +1,4 @@
-# makes [![Build Status](https://travis-ci.org/huochunpeng/makes.svg?branch=master)](https://travis-ci.org/huochunpeng/makes)
+# makes [![Build Status](https://travis-ci.org/3cp/makes.svg?branch=master)](https://travis-ci.org/3cp/makes)
 
 A tool to scaffold new projects, simple enough that you would want to define your own skeletons (aka generators), skeleton for any kind of project, not just Node.js project.
 
@@ -46,14 +46,14 @@ Because the conventional repo name "new", the easiest way is to create a repo ca
 
 In this tutorial, we will define some skeleton repos to show all the features of "makes".
 
-## 1. [`huochunpeng/makes-demo1`](https://github.com/huochunpeng/makes-demo1)
+## 1. [`3cp/makes-demo1`](https://github.com/3cp/makes-demo1)
 
 This skeleton demo only defined `common/READE.md` which will end up in the created project.
 
 ```sh
-npx makes huochunpeng/makes-demo1
+npx makes 3cp/makes-demo1
 # or
-npx makes huochunpeng/makes-demo1 a_project_name
+npx makes 3cp/makes-demo1 a_project_name
 ```
 
 "common" folder is the only mandatory folder you need to define, it is the base skeleton folder no matter what skeleton features end user chose. The files in this folder will be copied to the final created project.
@@ -67,20 +67,20 @@ Note, `/* @echo name */` will be pre-processed by "makes" to replace with projec
 We will talk about pre-process bit more in following demos.
 
 The other thing you probably noticed is that makes will ask you for project name when
-you run `npx makes huochunpeng/makes-demo1` (without providing project name in command line).
+you run `npx makes 3cp/makes-demo1` (without providing project name in command line).
 
-## 2. [`huochunpeng/makes-demo2`](https://github.com/huochunpeng/makes-demo2)
+## 2. [`3cp/makes-demo2`](https://github.com/3cp/makes-demo2)
 
 This skeleton demo shows customised questions and feature folders.
 
 ```sh
-npx makes huochunpeng/makes-demo2
+npx makes 3cp/makes-demo2
 # or
-npx makes huochunpeng/makes-demo2 a_project_name
+npx makes 3cp/makes-demo2 a_project_name
 ```
 
 ### Customised questions
-Questions are defined in [`questions.js`](https://github.com/huochunpeng/makes-demo2/blob/master/questions.js)
+Questions are defined in [`questions.js`](https://github.com/3cp/makes-demo2/blob/master/questions.js)
 (optional), it needs to be in plain commonjs format ("makes" does not support any
 kind of transpiling babel/TypeScript).
 
@@ -177,15 +177,15 @@ This only appears when user selected babel or typescript
 // @endif
 ```
 
-## 3. [`huochunpeng/makes-demo2#adv`](https://github.com/huochunpeng/makes-demo2/tree/adv)
+## 3. [`3cp/makes-demo2#adv`](https://github.com/3cp/makes-demo2/tree/adv)
 
 Same functionality as basic makes-demo2, but this one shows following advanced
 features.
 
 ```sh
-npx makes huochunpeng/makes-demo2#adv
+npx makes 3cp/makes-demo2#adv
 # or
-npx makes huochunpeng/makes-demo2#adv a_project_name
+npx makes 3cp/makes-demo2#adv a_project_name
 ```
 
 ## Condition on folders
@@ -310,8 +310,8 @@ notify "makes" about the runtime dependency. That extra dependency installation 
 }
 ```
 
-For a reference on using `through2` at runtime, check [`huochunpeng/makes-demo2#adv-through2`]
-(https://github.com/huochunpeng/makes-demo2/tree/adv-through2).
+For a reference on using `through2` at runtime, check [`3cp/makes-demo2#adv-through2`]
+(https://github.com/3cp/makes-demo2/tree/adv-through2).
 
 Note you can provide multiple transforms:
 
