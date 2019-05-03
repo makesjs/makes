@@ -1,6 +1,6 @@
 # makes [![Build Status](https://travis-ci.org/3cp/makes.svg?branch=master)](https://travis-ci.org/3cp/makes)
 
-A tool to scaffold new projects, simple enough that you would want to define your own skeletons (aka generators), skeleton for any kind of project, not just Node.js project.
+A tool to scaffold new projects, simple enough that you would want to define your own skeletons (aka generators).
 
 # Run "makes"
 
