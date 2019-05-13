@@ -25,7 +25,9 @@ test.serial('skeletonConfig runs npm install when required', async t => {
       default: 'my-app'
     }],
     prependTransforms: [],
-    appendTransforms: []
+    appendTransforms: [],
+    before: undefined,
+    after: undefined
   });
 });
 
@@ -48,7 +50,9 @@ test.serial('skeletonConfig does not run npm install for devDependencies', async
       default: 'my-app'
     }],
     prependTransforms: [],
-    appendTransforms: []
+    appendTransforms: [],
+    before: undefined,
+    after: undefined
   });
 });
 
@@ -71,7 +75,9 @@ test.serial('skeletonConfig skip npm install when not required', async t => {
       default: 'my-app'
     }],
     prependTransforms: [],
-    appendTransforms: []
+    appendTransforms: [],
+    before: undefined,
+    after: undefined
   });
 });
 
@@ -94,7 +100,9 @@ test.serial('skeletonConfig skip npm install when no packge.json', async t => {
       default: 'my-app'
     }],
     prependTransforms: [],
-    appendTransforms: []
+    appendTransforms: [],
+    before: undefined,
+    after: undefined
   });
 });
 
@@ -132,7 +140,9 @@ test.serial('skeletonConfig reads questions, and transforms', async t => {
       {choices: [{value: 'one'}], message: 'Choose'}
     ],
     prependTransforms: ['fake'],
-    appendTransforms: ['fake2', 'fake3']
+    appendTransforms: ['fake2', 'fake3'],
+    before: undefined,
+    after: undefined
   });
 });
 
@@ -164,6 +174,41 @@ test.serial('skeletonConfig does not inject question for project name if user pr
       {choices: [{value: 'one'}], message: 'Choose'}
     ],
     prependTransforms: [],
-    appendTransforms: []
+    appendTransforms: [],
+    before: undefined,
+    after: undefined
   });
 });
+
+test.serial('skeletonConfig reads before and after tasks', async t => {
+  mockfs({
+    'skeleton/before.js': '',
+    'skeleton/after.js': ''
+  });
+
+  function mockRequire(m) {
+    m = m.replace(/\\/g, '/');
+    if (m === 'skeleton/before.js') {
+      return 'before';
+    } else if (m === 'skeleton/after.js') {
+      return 'after';
+    }
+  }
+
+
+  const result = await config('skeleton', {_require: mockRequire});
+  t.deepEqual(result, {
+    questions: [
+      {
+        name: 'name',
+        message: 'Please name this new project:',
+        default: 'my-app'
+      }
+    ],
+    prependTransforms: [],
+    appendTransforms: [],
+    before: 'before',
+    after: 'after'
+  });
+});
+
