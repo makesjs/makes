@@ -1,3 +1,12 @@
+## [0.3.1](https://github.com/3cp/makes/compare/v0.3.0...v0.3.1) (2019-05-14)
+
+
+### Bug Fixes
+
+* avoid unnecessary npm i --only-prod ([7a06004](https://github.com/3cp/makes/commit/7a06004))
+
+
+
 # [0.3.0](https://github.com/3cp/makes/compare/v0.2.2...v0.3.0) (2019-05-14)
 
 
