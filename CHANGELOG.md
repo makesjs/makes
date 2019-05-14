@@ -1,3 +1,12 @@
+# [0.3.0](https://github.com/3cp/makes/compare/v0.2.2...v0.3.0) (2019-05-14)
+
+
+### Features
+
+* support before/after tasks ([e607e8b](https://github.com/3cp/makes/commit/e607e8b))
+
+
+
 ## [0.2.2](https://github.com/3cp/makes/compare/v0.2.1...v0.2.2) (2019-04-30)
 
 

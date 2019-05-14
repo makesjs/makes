@@ -1,6 +1,6 @@
 {
   "name": "makes",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "A tool to scaffold new projects, simple enough that you would want to define your own generators.",
   "main": "dist/index.js",
   "files": [
