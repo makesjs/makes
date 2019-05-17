@@ -3,6 +3,5 @@ node_modules
 .nyc_output
 coverage
 /__play.js
-/index.js
 /tmp
 /dist
