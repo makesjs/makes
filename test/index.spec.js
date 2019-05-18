@@ -7,6 +7,10 @@ test.afterEach(() => {
   mockfs.restore();
 });
 
+test('exports getOpts func', t => {
+  t.is(typeof makes.getOpts, 'function');
+});
+
 test.serial('makes checks target folder', async t => {
   let captured;
 

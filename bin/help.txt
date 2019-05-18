@@ -1,0 +1,40 @@
+USAGE: makes [-h | --help] [--here] [-s | --select=<feature1,feature2>]
+             <skeleton-repo> [<project-name>]
+
+OPTIONS
+  -h, --help    Print this help page.
+
+  --here        Generate project in current folder, otherwise in folder
+                project-name.
+
+  -s, --select  Preselect features (provided by skeleton repo). This also
+                turns on silent mode without any prompting.
+
+ARGUMENTS
+  skeleton-repo Support hosted git repo from github/bitbucket/gitlab.
+                  username/repo
+                    -> github:username/repo#master
+                  username/repo#tag-or-branch-or-commit
+                    -> github:username/repo#tag-or-branch-or-commit
+                  bitbucket:username/repo
+                    -> bitbucket:username/repo#master
+                  gitlab:username/repo#ref
+                    -> gitlab:username/repo#ref
+
+                makes supports the conventional "new" repo.
+                  username
+                    -> github:username/new#master
+                  bitbucket:username
+                    -> bitbucket:username/new#master
+                  gitlab:username
+                    -> gitlab:username/new#master
+
+  project-name  Optional project name. If not provided, there will be a
+                prompt asking user to provide project name.
+                In silent mode, unprovided project-name will default to
+                "my-app" unless the skeleton repo provided a different
+                default value.
+EXAMPLES
+  npx makes dumberjs
+  npx makes dumberjs my-awesome-app
+  npx makes your-github-username/your-skeleton-repo#ref
