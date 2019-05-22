@@ -1,3 +1,12 @@
+# [0.6.0](https://github.com/3cp/makes/compare/v0.5.1...v0.6.0) (2019-05-22)
+
+
+### Features
+
+* add default validation to project name ([d5b4c91](https://github.com/3cp/makes/commit/d5b4c91))
+
+
+
 ## [0.5.1](https://github.com/3cp/makes/compare/v0.5.0...v0.5.1) (2019-05-22)
 
 
