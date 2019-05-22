@@ -155,6 +155,7 @@ test.serial('makes supports "before" task to change conditions', async t => {
       prependTransforms: 'mock-prepend',
       appendTransforms: 'mock-append',
       before: opts => {
+        t.falsy(opts.here);
         t.is(typeof opts.prompts.select, 'function');
         t.is(typeof opts.ansiColors.red, 'function');
         t.is(typeof opts.sisteransi.cursor.to, 'function');
@@ -234,6 +235,7 @@ test.serial('makes supports "after" task', async t => {
 
   t.deepEqual(captured2.properties, {name: 'app', description: ''});
   t.deepEqual(captured2.features, ['b']);
+  t.falsy(captured2.here);
   t.deepEqual(captured2.notDefaultFeatures, ['b']);
   t.is(typeof captured2.ansiColors.red, 'function');
   t.is(typeof captured2.sisteransi.cursor.to, 'function');
