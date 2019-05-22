@@ -232,6 +232,7 @@ test.serial('makes supports "after" task', async t => {
 
   t.deepEqual(captured2.properties, {name: 'app', description: ''});
   t.deepEqual(captured2.features, ['b']);
+  t.deepEqual(captured2.notDefaultFeatures, ['b']);
   t.true(captured2.unattended);
   t.is(captured2.prompts, prompts);
   t.is(typeof captured2.run, 'function');

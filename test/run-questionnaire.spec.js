@@ -93,39 +93,33 @@ test('selectPrompt rejects invalid choice value', async t => {
 });
 
 test('selectPrompt returns value of the only choice without prompting', async t => {
-  const pickedFeatures = [];
-  await selectPrompt({choices:[{value:'a'}]}, pickedFeatures, {preselectedFeatures: []});
-  t.deepEqual(pickedFeatures, ['a']);
+  const picked = await selectPrompt({choices:[{value:'a'}]}, [], {preselectedFeatures: []});
+  t.is(picked, 'a');
 });
 
 test('selectPrompt ignores empty value without prompting', async t => {
-  const pickedFeatures = [];
-  await selectPrompt({choices:[{}]}, pickedFeatures, {preselectedFeatures: []});
-  t.deepEqual(pickedFeatures, []);
+  const picked = await selectPrompt({choices:[{}]}, [], {preselectedFeatures: []});
+  t.is(picked, undefined);
 });
 
 test('selectPrompt returns preselected without prompting', async t => {
-  const pickedFeatures = [];
-  await selectPrompt({choices:[{value: 'a'}, {value: 'b'}]}, pickedFeatures, {preselectedFeatures: ['b']});
-  t.deepEqual(pickedFeatures, ['b']);
+  const picked = await selectPrompt({choices:[{value: 'a'}, {value: 'b'}]}, [], {preselectedFeatures: ['b']});
+  t.is(picked, 'b');
 });
 
 test('selectPrompt cleans up conflicted preselected without prompting', async t => {
-  const pickedFeatures = [];
-  await selectPrompt({choices:[{}, {value: 'a'}, {value: 'b'}]}, pickedFeatures, {preselectedFeatures: ['b', 'a']});
-  t.deepEqual(pickedFeatures, ['a']);
+  const picked = await selectPrompt({choices:[{}, {value: 'a'}, {value: 'b'}]}, [], {preselectedFeatures: ['b', 'a']});
+  t.is(picked, 'a');
 });
 
 test('selectPrompt returns first choice in unattended mode without prompting', async t => {
-  const pickedFeatures = [];
-  await selectPrompt({choices:[{value: 'a'}, {value: 'b'}]}, pickedFeatures, {preselectedFeatures: [], unattended: true});
-  t.deepEqual(pickedFeatures, ['a']);
+  const picked = await selectPrompt({choices:[{value: 'a'}, {value: 'b'}]}, [], {preselectedFeatures: [], unattended: true});
+  t.is(picked, 'a');
 });
 
 test('selectPrompt still returns preselected in unattended mode without prompting', async t => {
-  const pickedFeatures = [];
-  await selectPrompt({choices:[{value: 'a'}, {value: 'b'}]}, pickedFeatures, {preselectedFeatures: ['b'], unattended: true});
-  t.deepEqual(pickedFeatures, ['b']);
+  const picked = await selectPrompt({choices:[{value: 'a'}, {value: 'b'}]}, [], {preselectedFeatures: ['b'], unattended: true});
+  t.is(picked, 'b');
 });
 
 test('selectPrompt prompts for user input', async t => {
@@ -134,38 +128,33 @@ test('selectPrompt prompts for user input', async t => {
 
   pressKeys(debugIn, [{name: 'down'}, {name: 'return'}]);
 
-  const pickedFeatures = [];
-  await selectPrompt({
+  const picked = await selectPrompt({
     choices:[{value: 'a'}, {value: 'b'}, {value: 'c'}],
     in: debugIn,
     out: nullOut
-  }, pickedFeatures, {preselectedFeatures: []});
+  }, [], {preselectedFeatures: []});
 
-  t.deepEqual(pickedFeatures, ['b']);
+  t.is(picked, 'b');
 });
 
 test('selectPrompt (multiselect) returns preselected without prompting', async t => {
-  const pickedFeatures = [];
-  await selectPrompt({multiple: true, choices:[{value: 'a'}, {value: 'b'}]}, pickedFeatures, {preselectedFeatures: ['b']});
-  t.deepEqual(pickedFeatures, ['b']);
+  const picked = await selectPrompt({multiple: true, choices:[{value: 'a'}, {value: 'b'}]}, [], {preselectedFeatures: ['b']});
+  t.deepEqual(picked, ['b']);
 });
 
 test('selectPrompt (multiselect) returns empty list in unattended mode without prompting', async t => {
-  const pickedFeatures = [];
-  await selectPrompt({multiple: true, choices:[{value: 'a'}, {value: 'b'}]}, pickedFeatures, {preselectedFeatures: [], unattended: true});
-  t.deepEqual(pickedFeatures, []);
+  const picked = await selectPrompt({multiple: true, choices:[{value: 'a'}, {value: 'b'}]}, [], {preselectedFeatures: [], unattended: true});
+  t.is(picked, undefined);
 });
 
 test('selectPrompt (multiselect) still returns preselected in unattended mode without prompting', async t => {
-  const pickedFeatures = [];
-  await selectPrompt({multiple: true, choices:[{value: 'a', selected: true}, {value: 'b'}]}, pickedFeatures, {preselectedFeatures: ['b'], unattended: true});
-  t.deepEqual(pickedFeatures, ['b']);
+  const picked = await selectPrompt({multiple: true, choices:[{value: 'a', selected: true}, {value: 'b'}]}, [], {preselectedFeatures: ['b'], unattended: true});
+  t.deepEqual(picked, ['b']);
 });
 
 test('selectPrompt (multiselect) returns default selected in unattended mode without prompting', async t => {
-  const pickedFeatures = [];
-  await selectPrompt({multiple: true, choices:[{value: 'a', selected: true}, {value: 'b'}]}, pickedFeatures, {preselectedFeatures: [], unattended: true});
-  t.deepEqual(pickedFeatures, ['a']);
+  const picked = await selectPrompt({multiple: true, choices:[{value: 'a', selected: true}, {value: 'b'}]}, [], {preselectedFeatures: [], unattended: true});
+  t.deepEqual(picked, ['a']);
 });
 
 test('selectPrompt (multiselect) prompts for user input', async t => {
@@ -174,35 +163,31 @@ test('selectPrompt (multiselect) prompts for user input', async t => {
 
   pressKeys(debugIn, [{name: 'down'}, ' ', {name: 'return'}]);
 
-  const pickedFeatures = [];
-  await selectPrompt({
+  const picked = await selectPrompt({
     multiple: true,
     choices:[{value: 'a'}, {value: 'b'}, {value: 'c', selected: true}],
     in: debugIn,
     out: nullOut
-  }, pickedFeatures, {preselectedFeatures: []});
+  }, [], {preselectedFeatures: []});
 
-  t.deepEqual(pickedFeatures, ['b', 'c']);
+  t.deepEqual(picked, ['b', 'c']);
 });
 
 test('selectPrompt supports conditional choice', async t => {
-  const pickedFeatures = ['w'];
-  await selectPrompt({choices:[{value: 'a', if: '!w'}, {value: 'b', if: 'w'}]}, pickedFeatures, {preselectedFeatures: []});
-  t.deepEqual(pickedFeatures, ['w', 'b']);
-  await selectPrompt({choices:[{value: 'c', if: '!w'}, {value: 'd', if: 'w'}, {value: 'e'}]}, pickedFeatures, {preselectedFeatures: [], _debug: [1]});
-  t.deepEqual(pickedFeatures, ['w', 'b', 'd']);
+  const picked = await selectPrompt({choices:[{value: 'a', if: '!w'}, {value: 'b', if: 'w'}]}, ['w'], {preselectedFeatures: []});
+  t.deepEqual(picked, 'b');
+  const picked2 = await selectPrompt({choices:[{value: 'c', if: '!w'}, {value: 'd', if: 'w'}, {value: 'e'}]}, ['w'], {preselectedFeatures: [], _debug: [1]});
+  t.deepEqual(picked2, 'd');
 });
 
 test('selectPrompt skip empty choices after condition', async t => {
-  const pickedFeatures = ['w'];
-  await selectPrompt({choices:[{value: 'a', if: '!w'}, {value: 'b', if: '!w'}]}, pickedFeatures, {preselectedFeatures: []});
-  t.deepEqual(pickedFeatures, ['w']);
+  const picked = await selectPrompt({choices:[{value: 'a', if: '!w'}, {value: 'b', if: '!w'}]}, ['w'], {preselectedFeatures: []});
+  t.is(picked, undefined);
 });
 
 test('selectPrompt (multiselect) supports conditional choice', async t => {
-  const pickedFeatures = ['w'];
-  await selectPrompt({multiple: true, choices:[{value: 'c', if: '!w'}, {value: 'd', if: 'w'}, {value: 'e'}]}, pickedFeatures, {preselectedFeatures: ['b'], _debug: [[1,2]]});
-  t.deepEqual(pickedFeatures, ['w', 'd', 'e']);
+  const picked = await selectPrompt({multiple: true, choices:[{value: 'c', if: '!w'}, {value: 'd', if: 'w'}, {value: 'e'}]}, ['w'], {preselectedFeatures: ['b'], _debug: [[1,2]]});
+  t.deepEqual(picked, ['d', 'e']);
 });
 
 const questions = [
@@ -231,7 +216,11 @@ const questions = [
 
 test('run runs through questionnaire in unattended mode', async t => {
   const result = await run(questions, {unattended: true});
-  t.deepEqual(result, [{name: 'my-app', description: ''}, ['webpack', 'extract-css', 'sass']]);
+  t.deepEqual(result, [
+    {name: 'my-app', description: ''},
+    ['webpack', 'extract-css', 'sass'],
+    []
+  ]);
 });
 
 test('run runs through questionnaire in unattended mode with preselectedFeatures and predefinedProperties', async t => {
@@ -240,14 +229,26 @@ test('run runs through questionnaire in unattended mode with preselectedFeatures
     preselectedFeatures: ['postcss'],
     predefinedProperties: {name: 'new-app'}
   });
-  t.deepEqual(result, [{name: 'new-app', description: ''}, ['webpack', 'postcss']]);
+  t.deepEqual(result, [
+    {name: 'new-app', description: ''},
+    ['webpack', 'postcss'],
+    ['postcss']
+  ]);
 });
 
 test('run runs through questionnaire', async t => {
   let result = await run(questions, {_debug: ['new-app', 2, [1, 2]]});
-  t.deepEqual(result, [{name: 'new-app'}, ['dumber', 'postcss', 'sass']]);
+  t.deepEqual(result, [
+    {name: 'new-app'},
+    ['dumber', 'postcss', 'sass'],
+    ['dumber', 'postcss', 'sass']
+  ]);
   result = await run(questions, {_debug: ['new-app', 1, 'lorem', [1, 2]]});
-  t.deepEqual(result, [{name: 'new-app', description: 'lorem'}, ['webpack', 'extract-css', 'postcss']]);
+  t.deepEqual(result, [
+    {name: 'new-app', description: 'lorem'},
+    ['webpack', 'extract-css', 'postcss'],
+    ['extract-css', 'postcss']
+  ]);
 });
 
 test('run runs through questionnaire with preselectedFeatures and predefinedProperties', async t => {
@@ -256,7 +257,11 @@ test('run runs through questionnaire with preselectedFeatures and predefinedProp
     predefinedProperties: {name: 'new-app'},
     _debug: [2]
   });
-  t.deepEqual(result, [{name: 'new-app'}, ['dumber', 'postcss']]);
+  t.deepEqual(result, [
+    {name: 'new-app'},
+    ['dumber', 'postcss'],
+    ['dumber', 'postcss']
+  ]);
 });
 
 test('run rejects missing name/choices', async t => {
@@ -265,5 +270,5 @@ test('run rejects missing name/choices', async t => {
 
 test('run ignores name field on selection question', async t => {
   let result = await run([{name: 'foo', choices: [{value: 'a'}]}], {});
-  t.deepEqual(result, [{}, ['a']]);
+  t.deepEqual(result, [{}, ['a'], []]);
 });
