@@ -1,3 +1,12 @@
+# [0.4.0](https://github.com/3cp/makes/compare/v0.3.3...v0.4.0) (2019-05-22)
+
+
+### Features
+
+* pass notDefaultFeatures to "after" task for possible summary printout ([99b5dcd](https://github.com/3cp/makes/commit/99b5dcd))
+
+
+
 ## [0.3.3](https://github.com/3cp/makes/compare/v0.3.2...v0.3.3) (2019-05-22)
 
 
