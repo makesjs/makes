@@ -85,6 +85,11 @@ test('textPrompt validates user input', async t => {
 test('selectPrompt rejects invalid choice value', async t => {
   await t.throwsAsync(async () => selectPrompt({choices:[{value:'a&b'}]}, [], {preselectedFeatures: []}));
   await t.throwsAsync(async () => selectPrompt({choices:[{value:'a b'}]}, [], {preselectedFeatures: []}));
+  await t.throwsAsync(async () => selectPrompt({choices:[{value:'and'}]}, [], {preselectedFeatures: []}));
+  await t.throwsAsync(async () => selectPrompt({choices:[{value:'or'}]}, [], {preselectedFeatures: []}));
+  await t.throwsAsync(async () => selectPrompt({choices:[{value:'not'}]}, [], {preselectedFeatures: []}));
+  await t.throwsAsync(async () => selectPrompt({choices:[{value:'true'}]}, [], {preselectedFeatures: []}));
+  await t.throwsAsync(async () => selectPrompt({choices:[{value:'false'}]}, [], {preselectedFeatures: []}));
 });
 
 test('selectPrompt returns value of the only choice without prompting', async t => {
