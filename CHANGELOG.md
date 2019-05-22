@@ -1,3 +1,12 @@
+## [0.3.3](https://github.com/3cp/makes/compare/v0.3.2...v0.3.3) (2019-05-22)
+
+
+### Bug Fixes
+
+* guard select choices from reserved values ([fe8cc7a](https://github.com/3cp/makes/commit/fe8cc7a))
+
+
+
 ## [0.3.2](https://github.com/3cp/makes/compare/v0.3.1...v0.3.2) (2019-05-19)
 
 
