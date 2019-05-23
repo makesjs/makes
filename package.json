@@ -39,6 +39,7 @@
   "devDependencies": {
     "ansi-colors": "^3.2.4",
     "ava": "^1.4.1",
+    "cross-spawn": "^6.0.5",
     "eslint": "^5.16.0",
     "gunzip-maybe": "^1.4.1",
     "hosted-git-info": "^2.7.1",
