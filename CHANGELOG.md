@@ -1,3 +1,17 @@
+# [0.7.0](https://github.com/3cp/makes/compare/v0.6.0...v0.7.0) (2019-05-23)
+
+
+### Bug Fixes
+
+* use cross-spawn to support Windows ([86cd1c7](https://github.com/3cp/makes/commit/86cd1c7))
+
+
+### BREAKING CHANGES
+
+* run(cmd, args) now needs second param args
+
+
+
 # [0.6.0](https://github.com/3cp/makes/compare/v0.5.1...v0.6.0) (2019-05-22)
 
 
