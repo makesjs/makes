@@ -1,3 +1,12 @@
+# [0.8.0](https://github.com/3cp/makes/compare/v0.7.0...v0.8.0) (2019-05-24)
+
+
+### Features
+
+* add dangerous but flexible [@eval](https://github.com/eval) to preprocess ([d49eb7a](https://github.com/3cp/makes/commit/d49eb7a))
+
+
+
 # [0.7.0](https://github.com/3cp/makes/compare/v0.6.0...v0.7.0) (2019-05-23)
 
 
