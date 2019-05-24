@@ -22,5 +22,5 @@ npx makes dumberjs
 Note `npx makes dumberjs` is a conventional short-cut of `npx makes dumberjs/new`.
 
 <p align="center">
-<img src="https://3cp.github.io/makes/assets/makes-dumberjs.gif" alt="makes dumberjs" width="480">
+<img src="https://3cp.github.io/makes/assets/makes-dumberjs.gif" alt="makes dumberjs" width="720">
 </p>
