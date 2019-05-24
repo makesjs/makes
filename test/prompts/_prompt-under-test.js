@@ -1,4 +1,4 @@
-import {text as _text, select as _select, multiselect as _multiselect} from '../../lib/prompts';
+import {text as _text, select as _select} from '../../lib/prompts';
 import {Readable, Writable} from 'stream';
 
 function delay() {
@@ -41,5 +41,4 @@ function wrap(prompt) {
 
 const text = wrap(_text);
 const select = wrap(_select);
-const multiselect = wrap(_multiselect);
-export {delay, pressKeys, text, select, multiselect};
+export {delay, pressKeys, text, select};

@@ -1,8 +1,9 @@
 import test from 'ava';
-import {multiselect} from './_prompt-under-test';
+import {select} from './_prompt-under-test';
 
 test('multiselect prompt returns default empty selection', async (t) => {
-  const answer = await multiselect({
+  const answer = await select({
+    multiple: true,
     message: 'prompt',
     choices: [
       {value: 'one', title: 'One'},
@@ -14,7 +15,8 @@ test('multiselect prompt returns default empty selection', async (t) => {
 });
 
 test('multiselect prompt allows empty string value, toggle with space', async (t) => {
-  const answer = await multiselect({
+  const answer = await select({
+    multiple: true,
     message: 'prompt',
     choices: [
       {value: '', title: 'One', hint: 'Lorem ipsum dolor sit amet.'},
@@ -26,7 +28,8 @@ test('multiselect prompt allows empty string value, toggle with space', async (t
 });
 
 test('multiselect prompt allows empty string value, toggle with space, case2', async (t) => {
-  const answer = await multiselect({
+  const answer = await select({
+    multiple: true,
     message: 'prompt',
     choices: [
       {value: '', title: 'One'},
@@ -38,7 +41,8 @@ test('multiselect prompt allows empty string value, toggle with space, case2', a
 });
 
 test('multiselect prompt allows missing value', async (t) => {
-  const answer = await multiselect({
+  const answer = await select({
+    multiple: true,
     message: 'prompt',
     choices: [
       {title: 'One'},
@@ -50,7 +54,8 @@ test('multiselect prompt allows missing value', async (t) => {
 });
 
 test('multiselect prompt returns user multiselection', async (t) => {
-  const answer = await multiselect({
+  const answer = await select({
+    multiple: true,
     message: 'prompt',
     choices: [
       {value: 'one', title: 'One'},
@@ -63,7 +68,8 @@ test('multiselect prompt returns user multiselection', async (t) => {
 });
 
 test('multiselect prompt returns user multiselection, case2', async (t) => {
-  const answer = await multiselect({
+  const answer = await select({
+    multiple: true,
     message: 'prompt',
     choices: [
       {value: 'one', title: 'One'},
@@ -76,7 +82,8 @@ test('multiselect prompt returns user multiselection, case2', async (t) => {
 });
 
 test('multiselect prompt returns user multiselection, case3', async (t) => {
-  const answer = await multiselect({
+  const answer = await select({
+    multiple: true,
     message: 'prompt',
     choices: [
       'one',
@@ -89,7 +96,8 @@ test('multiselect prompt returns user multiselection, case3', async (t) => {
 });
 
 test('multiselect prompt returns user multiselection with number shortcut', async (t) => {
-  const answer = await multiselect({
+  const answer = await select({
+    multiple: true,
     message: 'prompt',
     choices: [
       {value: 'one', title: 'One'},
@@ -102,7 +110,8 @@ test('multiselect prompt returns user multiselection with number shortcut', asyn
 });
 
 test('multiselect prompt returns user multiselection with number shortcut to toggle', async (t) => {
-  const answer = await multiselect({
+  const answer = await select({
+    multiple: true,
     message: 'prompt',
     choices: [
       'one',
@@ -115,7 +124,8 @@ test('multiselect prompt returns user multiselection with number shortcut to tog
 });
 
 test('multiselect prompt can reset', async (t) => {
-  const answer = await multiselect({
+  const answer = await select({
+    multiple: true,
     message: 'prompt',
     choices: [
       {value: 'one', title: 'One'},
@@ -128,7 +138,8 @@ test('multiselect prompt can reset', async (t) => {
 });
 
 test('multiselect prompt can abort', async (t) => {
-  await t.throwsAsync(multiselect({
+  await t.throwsAsync(select({
+    multiple: true,
     message: 'prompt',
     choices: [
       {value: 'one', title: 'One'},
@@ -141,7 +152,8 @@ test('multiselect prompt can abort', async (t) => {
 });
 
 test('multiselect prompt supports terminal short-cut to start', async (t) => {
-  const answer = await multiselect({
+  const answer = await select({
+    multiple: true,
     message: 'prompt',
     choices: [
       {value: 'one', title: 'One'},
@@ -154,7 +166,8 @@ test('multiselect prompt supports terminal short-cut to start', async (t) => {
 });
 
 test('multiselect prompt supports terminal short-cut to end', async (t) => {
-  const answer = await multiselect({
+  const answer = await select({
+    multiple: true,
     message: 'prompt',
     choices: [
       {value: 'one', title: 'One'},
@@ -167,7 +180,8 @@ test('multiselect prompt supports terminal short-cut to end', async (t) => {
 });
 
 test('multiselect prompt supports terminal short-cut tab', async (t) => {
-  const answer = await multiselect({
+  const answer = await select({
+    multiple: true,
     message: 'prompt',
     choices: [
       {value: 'one', title: 'One'},
@@ -180,7 +194,8 @@ test('multiselect prompt supports terminal short-cut tab', async (t) => {
 });
 
 test('multiselect prompt supports left/right toggle', async (t) => {
-  const answer = await multiselect({
+  const answer = await select({
+    multiple: true,
     message: 'prompt',
     choices: [
       {value: 'one', title: 'One'},
@@ -203,7 +218,8 @@ test('multiselect prompt supports left/right toggle', async (t) => {
 });
 
 test('multiselect prompt limits selection with max', async (t) => {
-  const answer = await multiselect({
+  const answer = await select({
+    multiple: true,
     message: 'prompt',
     choices: [
       'one',
