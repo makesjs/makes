@@ -83,7 +83,7 @@ test('getOpts gets preselected features, set unattended', t => {
     here: false
   });
 
-  t.deepEqual(getOpts(['./a', '--select', 'x:y:z']), {
+  t.deepEqual(getOpts(['./a', '--select=x:y:z']), {
     supplier: './a',
     predefinedProperties: {},
     preselectedFeatures: ['x', 'y', 'z'],
@@ -143,7 +143,7 @@ test('getOpts gets here mode', t => {
     here: true
   });
 
-  t.deepEqual(getOpts(['a', '--here', 'app', '-s', 'x,y']), {
+  t.deepEqual(getOpts(['a', '--here', 'app', '-s=x,y']), {
     supplier: 'a',
     predefinedProperties: {name: 'app'},
     preselectedFeatures: ['x', 'y'],
