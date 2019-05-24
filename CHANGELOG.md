@@ -1,3 +1,7 @@
+## [0.8.1](https://github.com/3cp/makes/compare/v0.8.0...v0.8.1) (2019-05-24)
+
+
+
 # [0.8.0](https://github.com/3cp/makes/compare/v0.7.0...v0.8.0) (2019-05-24)
 
 
