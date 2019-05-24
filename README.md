@@ -2,7 +2,7 @@
 
 A tool to scaffold new projects, simple enough that you would want to define your own skeletons (aka generators).
 
-**Documentation: https://3cp.github.io/makes**
+**Document site: https://3cp.github.io/makes**
 
 ## Run "makes"
 
