@@ -9,7 +9,7 @@ A tool to scaffold new projects, simple enough that you would want to define you
 "makes" is designed to be used without any installation, as long as you have [Node.js](https://nodejs.org). To run "makes", do:
 
 ```bash
-npx makes a_skeleton_repo
+npx makes <skeleton_provider>
 ```
 
 ## Example skeleton: [`dumberjs/new`](https://github.com/dumberjs/new)
