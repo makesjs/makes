@@ -32,7 +32,7 @@ test.serial.cb('whenFileExists marks readme file with append write policy, when 
   });
 });
 
-test.serial.cb('whenFileExists keeps existing readme file write policy mark, when target file exists', t => {
+test.serial.cb('whenFileExists honours existing readme file write policy mark, when target file exists', t => {
   mockfs({
     'here/folder/some-readme.md': 'lorem'
   });
@@ -45,14 +45,14 @@ test.serial.cb('whenFileExists keeps existing readme file write policy mark, whe
     writePolicy: 'ask'
   });
 
-  const ts = whenFileExists('here');
+  const ts = whenFileExists('here', true);
 
   ts.write(file);
   ts.end();
   ts.once('data', file => {
     t.truthy(file.isBuffer());
-    t.is(file.relative.replace(/\\/g, '/'), 'folder/some-readme.md');
-    t.is(file.writePolicy, 'ask');
+    t.is(file.relative.replace(/\\/g, '/'), 'folder/some-readme.md__makes');
+    t.is(file.writePolicy, null);
     t.is(file.contents.toString(), 'abc');
     t.end();
   });
