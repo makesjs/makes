@@ -7,7 +7,7 @@ permalink: /preprocess-file-content/eval
 parent: Preprocess File Content
 ---
 
-# `@eval`
+# @eval
 
 `@eval` is brought in because `@echo` is not enough. For example in a json file:
 
@@ -31,7 +31,7 @@ var properties = {
 };
 ```
 
-## Use `@eval` to escape a string in JavaScript/JSON
+## Use @eval to escape a string in JavaScript/JSON
 
 We can borrow `JSON.stringify()` for this task, note the result already wrapped with double-quotes.
 
@@ -51,11 +51,11 @@ Yield result:
 }
 ```
 
-## `#@echo` name
+## @echo project name
 
 We used `@echo name` to display our project name in many examples. Echo project name is safe, as long as you didn't modify the default validation for project name (default validation only allows letters, numbers, dash(`-`) and underscore(`_`) in project name).
 
-## Use `@eval` to escape a string in HTML
+## Use @eval to escape a string in HTML
 
 JavaScript didn't provide any built-in function to escape string in HTML. We have to use this verbose expression.
 

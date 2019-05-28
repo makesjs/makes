@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Here Mode and Write Policy
-nav_order: 9
+nav_order: 8
 description: Learn how to use here mode and write policy
 permalink: /here-mode-and-write-policy
 ---
@@ -38,7 +38,7 @@ Append one of three write policies to a file name:
 
 For file without any write policy suffix, the default behaviour is overwriting existing file, which is expected but dangerous. Make sure you add write policy suffix to important files.
 
-### The order of write policy and condition
+## The order of write policy and condition
 
 You can mix write policy and condition in any order, it doesn't matter. Following two file names are equivalent.
 

@@ -7,7 +7,7 @@ permalink: /preprocess-file-content/echo
 parent: Preprocess File Content
 ---
 
-# `@echo`
+# @echo
 
 You can echo any property from the [`properties`](questions/features-and-properties#properties).
 

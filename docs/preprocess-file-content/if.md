@@ -7,7 +7,7 @@ permalink: /preprocess-file-content/if
 parent: Preprocess File Content
 ---
 
-# `@if`
+# @if
 
 You can use `@if` with [condition expression](questions/conditional#condition-expression) using the [`features`](questions/features-and-properties#features) array.
 
