@@ -72,13 +72,13 @@ nodejs/a-file
 
 However, for convenience, "makes" offering special behaviour on two types of files.
 
-### Concatenate readme files
+### 1. Concatenate readme files
 
 If the duplicated skeleton files is a readme file (`/readme(\.(md|txt|markdown))?$/i`), "makes" will concatenate them together. Note for convenience, "makes" appends a new line before appending the content of additional readme.
 
 If you have `common/README.md` with content `a`, `nodejs/README.md` with content `b`, the final `README.md` could be `a\nb` if end user selected `nodejs`.
 
-### Merge JSON files
+### 2. Merge JSON files
 
 For simpler skeleton of JavaScript projects, "makes" merges JSON files (which includes `package.json`) from duplicated files into one.
 
@@ -107,6 +107,59 @@ Without worrying about the trailing `,` in `{"a": true,}`.
 
 ## Append transforms
 
+We will exam "append" transforms first because it's the more common than "prepend" transforms.
+
+[`3cp/makes-demo2#adv-through2`](https://github.com/3cp/makes-demo2/blob/adv-through2/transforms.js) implemented an "append" transform that translate `file.ext` to `file.js`/`file.ext` based on `features` array.
+
+The optional `transform.js` file. Note just like `questions.js`, this file is in CommonJS format too.
+
+```js
+const through2 = require('through2');
+
+exports.append = function(properties, features) {
+  return through2.obj(function(file, env, cb) {
+    if (file.isBuffer() && file.extname === '.ext') {
+      // change .ext to .ts or .js file
+      file.extname = features.includes('typescript') ? '.ts' : '.js'
+    }
+    cb(null, file);
+  });
+};
+```
+
+For users who has experience with gulp, this is easy to understand.
+
+The `exports.append` can be one function or array of functions.
+
+Every function:
+* get four input arguments `properties`, `features`, `targetDir`, `unattended`.
+  * `properties`, `features` are the result built from questions.
+  * `targetDir` gives you a chance to inspect target folder, obviously only useful when end users ran "makes" in [here mode](here-mode-and-write-policy).
+  * `unattended` is true when end users ran "makes" in [silient mode](silent-mode). Your transform implementation should skip any user interactivity when `unattended` is true.
+* return a Node.js transform stream. Here we use `through2` to generate a transform stream, just like what you would see in any gulp tutorial.
+
 ## Runtime dependencies
+
+The above "append" transform imposed a runtime dependency on `through2`. To tell "makes" that your skeleton needs additional npm package, you need to create the optional `package.json` file in your skeleton with `"dependencies"`.
+
+[`3cp/makes-demo2#adv-through2` `package.json`](https://github.com/3cp/makes-demo2/blob/adv-through2/package.json)
+
+```json
+{
+  "dependencies": {
+    "through2": "^3.0.1"
+  }
+}
+```
+
+When "makes" loads up this skeleton, it sees non-empty `"dependencies"`, it then fires up `npm install --only=prod` to install all the dependencies before proceed.
+
+Note `"devDependencies"` is irrelevant. You can add many npm packages to `"devDependencies"` to help local testing or changelog, it would not slow "makes" down.
+
+### Aim zero runtime dependency
+
+There is no doubt that it will slow down "makes" to install `through2`. Ideally you should aim zero runtime dependency.
+
+For example, `through2` is absolutely not needed to create a transform stream. The modern Node.js API is simple enough to create a transform stream.
 
 ## Prepend transforms
