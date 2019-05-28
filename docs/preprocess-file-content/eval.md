@@ -51,9 +51,11 @@ Yield result:
 }
 ```
 
-## @echo project name
+## Echo project name
 
-We used `@echo name` to display our project name in many examples. Echo project name is safe, as long as you didn't modify the default validation for project name (default validation only allows letters, numbers, dash(`-`) and underscore(`_`) in project name).
+We used `@echo name` to display our project name in many examples, you might noticed we even used it inside JSON file without worrying about string escaping.
+
+Echo project name is safe, as long as you didn't modify the default validation for project name (default validation only allows letters, numbers, dash(`-`) and underscore(`_`) in project name).
 
 ## Use @eval to escape a string in HTML
 
