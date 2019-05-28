@@ -47,3 +47,18 @@ aurelia.use.developmentLogging('warn');
 ```
 
 The `@if` and `@endif` directives were reserved.
+
+## Cosmetic one line condition
+
+Sometime your one line condition will trigger annoying syntax error in your editor. Like this one:
+
+```js
+var target = /* @if no-ie */"es6"/* @endif *//* @if ie */"es3"/* @endif */;
+```
+
+While this is still a correct skeleton file, the cosmetic syntax error in editor is annoying. To help you avoid this small setback, you can use `**` instead of `*/` to close an if clause. This is a feature inherited from original [preprocess](https://github.com/jsoverson/preprocess).
+
+```js
+var target = /* @if no-ie **"es6"/* @endif *//* @if ie */"es3"/* @endif */;
+```
+
