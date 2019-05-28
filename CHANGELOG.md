@@ -1,3 +1,17 @@
+## [0.8.2](https://github.com/3cp/makes/compare/v0.8.1...v0.8.2) (2019-05-28)
+
+
+### Bug Fixes
+
+* fix __ask-if-exists on readme files ([e9095f4](https://github.com/3cp/makes/commit/e9095f4))
+
+
+### Features
+
+* exports prompts module ([fb9ecc7](https://github.com/3cp/makes/commit/fb9ecc7))
+
+
+
 ## [0.8.1](https://github.com/3cp/makes/compare/v0.8.0...v0.8.1) (2019-05-24)
 
 
