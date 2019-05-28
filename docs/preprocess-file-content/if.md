@@ -1,8 +1,8 @@
 ---
 layout: default
-title: @if
+title: '@if'
 nav_order: 2
-description: Learn how to use @if
+description: 'Learn how to use @if'
 permalink: /preprocess-file-content/if
 parent: Preprocess File Content
 ---

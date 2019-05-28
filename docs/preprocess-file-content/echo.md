@@ -1,8 +1,8 @@
 ---
 layout: default
-title: @echo
+title: '@echo'
 nav_order: 1
-description: Learn how to use @echo
+description: 'Learn how to use @echo'
 permalink: /preprocess-file-content/echo
 parent: Preprocess File Content
 ---
