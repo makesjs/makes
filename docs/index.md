@@ -12,7 +12,7 @@ permalink: /
 A tool to scaffold new projects, simple enough that you would want to define your own skeletons (aka generators).
 {: .fs-6 .fw-300 }
 
-[Get Started](./get-started){: .btn .btn-blue .mr-3 .fs-5 } [View on Github](https://github.com/3cp/makes){: .btn .fs-5 }
+[Get Started](./get-started){: .btn .btn-blue .mr-3 .fs-5 } [View on Github](https://github.com/makesjs/makes){: .btn .fs-5 }
 
 ---
 
@@ -38,24 +38,24 @@ npx makes dumberjs
 
 Note `npx makes dumberjs` is a conventional short-cut of `npx makes dumberjs/new`.
 
-### [`3cp/makes-demo1`](https://github.com/3cp/makes-demo1)
+### [`makesjs/demo1`](https://github.com/makesjs/demo1)
 
 A skeleton demo for plain simple one file project.
 
 ```bash
-npx makes 3cp/makes-demo1
+npx makes makesjs/demo1
 ```
 
-### [`3cp/makes-demo2`](https://github.com/3cp/makes-demo2)
+### [`makesjs/demo2`](https://github.com/makesjs/demo2)
 
 A skeleton demo for customised questions and feature folders.
 ```bash
-npx makes 3cp/makes-demo2
+npx makes makesjs/demo2
 ```
 
 ## License
 
-"makes" is licensed under the [MIT license](https://github.com/3cp/makes/blob/master/LICENSE).
+"makes" is licensed under the [MIT license](https://github.com/makesjs/makes/blob/master/LICENSE).
 
 ## Acknowledgements
 

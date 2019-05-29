@@ -15,7 +15,7 @@ parent: Questions
 
 ## Multiple and choices
 
-The multi-select prompt in [`3cp/makes-demo2` `questions.js`](https://github.com/3cp/makes-demo2/blob/master/questions.js):
+The multi-select prompt in [`makesjs/demo2` `questions.js`](https://github.com/makesjs/demo2/blob/master/questions.js):
 
 ```js
 module.exports = [

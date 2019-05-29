@@ -8,10 +8,10 @@ permalink: /common-folder
 
 # Common Folder
 
-Let's start with simplest example [`3cp/makes-demo1`](https://github.com/3cp/makes-demo1). Try it with:
+Let's start with simplest example [`makesjs/demo1`](https://github.com/makesjs/demo1). Try it with:
 
 ```bash
-npx makes 3cp/makes-demo1 # or npx makes 3cp/makes-demo1 my-app
+npx makes makesjs/demo1 # or npx makes makesjs/demo1 my-app
 ```
 
 ![makes-demo1 screenshot]({{ site.baseurl }}/assets/makes-demo1.gif)

@@ -23,7 +23,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/3cp/makes.git"
+    "url": "git+ssh://git@github.com/makesjs/makes.git"
   },
   "keywords": [
     "scaffold",
@@ -33,9 +33,9 @@
   "author": "Chunpeng Huo",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/3cp/makes/issues"
+    "url": "https://github.com/makesjs/makes/issues"
   },
-  "homepage": "https://github.com/3cp/makes#readme",
+  "homepage": "https://github.com/makesjs/makes#readme",
   "devDependencies": {
     "ansi-colors": "^3.2.4",
     "ava": "^1.4.1",

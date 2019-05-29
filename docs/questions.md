@@ -9,15 +9,15 @@ has_children: true
 
 # Questions
 
-We will use [`3cp/makes-demo2`](https://github.com/3cp/makes-demo2). Try it with:
+We will use [`makesjs/demo2`](https://github.com/makesjs/demo2). Try it with:
 
 ```bash
-npx makes 3cp/makes-demo2 # or npx makes 3cp/makes-demo2 my-app
+npx makes makesjs/demo2 # or npx makes makesjs/demo2 my-app
 ```
 
 ![makes-demo2 screenshot]({{ site.baseurl }}/assets/makes-demo2.gif)
 
-This demo skeleton defined an optional file [`questions.js`](https://github.com/3cp/makes-demo2/blob/master/questions.js), plus some [feature folders](feature-folders) `nodejs` and `ruby` (we will talk about them in next page).
+This demo skeleton defined an optional file [`questions.js`](https://github.com/makesjs/demo2/blob/master/questions.js), plus some [feature folders](feature-folders) `nodejs` and `ruby` (we will talk about them in next page).
 
 ```
 ─ questions.js

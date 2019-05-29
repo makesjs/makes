@@ -15,7 +15,7 @@ parent: Questions
 
 ## Conditional question
 
-There are two conditional questions in [`3cp/makes-demo2` `questions.js`](https://github.com/3cp/makes-demo2/blob/master/questions.js). Just add an `if` with a condition expression.
+There are two conditional questions in [`makesjs/demo2` `questions.js`](https://github.com/makesjs/demo2/blob/master/questions.js). Just add an `if` with a condition expression.
 
 ```js
 module.exports = [
@@ -69,9 +69,9 @@ The expression looks like JavaScript expression, but they are not. Remember we s
 'babel && vue-sfc'
 ```
 
-The condition expression is used for conditional question/choice/file/folder, plus the condition inside file content preprocess. All these conditions are evaluated through the same [tiny expression engine](https://github.com/3cp/makes/blob/master/lib/applicable.js), you will see the familiarity when you read other topics.
+The condition expression is used for conditional question/choice/file/folder, plus the condition inside file content preprocess. All these conditions are evaluated through the same [tiny expression engine](https://github.com/makesjs/makes/blob/master/lib/applicable.js), you will see the familiarity when you read other topics.
 
 ## Conditional choice
 
-Condition on choice is same, just add `if: 'express'` to any choice. There is no example in `3cp/makes-demo2`, but you can find plenty in [`dumberjs/new` `questions.js`](https://github.com/dumberjs/new/blob/master/questions.js).
+Condition on choice is same, just add `if: 'express'` to any choice. There is no example in `makesjs/demo2`, but you can find plenty in [`dumberjs/new` `questions.js`](https://github.com/dumberjs/new/blob/master/questions.js).
 

@@ -15,7 +15,7 @@ parent: Questions
 
 ## Name and message
 
-The first question in [`3cp/makes-demo2` `questions.js`](https://github.com/3cp/makes-demo2/blob/master/questions.js) is a text prompt.
+The first question in [`makesjs/demo2` `questions.js`](https://github.com/makesjs/demo2/blob/master/questions.js) is a text prompt.
 
 ```js
 module.exports = [
@@ -102,7 +102,7 @@ module.exports = [
 
 ## Default question on project name
 
-You may noticed [`3cp/makes-demo2` `questions.js`](https://github.com/3cp/makes-demo2/blob/master/questions.js) did not provide a text prompt asking project name, but "makes" prompted user for `Please name this new project:` anyway.
+You may noticed [`makesjs/demo2` `questions.js`](https://github.com/makesjs/demo2/blob/master/questions.js) did not provide a text prompt asking project name, but "makes" prompted user for `Please name this new project:` anyway.
 
 That's a default text prompt asking for project name, it's automatically prepended to the questions list **when the skeleton didn't provide a text prompt for `name: "name"`**.
 

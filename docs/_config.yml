@@ -2,4 +2,4 @@ remote_theme: pmarsceill/just-the-docs
 search_enabled: true
 aux_links:
   "\"makes\" on GitHub":
-    - "//github.com/3cp/makes"
+    - "//github.com/makesjs/makes"

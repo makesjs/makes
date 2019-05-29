@@ -1,8 +1,8 @@
-# makes [![Build Status](https://travis-ci.org/3cp/makes.svg?branch=master)](https://travis-ci.org/3cp/makes)
+# makes [![Build Status](https://travis-ci.org/makesjs/makes.svg?branch=master)](https://travis-ci.org/makesjs/makes)
 
 A tool to scaffold new projects, simple enough that you would want to define your own skeletons (aka generators).
 
-**Document site: https://3cp.github.io/makes**
+**Document site: https://makesjs.github.io/makes**
 
 ## Run "makes"
 
@@ -22,5 +22,5 @@ npx makes dumberjs
 Note `npx makes dumberjs` is a conventional short-cut of `npx makes dumberjs/new`.
 
 <p align="center">
-<img src="https://3cp.github.io/makes/assets/makes-dumberjs.gif" alt="makes dumberjs" width="720">
+<img src="https://makesjs.github.io/makes/assets/makes-dumberjs.gif" alt="makes dumberjs" width="720">
 </p>

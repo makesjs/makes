@@ -10,7 +10,7 @@ permalink: /feature-folders
 
 With the `features` array generated from end user's answers, we can use them to conditionally construct final project.
 
-Let's have a look of [`3cp/makes-demo2`](https://github.com/3cp/makes-demo2) folder structure again.
+Let's have a look of [`makesjs/demo2`](https://github.com/makesjs/demo2) folder structure again.
 
 ```
 ─ questions.js
@@ -49,7 +49,7 @@ gulp.src(['skeleton/common/**/*', 'skeleton/nodejs/**/*', 'skeleton/babel/**/*']
 
 That's how "makes" merges all common+features folders together to generate final project.
 
-That's how [simple "makes" works](https://github.com/3cp/makes/blob/master/lib/write-project/index.js), similar to gulp, every file is processed as a [vinyl file](https://github.com/gulpjs/vinyl). This simple work flow provided enough flexibility, we will explore more in other topics.
+That's how [simple "makes" works](https://github.com/makesjs/makes/blob/master/lib/write-project/index.js), similar to gulp, every file is processed as a [vinyl file](https://github.com/gulpjs/vinyl). This simple work flow provided enough flexibility, we will explore more in other topics.
 
 ## Other top level folder
 

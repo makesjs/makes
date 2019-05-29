@@ -21,4 +21,4 @@ We retained the two types syntax from original preprocess:
 1. HTML syntax, for any file with extension `.html`, `.htm`, `.xml`, or `.svg`.
 2. JavaScript syntax, for any other text file.
 
-There are plenty of examples in [`dumberjs/new`](https://github.com/dumberjs/new) and [`3cp/makes-demo2`](https://github.com/3cp/makes-demo2).
+There are plenty of examples in [`dumberjs/new`](https://github.com/dumberjs/new) and [`makesjs/demo2`](https://github.com/makesjs/demo2).

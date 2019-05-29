@@ -14,7 +14,7 @@ permalink: /transforms
 
 "makes" provided conditional file and write policy, it can cover majority of use cases. But it's not flexible enough to cover all use cases.
 
-For example in [`3cp/makes-demo2`](https://github.com/3cp/makes-demo2), there is one `index.js` for `babel`, and another `index.ts` for `typescript`.
+For example in [`makesjs/demo2`](https://github.com/makesjs/demo2), there is one `index.js` for `babel`, and another `index.ts` for `typescript`.
 
 ```
 ─ nodejs/
@@ -109,7 +109,7 @@ Without worrying about the trailing `,` in `{"a": true,}`.
 
 We will exam "append" transforms first because it's the more common than "prepend" transforms.
 
-[`3cp/makes-demo2#adv-through2`](https://github.com/3cp/makes-demo2/blob/adv-through2/transforms.js) implemented an "append" transform that translate `file.ext` to `file.js`/`file.ext` based on `features` array.
+[`makesjs/demo2#adv-through2`](https://github.com/makesjs/demo2/blob/adv-through2/transforms.js) implemented an "append" transform that translate `file.ext` to `file.js`/`file.ext` based on `features` array.
 
 The optional `transform.js` file. Note just like `questions.js`, this file is in CommonJS format too.
 
@@ -142,7 +142,7 @@ Every function:
 
 The above "append" transform imposed a runtime dependency on `through2`. To tell "makes" that your skeleton needs additional npm package, you need to create the optional `package.json` file in your skeleton with `"dependencies"`.
 
-[`3cp/makes-demo2#adv-through2` `package.json`](https://github.com/3cp/makes-demo2/blob/adv-through2/package.json)
+[`makesjs/demo2#adv-through2` `package.json`](https://github.com/makesjs/demo2/blob/adv-through2/package.json)
 
 ```json
 {

@@ -15,7 +15,7 @@ parent: Questions
 
 ## Message and choices
 
-The first select prompt in [`3cp/makes-demo2` `questions.js`](https://github.com/3cp/makes-demo2/blob/master/questions.js):
+The first select prompt in [`makesjs/demo2` `questions.js`](https://github.com/makesjs/demo2/blob/master/questions.js):
 
 ```js
 module.exports = [

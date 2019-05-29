@@ -20,7 +20,7 @@ Before we show you conditional questions and choice, we have to understand how "
 2. the answers from select/multi-select prompts are grouped into an array called `features`.
 3. `properties` and `features` were built progressively when end user went through the questions, so we can use `features` to conditionally control the appearance of next question and choice of select prompt.
 
-Take [`3cp/makes-demo2` `questions.js`](https://github.com/3cp/makes-demo2/blob/master/questions.js) for example, "makes" will form `properties` and `features` like this:
+Take [`makesjs/demo2` `questions.js`](https://github.com/makesjs/demo2/blob/master/questions.js) for example, "makes" will form `properties` and `features` like this:
 
 ```js
 var properties = {
