@@ -1,3 +1,7 @@
+## [0.8.3](https://github.com/makesjs/makes/compare/v0.8.2...v0.8.3) (2019-05-30)
+
+
+
 ## [0.8.2](https://github.com/3cp/makes/compare/v0.8.1...v0.8.2) (2019-05-28)
 
 
