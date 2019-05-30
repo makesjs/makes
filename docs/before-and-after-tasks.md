@@ -89,7 +89,7 @@ You define a function in `after.js`.
   * `prompts` is the exposed "makes" inner prompts implementation. You can call `prompts.text(opts)` and `prompts.select(opts)` to ask user questions.
   * `ansiColors` is the exposed ["ansi-colors" npm package](https://www.npmjs.com/package/ansi-colors). This is provided for skeleton to avoid some runtime dependencies.
   * `sisteransi` is the exposed ["sisteransi" npm package](https://www.npmjs.com/package/sisteransi). This is provided for skeleton to avoid some runtime dependencies.
-  * `run` is a convenient function to run command. It runs the command with optional arguments in final project folder. The above example shows `run('npm', ['install'])`.
+  * `run(cmd, args)` is a convenient function to run command. It runs the command with optional arguments in final project folder. The above example shows `run('npm', ['install'])`.
 2. the result value is ignored. But "after" task can be async (returns a promise).
 
 ## "before" task
