@@ -168,26 +168,6 @@ You can replace:
 
 ```js
 const through2 = require('through2');
-through2.obj(function(file, env, cb) {
-  // ...
-});
-```
-
-With
-```js
-const {Transform} = require('stream'); // stream is core Node.js module
-new Transform({
-  objectMode: true,
-  transform: function(file, enc, cb) {
-    // ...
-  }
-});
-```
-
-Also replace:
-
-```js
-const through2 = require('through2');
 through2.obj(
   function(file, env, cb) {
     // ...
@@ -212,7 +192,7 @@ new Transform({
 });
 ```
 
-The other demo2 branch [`makesjs/demo2#adv` `transforms.js`](https://github.com/makesjs/demo2/blob/adv/transforms.js) implemented exactly same append transform with out using through2.
+The other demo2 branch [`makesjs/demo2#adv` `transforms.js`](https://github.com/makesjs/demo2/blob/adv/transforms.js) implemented exact same append transform without using through2.
 
 ```js
 const {Transform} = require('stream');
