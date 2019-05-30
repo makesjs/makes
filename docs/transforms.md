@@ -35,7 +35,7 @@ Then somehow changes file name from `index.ext` to `index.js` or `index.ts` base
 
 ## "makes" file objects stream
 
-We briefly showed you file objects stream in [feature folders](feature-folders#file-objects-stream). Here is the more complete version of the steam. Roughly like following gulp stream:
+We briefly showed you file objects stream in [feature folders](feature-folders#file-objects-stream). Here is the [more complete version of the stream](https://github.com/makesjs/makes/blob/master/lib/write-project/index.js). Roughly like following gulp stream:
 
 ```js
 gulp.src(['skeleton/common/**/*', 'skeleton/nodejs/**/*', 'skeleton/babel/**/*'])
@@ -109,9 +109,11 @@ Without worrying about the trailing `,` in `{"a": true,}`.
 
 We will exam "append" transforms first because it's the more common than "prepend" transforms.
 
-[`makesjs/demo2#adv-through2`](https://github.com/makesjs/demo2/blob/adv-through2/transforms.js) implemented an "append" transform that translate `file.ext` to `file.js`/`file.ext` based on `features` array.
+[`makesjs/demo2#adv-through2` `transforms.js`](https://github.com/makesjs/demo2/blob/adv-through2/transforms.js) implemented an "append" transform that translate `file.ext` to `file.js`/`file.ext` based on `features` array.
 
-The optional `transform.js` file. Note just like `questions.js`, this file is in CommonJS format too.
+You can try this demo2 branch with `npx makes makesjs/demo2#adv-through2`.
+
+Create this optional `transform.js` file. Note just like `questions.js`, this file is in CommonJS format too.
 
 ```js
 const through2 = require('through2');
@@ -162,4 +164,84 @@ There is no doubt that it will slow down "makes" to install `through2`. Ideally 
 
 For example, `through2` is absolutely not needed to create a transform stream. The modern Node.js API is simple enough to create a transform stream.
 
+You can replace:
+
+```js
+const through2 = require('through2');
+through2.obj(function(file, env, cb) {
+  // ...
+});
+```
+
+With
+```js
+const {Transform} = require('stream'); // stream is core Node.js module
+new Transform({
+  objectMode: true,
+  transform: function(file, enc, cb) {
+    // ...
+  }
+});
+```
+
+Also replace:
+
+```js
+const through2 = require('through2');
+through2.obj(
+  function(file, env, cb) {
+    // ...
+  },
+  function(cb) {
+    // optional flush
+  }
+);
+```
+
+With
+```js
+const {Transform} = require('stream'); // stream is core Node.js module
+new Transform({
+  objectMode: true,
+  transform: function(file, enc, cb) {
+    // ...
+  },
+  flush: function(cb) {
+    // optional flush
+  }
+});
+```
+
+The other demo2 branch [`makesjs/demo2#adv` `transforms.js`](https://github.com/makesjs/demo2/blob/adv/transforms.js) implemented exactly same append transform with out using through2.
+
+```js
+const {Transform} = require('stream');
+
+exports.append = function(properties, features) {
+  return new Transform({
+    objectMode: true,
+    transform: function(file, env, cb) {
+      if (file.isBuffer() && file.extname === '.ext') {
+        // change .ext to .ts or .js file
+        file.extname = features.includes('typescript') ? '.ts' : '.js'
+      }
+      cb(null, file);
+    }
+  });
+};
+```
+
+The benefit is `npx makes makesjs/demo2#adv` is faster than `npx makes makesjs/demo2#adv-through2` without the need to install runtime dependencies.
+
+Note "makes" itself uses [rollup.js](https://rollupjs.org) to ship npm package "makes" in a bundle without any additional runtime dependencies, that's part of the reason why `npx makes <skeleton_provider>` is so fast.
+
 ## Prepend transforms
+
+Prepend transform is for advanced use cases. Different from append transform which sees [vinyl file](https://github.com/gulpjs/vinyl) after the main stages of "makes" stream pipeline, prepend transform is before "makes" did anything.
+
+While append transform always sees processed vinyl file like `index.js`, prepend transform can see the original vinyl file like `index.js__skip-if-exits__if_babel`. We can use prepend transform to add additional meta data to vinyl file object, then pair with some append transform to reason about those meta data before final write-out.
+
+We don't have concrete examples now, but we will add some in future.
+
+TODO: add example from future aurelia skeleton how to use prepend/append transform to print out dotnet-core instructions.
+

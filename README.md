@@ -12,11 +12,18 @@ A tool to scaffold new projects, simple enough that you would want to define you
 npx makes <skeleton_provider>
 ```
 
-## Example skeleton: [`dumberjs/new`](https://github.com/dumberjs/new)
+## Example skeletons
+
+- [`dumberjs/new`](https://github.com/dumberjs/new)
+- [`makesjs/demo1`](https://github.com/makesjs/demo1)
+- [`makesjs/demo2`](https://github.com/makesjs/demo2)
+
 Try `dumberjs` skeleton to create various types of front-end projects. [`dumberjs`](https://github.com/dumberjs/dumber) is a JavaScript bundler using AMD module format for front-end SPA apps.
 
 ```bash
 npx makes dumberjs
+# or
+npx makes dumberjs my-project
 ```
 
 Note `npx makes dumberjs` is a conventional short-cut of `npx makes dumberjs/new`.

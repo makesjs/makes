@@ -76,4 +76,8 @@ npx makes ../../local/folder
 3. [Feature Folders](feature-folders)
 4. [Conditional File and Folder](conditional-file-and-folder)
 5. [Preprocess File Content](preprocess-file-content)
+6. [Here Mode and Write Policy](here-mode-and-write-policy)
+7. [Transforms](transforms)
+8. [Silent Mode](silent-mode)
+9. ["before" and "after" tasks](before-and-after-tasks)
 
