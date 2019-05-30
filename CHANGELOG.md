@@ -1,3 +1,12 @@
+## [0.9.1](https://github.com/makesjs/makes/compare/v0.9.0...v0.9.1) (2019-05-30)
+
+
+### Bug Fixes
+
+* re-clone private repo for simplicity and reliability ([16b3824](https://github.com/makesjs/makes/commit/16b3824))
+
+
+
 # [0.9.0](https://github.com/makesjs/makes/compare/v0.8.3...v0.9.0) (2019-05-30)
 
 
