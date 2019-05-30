@@ -1,3 +1,12 @@
+# [0.9.0](https://github.com/makesjs/makes/compare/v0.8.3...v0.9.0) (2019-05-30)
+
+
+### Features
+
+* support private skeleton repo ([e86ddde](https://github.com/makesjs/makes/commit/e86ddde)), closes [#1](https://github.com/makesjs/makes/issues/1)
+
+
+
 ## [0.8.3](https://github.com/makesjs/makes/compare/v0.8.2...v0.8.3) (2019-05-30)
 
 
