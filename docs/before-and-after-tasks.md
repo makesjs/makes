@@ -96,7 +96,7 @@ You define a function in `after.js`.
 
 The optional "before" task happens right before prompting questions, it can:
 
-1. turn on/off silent mode (unattended).
+1. turn on/off silent mode (aka unattended).
 2. alter preselectedFeatures.
 3. alter predefinedProperties.
 4. or maybe just print out some greetings.
