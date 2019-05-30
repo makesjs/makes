@@ -57,9 +57,9 @@ npx makes gitlab:username # same as: npx makes gitlab:username/new
 ```
 
 Note: private skeleton repo is supported, as long as you have proper SSH public key setup.
-- https://help.github.com/en/articles/connecting-to-github-with-ssh
-- https://confluence.atlassian.com/bitbucket/set-up-an-ssh-key-728138079.html
-- https://docs.gitlab.com/ee/ssh/
+- [GitHub](https://help.github.com/en/articles/connecting-to-github-with-ssh)
+- [Bitbucket](https://confluence.atlassian.com/bitbucket/set-up-an-ssh-key-728138079.html)
+- [GitLab](https://docs.gitlab.com/ee/ssh/)
 
 ## Use local skeleton folder
 
