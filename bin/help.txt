@@ -1,5 +1,5 @@
-USAGE: makes [-h | --help] [--here] [-s | --select=<feature1,feature2>]
-             <skeleton-repo> [<project-name>]
+USAGE: npx makes [-h | --help] <skeleton-repo> [<project-name>] [--here]
+                 [-s | --select=<feature1,feature2>]
 
 OPTIONS
   -h, --help    Print this help page.
