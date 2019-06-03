@@ -2,7 +2,7 @@
 
 A tool to scaffold new projects, simple enough that you would want to define your own skeletons (aka generators).
 
-**Document site: https://makesjs.github.io**
+**Document site: https://makes.js.org**
 
 ## Run "makes"
 
