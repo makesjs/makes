@@ -2,7 +2,7 @@
 
 A tool to scaffold new projects, simple enough that you would want to define your own skeletons (aka generators).
 
-**Document site: https://makesjs.github.io/makes**
+**Document site: https://makesjs.github.io**
 
 ## Run "makes"
 
@@ -29,5 +29,5 @@ npx makes dumberjs my-project
 Note `npx makes dumberjs` is a conventional short-cut of `npx makes dumberjs/new`.
 
 <p align="center">
-<img src="https://makesjs.github.io/makes/assets/makes-dumberjs.gif" alt="makes dumberjs" width="720">
+<img src="https://makesjs.github.io/assets/makes-dumberjs.gif" alt="makes dumberjs" width="720">
 </p>
