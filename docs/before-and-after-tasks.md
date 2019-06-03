@@ -48,33 +48,41 @@ function isAvailable(bin) {
 module.exports = async function({
   unattended, here, prompts, run, properties, features, notDefaultFeatures, ansiColors
 }) {
-  if (unattended) return;
-
-  const choices = [
-    {title: 'No'},
-    {value: 'npm', title: 'Yes, use npm'}
-  ];
-
-  if (isAvailable('yarn')) {
-    choices.push({value: 'yarn', title: 'Yes, use yarn'});
-  }
-
-  if (isAvailable('pnpm')) {
-    choices.push({value: 'pnpm', title: 'Yes, use pnpm'});
-  }
-
-  const result = await prompts.select({
-    message: 'Do you want to install npm dependencies now?',
-    choices
-  });
-
-  if (result) {
-    await run(result, ['install']);
-  }
-
   const c = ansiColors;
-  console.log(`\nNext time, you can try to create similar project in silent mode:`);
-  console.log(c.inverse(` npx makes dumberjs new-project-name${here ? ' --here' : ''} -s ${notDefaultFeatures.length ? (notDefaultFeatures.join(',') + ' ') : ''}`));
+  let depsInstalled = false;
+
+  if (!unattended) {
+    const choices = [
+      {title: 'No'},
+      {value: 'npm', title: 'Yes, use npm'}
+    ];
+
+    if (isAvailable('yarn')) {
+      choices.push({value: 'yarn', title: 'Yes, use yarn'});
+    }
+
+    if (isAvailable('pnpm')) {
+      choices.push({value: 'pnpm', title: 'Yes, use pnpm'});
+    }
+
+    const result = await prompts.select({
+      message: 'Do you want to install npm dependencies now?',
+      choices
+    });
+
+    if (result) {
+      await run(result, ['install']);
+      depsInstalled = true;
+    }
+
+    console.log(`\nNext time, you can try to create similar project in silent mode:`);
+    console.log(c.inverse(` npx makes dumberjs new-project-name${here ? ' --here' : ''} -s ${notDefaultFeatures.length ? (notDefaultFeatures.join(',') + ' ') : ''}`));
+  }
+
+  console.log(`\n${c.underline.bold('Get Started')}`);
+  console.log('cd ' + properties.name);
+  if (!depsInstalled) console.log('npm install');
+  console.log('npm start\n');
 };
 ```
 
