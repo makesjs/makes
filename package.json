@@ -7,6 +7,9 @@
     "dist",
     "bin"
   ],
+  "engines": {
+    "node": ">=8.9"
+  },
   "bin": {
     "makes": "bin/makes.js"
   },
