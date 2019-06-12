@@ -94,7 +94,11 @@ test.serial('writeProject supports prependTransforms and appendTransforms', asyn
     skeletonDir: 'skeleton',
     targetDir: 'here',
     prependTransforms: [
-      function(properties, features) {
+      function(properties, features, targetDir, unattended, prompts) {
+        t.deepEqual(properties, {name: 'app'});
+        t.deepEqual(features, ['feature1', 'feature3']);
+        t.is(targetDir, 'here');
+        t.is(typeof prompts.text, 'function');
         return new Transform({
           objectMode: true,
           transform: function(file, enc, cb) {
@@ -107,7 +111,11 @@ test.serial('writeProject supports prependTransforms and appendTransforms', asyn
       }
     ],
     appendTransforms: [
-      function(properties, features) {
+      function(properties, features, targetDir, unattended, prompts) {
+        t.deepEqual(properties, {name: 'app'});
+        t.deepEqual(features, ['feature1', 'feature3']);
+        t.is(targetDir, 'here');
+        t.is(typeof prompts.text, 'function');
         return new Transform({
           objectMode: true,
           transform: function(file, enc, cb) {
