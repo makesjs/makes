@@ -1,3 +1,12 @@
+# [0.10.0](https://github.com/makesjs/makes/compare/v0.9.3...v0.10.0) (2019-06-12)
+
+
+### Features
+
+* expose prompts api to prepend/append transforms ([5727ed4](https://github.com/makesjs/makes/commit/5727ed4))
+
+
+
 ## [0.9.3](https://github.com/makesjs/makes/compare/v0.9.2...v0.9.3) (2019-06-03)
 
 
