@@ -1,3 +1,12 @@
+## [0.10.2](https://github.com/makesjs/makes/compare/v0.10.1...v0.10.2) (2019-06-18)
+
+
+### Bug Fixes
+
+* missing .name ([80959a6](https://github.com/makesjs/makes/commit/80959a6))
+
+
+
 ## [0.10.1](https://github.com/makesjs/makes/compare/v0.10.0...v0.10.1) (2019-06-18)
 
 
