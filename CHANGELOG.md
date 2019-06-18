@@ -1,3 +1,12 @@
+## [0.10.1](https://github.com/makesjs/makes/compare/v0.10.0...v0.10.1) (2019-06-18)
+
+
+### Bug Fixes
+
+* don't cache skeleton repo. Sometime os cleared up files to leave out empty folders ([8857bff](https://github.com/makesjs/makes/commit/8857bff))
+
+
+
 # [0.10.0](https://github.com/makesjs/makes/compare/v0.9.3...v0.10.0) (2019-06-12)
 
 
