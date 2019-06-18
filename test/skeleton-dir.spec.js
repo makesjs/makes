@@ -40,7 +40,7 @@ test.serial('skeletonDir complains about non-existing repo', async t => {
   await t.throwsAsync(async() => skeletonDir('3cp/not-exist', {_useGitRepo}));
 });
 
-test.serial('skeletonDir returns tmp folder untar github repo, and caches it', async t => {
+test.serial('skeletonDir returns tmp folder untar github repo', async t => {
   mockfs({
     'tmp/.keep': ''
   });
@@ -50,14 +50,9 @@ test.serial('skeletonDir returns tmp folder untar github repo, and caches it', a
   const dir = await skeletonDir(repo, {_tmpFolder: 'tmp', _useGitRepo});
   t.truthy(fs.readdirSync(dir).includes('README.md'));
   t.truthy(fs.readFileSync(path.join(dir, 'README.md'), 'utf8').includes('debug repo for npm'));
-
-  const dir2 = await skeletonDir(repo, {_tmpFolder: 'tmp', _useGitRepo});
-  t.is(dir2, dir);
-  t.truthy(fs.readdirSync(dir2).includes('README.md'));
-  t.truthy(fs.readFileSync(path.join(dir2, 'README.md'), 'utf8').includes('debug repo for npm'));
 });
 
-test.serial('skeletonDir returns tmp folder untar bitbucket repo, and caches it', async t => {
+test.serial('skeletonDir returns tmp folder untar bitbucket repo', async t => {
   mockfs({
     'tmp/.keep': ''
   });
@@ -67,15 +62,9 @@ test.serial('skeletonDir returns tmp folder untar bitbucket repo, and caches it'
   const dir = await skeletonDir(repo, {_tmpFolder: 'tmp', _useGitRepo});
   t.truthy(fs.readdirSync(dir).includes('README.md'));
   t.truthy(fs.readFileSync(path.join(dir, 'README.md'), 'utf8').includes('debug repo for npm'));
-
-  const dir2 = await skeletonDir(repo, {_tmpFolder: 'tmp', _useGitRepo});
-  // bitbucket etag is not always consistent.
-  // t.is(dir2, dir);
-  t.truthy(fs.readdirSync(dir2).includes('README.md'));
-  t.truthy(fs.readFileSync(path.join(dir2, 'README.md'), 'utf8').includes('debug repo for npm'));
 });
 
-test.serial('skeletonDir returns tmp folder untar gitlab repo, and caches it', async t => {
+test.serial('skeletonDir returns tmp folder untar gitlab repo', async t => {
   mockfs({
     'tmp/.keep': ''
   });
@@ -85,12 +74,4 @@ test.serial('skeletonDir returns tmp folder untar gitlab repo, and caches it', a
   const dir = await skeletonDir(repo, {_tmpFolder: 'tmp', _useGitRepo});
   t.truthy(fs.readdirSync(dir).includes('README.md'));
   t.truthy(fs.readFileSync(path.join(dir, 'README.md'), 'utf8').includes('debug repo for npm'));
-
-  const dir2 = await skeletonDir(repo, {_tmpFolder: 'tmp', _useGitRepo});
-  // gitlab etag is not always consistent.
-  // t.is(dir2, dir);
-  t.truthy(fs.readdirSync(dir2).includes('README.md'));
-  t.truthy(fs.readFileSync(path.join(dir2, 'README.md'), 'utf8').includes('debug repo for npm'));
 });
-
-
