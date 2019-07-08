@@ -1,3 +1,18 @@
+# [0.11.0](https://github.com/makesjs/makes/compare/v0.10.2...v0.11.0) (2019-07-08)
+
+
+### Features
+
+* make sure asking for project name before "before" task ([658cf57](https://github.com/makesjs/makes/commit/658cf57))
+* support silentQuestions in before task ([b298c6c](https://github.com/makesjs/makes/commit/b298c6c))
+
+
+### BREAKING CHANGES
+
+* previous "unattended" field is removed from before task return value.
+
+
+
 ## [0.10.2](https://github.com/makesjs/makes/compare/v0.10.1...v0.10.2) (2019-06-18)
 
 
