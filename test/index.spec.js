@@ -160,7 +160,7 @@ test.serial('makes supports "before" task to change conditions', async t => {
         t.is(typeof opts.ansiColors.red, 'function');
         t.is(typeof opts.sisteransi.cursor.to, 'function');
         return {
-          unattended: true,
+          silentQuestions: true,
           preselectedFeatures: ['b'],
           predefinedProperties: {...opts.predefinedProperties, description: 'hello'}
         };
@@ -176,7 +176,7 @@ test.serial('makes supports "before" task to change conditions', async t => {
     features: ['b'],
     skeletonDir: 'skeleton',
     targetDir: 'app',
-    unattended: true,
+    unattended: false,
     prependTransforms: 'mock-prepend',
     appendTransforms: 'mock-append'
   });
