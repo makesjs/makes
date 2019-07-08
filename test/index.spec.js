@@ -22,11 +22,11 @@ test.serial('makes checks target folder', async t => {
   }, {
     _skeletonDir: () => 'skeleton',
     _skeletonConfig: () => ({
+      nameQuestion: {
+        name: 'name',
+        message: 'Name:'
+      },
       questions: [
-        {
-          name: 'name',
-          message: 'Name:'
-        },
         {
           message: 'lorem',
           choices: [
@@ -65,12 +65,11 @@ test.serial('makes rejects existing folder', async t => {
   }, {
     _skeletonDir: () => 'skeleton',
     _skeletonConfig: () => ({
-      questions: [
-        {
-          name: 'name',
-          message: 'Name:'
-        }
-      ]
+      nameQuestion: {
+        name: 'name',
+        message: 'Name:'
+      },
+      questions: []
     }),
     _writeProject: result => {
       captured = result;
@@ -92,11 +91,11 @@ test.serial('makes writes to existing folder with --here', async t => {
   }, {
     _skeletonDir: () => 'skeleton',
     _skeletonConfig: () => ({
+      nameQuestion: {
+        name: 'name',
+        message: 'Name:'
+      },
       questions: [
-        {
-          name: 'name',
-          message: 'Name:'
-        },
         {
           message: 'lorem',
           choices: [
@@ -130,16 +129,16 @@ test.serial('makes supports "before" task to change conditions', async t => {
   mockfs();
 
   await makes('supplier', {
-    predefinedProperties: {name: 'app'},
+    predefinedProperties: {},
     preselectedFeatures: ['a'],
   }, {
     _skeletonDir: () => 'skeleton',
     _skeletonConfig: () => ({
+      nameQuestion: {
+        name: 'name',
+        message: 'Name:'
+      },
       questions: [
-        {
-          name: 'name',
-          message: 'Name:'
-        },
         {
           name: 'description',
           message: 'Description'
@@ -168,6 +167,15 @@ test.serial('makes supports "before" task to change conditions', async t => {
     }),
     _writeProject: result => {
       captured = result;
+    },
+    _runQuestionnaire: (questions, {unattended, preselectedFeatures, predefinedProperties}) => {
+      if (questions.length === 1 && questions[0].name === 'name') {
+        return [{name: 'app'}];
+      } else if (unattended) {
+        return [predefinedProperties, preselectedFeatures];
+      } else {
+        t.fail('should not get here');
+      }
     }
   });
 
@@ -194,11 +202,11 @@ test.serial('makes supports "after" task', async t => {
   }, {
     _skeletonDir: () => 'skeleton',
     _skeletonConfig: () => ({
+      nameQuestion: {
+        name: 'name',
+        message: 'Name:'
+      },
       questions: [
-        {
-          name: 'name',
-          message: 'Name:'
-        },
         {
           name: 'description',
           message: 'Description'
