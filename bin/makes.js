@@ -31,6 +31,10 @@ makes(supplier, {
   unattended,
   here
 }).catch(error => {
-  console.error(error);
+  if (error.name === 'SoftError') {
+    console.error(error.message);
+  } else {
+    console.error(error);
+  }
   process.exit(1);
 });

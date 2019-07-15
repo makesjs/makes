@@ -11,6 +11,15 @@ test('exports getOpts func', t => {
   t.is(typeof makes.getOpts, 'function');
 });
 
+test.serial('makes complains missing project name in silent mode', async t => {
+  mockfs();
+
+  await t.throwsAsync(async () => makes('supplier', {
+    predefinedProperties: {},
+    unattended: true
+  }));
+});
+
 test.serial('makes checks target folder', async t => {
   let captured;
 
