@@ -1,3 +1,12 @@
+# [0.12.0](https://github.com/makesjs/makes/compare/v0.11.0...v0.12.0) (2019-07-15)
+
+
+### Features
+
+* cleanup error print, enforce project name in silent mode ([54d1f30](https://github.com/makesjs/makes/commit/54d1f30))
+
+
+
 # [0.11.0](https://github.com/makesjs/makes/compare/v0.10.2...v0.11.0) (2019-07-08)
 
 
