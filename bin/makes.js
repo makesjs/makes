@@ -15,7 +15,7 @@ try {
 }
 
 const {version} = require('../package.json');
-console.log(`makes v${version}`);
+console.log(`makes v${version} https://makes.js.org`);
 
 const {
   supplier,
