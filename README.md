@@ -14,6 +14,7 @@ npx makes <skeleton_provider>
 
 ## Example skeletons
 
+- [`aurelia/new`](https://github.com/aurelia/new)
 - [`dumberjs/new`](https://github.com/dumberjs/new)
 - [`makesjs/demo1`](https://github.com/makesjs/demo1)
 - [`makesjs/demo2`](https://github.com/makesjs/demo2)
