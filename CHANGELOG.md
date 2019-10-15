@@ -1,3 +1,12 @@
+# [0.13.0](https://github.com/makesjs/makes/compare/v0.12.2...v0.13.0) (2019-10-15)
+
+
+### Features
+
+* support zero length folder name for pure conditional wrapper ([87cd4cb](https://github.com/makesjs/makes/commit/87cd4cb6cb059dfcd90b96d7e7c46f24a1f76272))
+
+
+
 ## [0.12.2](https://github.com/makesjs/makes/compare/v0.12.1...v0.12.2) (2019-09-04)
 
 
