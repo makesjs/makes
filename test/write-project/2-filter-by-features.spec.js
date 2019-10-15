@@ -41,6 +41,16 @@ test('filterByFeatures rejects file failed condition', t => {
   t.falsy(newFile);
 });
 
+test('filterByFeatures rejects empty file name', t => {
+  const file = new Vinyl({
+    cwd: '/',
+    base: '/test/',
+    path: '/test/__if_c',
+    contents: Buffer.from('abc')
+  });
+  t.throws(() => filter(file));
+});
+
 test('filterByFeatures picks folder meets condition', t => {
   const file = new Vinyl({
     cwd: '/',
@@ -51,6 +61,19 @@ test('filterByFeatures picks folder meets condition', t => {
   const newFile = filter(file);
   t.is(newFile.basename, 'file.any');
   t.is(newFile.path.replace(/\\/g, '/'), '/test/folder/file.any');
+  t.is(newFile.contents.toString(), 'abc');
+});
+
+test('filterByFeatures supports zero length folder', t => {
+  const file = new Vinyl({
+    cwd: '/',
+    base: '/test/',
+    path: '/test/__if_b/file.any__if_a',
+    contents: Buffer.from('abc')
+  });
+  const newFile = filter(file);
+  t.is(newFile.basename, 'file.any');
+  t.is(newFile.path.replace(/\\/g, '/'), '/test/file.any');
   t.is(newFile.contents.toString(), 'abc');
 });
 
