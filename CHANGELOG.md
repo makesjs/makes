@@ -1,3 +1,12 @@
+# [0.14.0](https://github.com/makesjs/makes/compare/v0.13.0...v0.14.0) (2019-10-17)
+
+
+### Features
+
+* retain spaces before /* [@if](https://github.com/if) */ and after /* [@endif](https://github.com/endif) */ ([8388bb6](https://github.com/makesjs/makes/commit/8388bb6d9943cac96007778a2c6587e66ee38dc0))
+
+
+
 # [0.13.0](https://github.com/makesjs/makes/compare/v0.12.2...v0.13.0) (2019-10-15)
 
 
