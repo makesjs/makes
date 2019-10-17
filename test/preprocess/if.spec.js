@@ -95,8 +95,8 @@ b
 /* @endif */
 c`;
 
-  t.is(preprocess(source, null, ['foo']), 'a\nb\nc');
-  t.is(preprocess(source, null, ['bar']), 'a\nc');
+  t.is(preprocess(source, null, ['foo']), 'a\n\nb\n\nc');
+  t.is(preprocess(source, null, ['bar']), 'a\n\nc');
 });
 
 test('@if complains about missing ending in js syntax with hidden syntax (block comment)', t => {
@@ -117,10 +117,10 @@ test('@if supports one line block comment in js syntax', t => {
 });
 
 test('@if supports nesting (block comment) in js syntax', t => {
-  const source = 'a/* @if foo */b/* @if bar */bad/* @endif */c/* @if foo */d/* @endif */e/* @endif */f';
-  t.is(preprocess(source, null, ['foo']), 'abcdef');
-  t.is(preprocess(source, null, ['bar']), 'af');
-  t.is(preprocess(source, null, ['foo', 'bar']), 'abbadcdef');
+  const source = 'a /* @if foo */b/* @if bar */bad/* @endif */ c/* @if foo */d/* @endif */e/* @endif */f';
+  t.is(preprocess(source, null, ['foo']), 'a b cdef');
+  t.is(preprocess(source, null, ['bar']), 'a f');
+  t.is(preprocess(source, null, ['foo', 'bar']), 'a bbad cdef');
 });
 
 test('@if supports nested condition in js syntax', t => {
@@ -128,14 +128,10 @@ test('@if supports nested condition in js syntax', t => {
 // @if foo
 b
 // @if bar && xx
-d
-/* @if lo */
-e
-/* @endif */
+d/* @if lo */
+e/* @endif */
 // @endif
-/* @if xx **
-f
-/* @endif */
+/* @if xx **f/* @endif */
 // @endif
 c`;
 
