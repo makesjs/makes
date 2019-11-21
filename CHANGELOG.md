@@ -1,3 +1,17 @@
+# [0.15.0](https://github.com/makesjs/makes/compare/v0.14.0...v0.15.0) (2019-11-21)
+
+
+### Bug Fixes
+
+* "0" should be acceptable ([c0f4909](https://github.com/makesjs/makes/commit/c0f4909a9057a52f5efb68c2fd5276ad02f215c6)), closes [#4](https://github.com/makesjs/makes/issues/4)
+
+
+### Features
+
+* better log on transform error ([d38c043](https://github.com/makesjs/makes/commit/d38c0432c4f16415d197a7be04a3f3cb21acb02d))
+
+
+
 # [0.14.0](https://github.com/makesjs/makes/compare/v0.13.0...v0.14.0) (2019-10-17)
 
 
