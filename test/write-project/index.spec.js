@@ -164,7 +164,7 @@ test.serial('writeProject reports error', async t => {
       targetDir: 'here'
     });
   } catch (e) {
-    t.is(e.message, 'Error in skeleton file: skeleton/feature1/file.js\nUnbalanced delimiter found in string');
+    t.is(e.message, `Error in skeleton file: ${path.join('skeleton', 'feature1', 'file.js')}\nUnbalanced delimiter found in string`);
     return;
   }
 
