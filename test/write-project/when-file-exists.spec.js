@@ -21,8 +21,6 @@ test.serial.cb('whenFileExists marks readme file with append write policy, when 
 
   const ts = whenFileExists('here');
 
-  ts.write(file);
-  ts.end();
   ts.once('data', file => {
     t.truthy(file.isBuffer());
     t.is(file.relative.replace(/\\/g, '/'), 'folder/some-readme.md');
@@ -30,6 +28,8 @@ test.serial.cb('whenFileExists marks readme file with append write policy, when 
     t.is(file.contents.toString(), 'abc');
     t.end();
   });
+  ts.write(file);
+  ts.end();
 });
 
 test.serial.cb('whenFileExists honours existing readme file write policy mark, when target file exists', t => {
@@ -47,8 +47,6 @@ test.serial.cb('whenFileExists honours existing readme file write policy mark, w
 
   const ts = whenFileExists('here', true);
 
-  ts.write(file);
-  ts.end();
   ts.once('data', file => {
     t.truthy(file.isBuffer());
     t.is(file.relative.replace(/\\/g, '/'), 'folder/some-readme.md__makes');
@@ -56,6 +54,8 @@ test.serial.cb('whenFileExists honours existing readme file write policy mark, w
     t.is(file.contents.toString(), 'abc');
     t.end();
   });
+  ts.write(file);
+  ts.end();
 });
 
 test.serial.cb('whenFileExists does not mark readme file with append write policy, when target file does not exist', t => {
@@ -70,8 +70,6 @@ test.serial.cb('whenFileExists does not mark readme file with append write polic
 
   const ts = whenFileExists('here');
 
-  ts.write(file);
-  ts.end();
   ts.once('data', file => {
     t.truthy(file.isBuffer());
     t.is(file.relative.replace(/\\/g, '/'), 'folder/some-readme.md');
@@ -79,6 +77,8 @@ test.serial.cb('whenFileExists does not mark readme file with append write polic
     t.is(file.contents.toString(), 'abc');
     t.end();
   });
+  ts.write(file);
+  ts.end();
 });
 
 test.serial.cb('whenFileExists merges package.json no matter what is existing write policy mark, when target file exists', t => {
@@ -96,8 +96,6 @@ test.serial.cb('whenFileExists merges package.json no matter what is existing wr
 
   const ts = whenFileExists('here');
 
-  ts.write(file);
-  ts.end();
   ts.once('data', file => {
     t.truthy(file.isBuffer());
     t.is(file.relative.replace(/\\/g, '/'), 'package.json');
@@ -109,6 +107,8 @@ test.serial.cb('whenFileExists merges package.json no matter what is existing wr
     });
     t.end();
   });
+  ts.write(file);
+  ts.end();
 });
 
 test.serial.cb('whenFileExists passes through package.json, when target file does not exist', t => {
@@ -124,8 +124,6 @@ test.serial.cb('whenFileExists passes through package.json, when target file doe
 
   const ts = whenFileExists('here');
 
-  ts.write(file);
-  ts.end();
   ts.once('data', file => {
     t.truthy(file.isBuffer());
     t.is(file.relative.replace(/\\/g, '/'), 'package.json');
@@ -138,6 +136,8 @@ test.serial.cb('whenFileExists passes through package.json, when target file doe
     });
     t.end();
   });
+  ts.write(file);
+  ts.end();
 });
 
 test.serial.cb('whenFileExists does not ask, when target file does not exist', t => {
@@ -153,8 +153,6 @@ test.serial.cb('whenFileExists does not ask, when target file does not exist', t
 
   const ts = whenFileExists('here');
 
-  ts.write(file);
-  ts.end();
   ts.once('data', file => {
     t.truthy(file.isBuffer());
     t.is(file.relative.replace(/\\/g, '/'), 'some.file');
@@ -162,6 +160,8 @@ test.serial.cb('whenFileExists does not ask, when target file does not exist', t
     t.is(file.contents.toString(), 'abc');
     t.end();
   });
+  ts.write(file);
+  ts.end();
 });
 
 test.serial.cb('whenFileExists does not ask in unattended mode, but keep existing file, when target file exists', t => {
@@ -179,8 +179,6 @@ test.serial.cb('whenFileExists does not ask in unattended mode, but keep existin
 
   const ts = whenFileExists('here', true);
 
-  ts.write(file);
-  ts.end();
   ts.once('data', file => {
     t.truthy(file.isBuffer());
     t.is(file.relative.replace(/\\/g, '/'), 'some.file__makes');
@@ -188,6 +186,8 @@ test.serial.cb('whenFileExists does not ask in unattended mode, but keep existin
     t.is(file.contents.toString(), 'abc');
     t.end();
   });
+  ts.write(file);
+  ts.end();
 });
 
 test.serial.cb('whenFileExists ask user, when user decided to keep existing file, when target file exists', t => {
@@ -205,8 +205,6 @@ test.serial.cb('whenFileExists ask user, when user decided to keep existing file
 
   const ts = whenFileExists('here', false, () => Promise.resolve(false));
 
-  ts.write(file);
-  ts.end();
   ts.once('data', file => {
     t.truthy(file.isBuffer());
     t.is(file.relative.replace(/\\/g, '/'), 'some.file__makes');
@@ -214,6 +212,8 @@ test.serial.cb('whenFileExists ask user, when user decided to keep existing file
     t.is(file.contents.toString(), 'abc');
     t.end();
   });
+  ts.write(file);
+  ts.end();
 });
 
 test.serial.cb('whenFileExists ask user, when user decided to replace existing file, when target file exists', t => {
@@ -231,8 +231,6 @@ test.serial.cb('whenFileExists ask user, when user decided to replace existing f
 
   const ts = whenFileExists('here', false, () => Promise.resolve(true));
 
-  ts.write(file);
-  ts.end();
   ts.once('data', file => {
     t.truthy(file.isBuffer());
     t.is(file.relative.replace(/\\/g, '/'), 'some.file');
@@ -240,6 +238,8 @@ test.serial.cb('whenFileExists ask user, when user decided to replace existing f
     t.is(file.contents.toString(), 'abc');
     t.end();
   });
+  ts.write(file);
+  ts.end();
 });
 
 test.serial.cb('whenFileExists passes through file with skip write policy, when target file does not exist', t => {
@@ -255,8 +255,6 @@ test.serial.cb('whenFileExists passes through file with skip write policy, when 
 
   const ts = whenFileExists('here');
 
-  ts.write(file);
-  ts.end();
   ts.once('data', file => {
     t.truthy(file.isBuffer());
     t.is(file.relative.replace(/\\/g, '/'), 'folder/some.md');
@@ -264,6 +262,8 @@ test.serial.cb('whenFileExists passes through file with skip write policy, when 
     t.is(file.contents.toString(), 'abc');
     t.end();
   });
+  ts.write(file);
+  ts.end();
 });
 
 test.serial.cb('whenFileExists skips file with skip write policy, when target file exists', t => {
@@ -281,8 +281,6 @@ test.serial.cb('whenFileExists skips file with skip write policy, when target fi
 
   const ts = whenFileExists('here');
 
-  ts.write(file);
-  ts.end();
   ts.once('data', () => {
     t.fail('should not see file');
     t.end();
@@ -291,4 +289,6 @@ test.serial.cb('whenFileExists skips file with skip write policy, when target fi
     t.pass('finish without file');
     t.end();
   });
+  ts.write(file);
+  ts.end();
 });

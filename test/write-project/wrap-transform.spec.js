@@ -15,14 +15,14 @@ test.cb('transform touches file', t => {
     contents: Buffer.from('abc')
   });
 
-  ts.write(file);
-  ts.end();
   ts.once('data', file => {
     t.truthy(file.isBuffer());
     t.truthy(file.touched);
     t.is(file.contents.toString(), 'abc');
     t.end();
   });
+  ts.write(file);
+  ts.end();
 });
 
 test.cb('transform transforms file', t => {
@@ -39,13 +39,13 @@ test.cb('transform transforms file', t => {
     contents: Buffer.from('abc')
   });
 
-  ts.write(file);
-  ts.end();
   ts.once('data', file => {
     t.truthy(file.isBuffer());
     t.is(file.contents.toString(), '#abc');
     t.end();
   });
+  ts.write(file);
+  ts.end();
 });
 
 test.cb('transform skips file', t => {
@@ -62,11 +62,6 @@ test.cb('transform skips file', t => {
     contents: Buffer.from('abc')
   });
 
-  ts.write(file);
-  ts.end();
-  setTimeout(() => {
-    ts.destroy();
-  }, 100);
   ts.once('data', () => {
     t.fail('should not see a file');
     t.end();
@@ -75,6 +70,11 @@ test.cb('transform skips file', t => {
     t.pass('done without file');
     t.end();
   });
+  ts.write(file);
+  ts.end();
+  setTimeout(() => {
+    ts.destroy();
+  }, 100);
 });
 
 test.cb('transform skips file not in buffer mode', t => {
@@ -90,12 +90,37 @@ test.cb('transform skips file not in buffer mode', t => {
     contents: null
   });
 
-  ts.write(file);
-  ts.end();
   ts.once('data', () => {
     t.falsy(file.isBuffer());
     t.falsy(file.touched);
     t.is(file.contents, null);
     t.end();
   });
+  ts.write(file);
+  ts.end();
+});
+
+test.cb.only('transform rethrows error', t => {
+  const step = function() {
+    throw new Error('lorem');
+  };
+
+  const ts = wrap(step);
+
+  const file = new Vinyl({
+    path: 'a.js',
+    contents: Buffer.from('abc')
+  });
+
+  ts.once('data', () => {
+    t.fail('should not be here');
+    t.end();
+  });
+  ts.on('error', error => {
+    t.is(error.message, 'Error in skeleton file: a.js\nlorem');
+    t.end();
+  });
+
+  ts.write(file);
+  ts.end();
 });

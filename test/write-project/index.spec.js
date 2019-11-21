@@ -150,3 +150,23 @@ test.serial('writeProject supports prependTransforms and appendTransforms', asyn
     'file-b'
   );
 });
+
+test.serial('writeProject reports error', async t => {
+  mockfs({
+    'skeleton/feature1/file.js': '// @if feature2\na\n',
+  });
+
+  try {
+    await writeProject({
+      properties: {name: 'app'},
+      features: ['feature1'],
+      skeletonDir: 'skeleton',
+      targetDir: 'here'
+    });
+  } catch (e) {
+    t.is(e.message, 'Error in skeleton file: skeleton/feature1/file.js\nUnbalanced delimiter found in string');
+    return;
+  }
+
+  t.fail('should not be here');
+});
