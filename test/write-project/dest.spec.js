@@ -3,7 +3,7 @@ import dest from '../../lib/write-project/dest';
 import mockfs from 'mock-fs';
 import fs from 'fs';
 import path from 'path';
-import {Readable} from 'stream';
+import {PassThrough} from 'stream';
 import Vinyl from 'vinyl';
 
 test.afterEach(() => {
@@ -13,7 +13,7 @@ test.afterEach(() => {
 test.serial.cb('dest writes nothing', t => {
   mockfs();
 
-  const rs = new Readable({objectMode: true});
+  const rs = new PassThrough({objectMode: true});
 
   rs.pipe(dest('target'))
     .once('error', t.end)
@@ -22,7 +22,7 @@ test.serial.cb('dest writes nothing', t => {
       t.end();
     });
 
-  rs.push(null);
+  rs.end();
 });
 
 test.serial.cb('dest writes files, overwrites existing files', t => {
@@ -30,7 +30,7 @@ test.serial.cb('dest writes files, overwrites existing files', t => {
     'target/file-a.js': 'old-a'
   });
 
-  const rs = new Readable({objectMode: true});
+  const rs = new PassThrough({objectMode: true});
 
   rs.pipe(dest('target'))
     .once('error', t.end)
@@ -49,19 +49,19 @@ test.serial.cb('dest writes files, overwrites existing files', t => {
       t.end();
     });
 
-  rs.push(new Vinyl({
+  rs.write(new Vinyl({
     base: 'skeleton/common',
     path: 'skeleton/common/file-a.js',
     contents: Buffer.from('a')
   }));
 
-  rs.push(new Vinyl({
+  rs.write(new Vinyl({
     base: 'skeleton/feature1',
     path: 'skeleton/feature1/f1/file-b.md',
     contents: Buffer.from('b')
   }));
 
-  rs.push(null);
+  rs.end();
 });
 
 test.serial.cb('dest writes files, appends existing files', t => {
@@ -69,7 +69,7 @@ test.serial.cb('dest writes files, appends existing files', t => {
     'target/file-a.js': 'old-a'
   });
 
-  const rs = new Readable({objectMode: true});
+  const rs = new PassThrough({objectMode: true});
 
   rs.pipe(dest('target'))
     .once('error', t.end)
@@ -88,19 +88,19 @@ test.serial.cb('dest writes files, appends existing files', t => {
       t.end();
     });
 
-  rs.push(new Vinyl({
+  rs.write(new Vinyl({
     base: 'skeleton/common',
     path: 'skeleton/common/file-a.js',
     contents: Buffer.from('a'),
     writePolicy: 'append'
   }));
 
-  rs.push(new Vinyl({
+  rs.write(new Vinyl({
     base: 'skeleton/feature1',
     path: 'skeleton/feature1/f1/f2/file-b.md',
     contents: Buffer.from('b'),
     writePolicy: 'append'
   }));
 
-  rs.push(null);
+  rs.end();
 });
