@@ -14,10 +14,10 @@ npx makes <skeleton_provider>
 
 ## Example skeletons
 
-- [`aurelia/new`](https://github.com/aurelia/new)
-- [`dumberjs/new`](https://github.com/dumberjs/new)
-- [`makesjs/demo1`](https://github.com/makesjs/demo1)
-- [`makesjs/demo2`](https://github.com/makesjs/demo2)
+- [`aurelia/new`](https://github.com/aurelia/new) `npx makes aurelia`
+- [`dumberjs/new`](https://github.com/dumberjs/new) `npx makes dumberjs`
+- [`makesjs/demo1`](https://github.com/makesjs/demo1) `npx makes makesjs/demo1`
+- [`makesjs/demo2`](https://github.com/makesjs/demo2) `npx makes makesjs/demo2`
 
 Try `dumberjs` skeleton to create various types of front-end projects. [`dumberjs`](https://github.com/dumberjs/dumber) is a JavaScript bundler using AMD module format for front-end SPA apps.
 
