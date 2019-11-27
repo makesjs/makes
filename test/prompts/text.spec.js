@@ -41,7 +41,8 @@ test('text prompt rejects invalid input', async (t) => {
     message: 'prompt',
     validate: input => !input.includes('*')
   }, ['a', '*', 'c', {name: 'return'}, {name: 'abort'}]), {
-    message: 'abort with answer a*c'
+    name: 'SoftError',
+    message: /abort with answer a\*c/
   });
 });
 

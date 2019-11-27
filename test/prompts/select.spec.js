@@ -137,7 +137,8 @@ test('select prompt can abort', async (t) => {
       {value: 'three', title: 'Three'}
     ]
   }, ['3', {name: 'c', ctrl: true}]), {
-    message: 'abort with answer three'
+    name: 'SoftError',
+    message: /abort with answer three/
   });
 });
 

@@ -147,7 +147,8 @@ test('multiselect prompt can abort', async (t) => {
       {value: 'three', title: 'Three'}
     ]
   }, ['1', '3', {name: 'c', ctrl: true}]), {
-    message: 'abort with answer one,three'
+    name: 'SoftError',
+    message: /abort with answer one,three/
   });
 });
 
