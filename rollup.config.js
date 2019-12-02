@@ -1,6 +1,7 @@
 import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import replace from 'rollup-plugin-replace';
+import {terser} from 'rollup-plugin-terser';
 
 export default {
   input: 'lib/index.js',
@@ -23,7 +24,8 @@ export default {
   ],
   output: {
     file: 'dist/index.js',
-    format: 'cjs'
+    format: 'cjs',
+    plugins: [terser()]
   },
   plugins: [
     replace({
