@@ -34,6 +34,7 @@ test.serial('skeletonConfig runs npm install when required', async t => {
     questions: [],
     prependTransforms: [],
     appendTransforms: [],
+    banner: undefined,
     before: undefined,
     after: undefined
   });
@@ -67,6 +68,7 @@ test.serial('skeletonConfig does not run npm install when node_modules exists', 
     questions: [],
     prependTransforms: [],
     appendTransforms: [],
+    banner: undefined,
     before: undefined,
     after: undefined
   });
@@ -99,6 +101,7 @@ test.serial('skeletonConfig does not run npm install for devDependencies', async
     questions: [],
     prependTransforms: [],
     appendTransforms: [],
+    banner: undefined,
     before: undefined,
     after: undefined
   });
@@ -131,6 +134,7 @@ test.serial('skeletonConfig skip npm install when not required', async t => {
     questions: [],
     prependTransforms: [],
     appendTransforms: [],
+    banner: undefined,
     before: undefined,
     after: undefined
   });
@@ -163,6 +167,7 @@ test.serial('skeletonConfig skip npm install when no packge.json', async t => {
     questions: [],
     prependTransforms: [],
     appendTransforms: [],
+    banner: undefined,
     before: undefined,
     after: undefined
   });
@@ -209,6 +214,7 @@ test.serial('skeletonConfig reads questions, and transforms', async t => {
     ],
     prependTransforms: ['fake'],
     appendTransforms: ['fake2', 'fake3'],
+    banner: undefined,
     before: undefined,
     after: undefined
   });
@@ -249,6 +255,7 @@ test.serial('skeletonConfig does not inject question for project name if user pr
     ],
     prependTransforms: [],
     appendTransforms: [],
+    banner: undefined,
     before: undefined,
     after: undefined
   });
@@ -286,8 +293,35 @@ test.serial('skeletonConfig reads before and after tasks', async t => {
     questions: [],
     prependTransforms: [],
     appendTransforms: [],
+    banner: undefined,
     before: 'before',
     after: 'after'
   });
 });
 
+test.serial('skeletonConfig reads banner', async t => {
+  mockfs({
+    'skeleton/banner': 'lorem'
+  });
+
+  const result = await config('skeleton');
+  const {validate} = result.nameQuestion;
+  delete result.nameQuestion.validate;
+
+  t.is(validate('ab-1_2'), null);
+  t.is(validate(' a'), 'Please only use letters, numbers, dash(-) and underscore(_).');
+  t.is(validate('@a'), 'Please only use letters, numbers, dash(-) and underscore(_).');
+  t.deepEqual(result, {
+    nameQuestion: {
+      name: 'name',
+      message: 'Please name this new project:',
+      default: 'my-app'
+    },
+    questions: [],
+    prependTransforms: [],
+    appendTransforms: [],
+    banner: 'lorem',
+    before: undefined,
+    after: undefined
+  });
+});
