@@ -1,3 +1,12 @@
+# [0.16.0](https://github.com/makesjs/makes/compare/v0.15.3...v0.16.0) (2019-12-09)
+
+
+### Features
+
+* support optional text format banner file ([a07eaaa](https://github.com/makesjs/makes/commit/a07eaaad5743aea7a259605cb67a0d397d472257))
+
+
+
 ## [0.15.3](https://github.com/makesjs/makes/compare/v0.15.2...v0.15.3) (2019-12-04)
 
 
