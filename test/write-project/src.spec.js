@@ -1,8 +1,8 @@
-import test from 'ava';
-import src from '../../lib/write-project/src';
-import mockfs from 'mock-fs';
-import {Transform} from 'stream';
-import _ from 'lodash';
+const test = require('ava');
+const src = require('../../lib/write-project/src');
+const mockfs = require('mock-fs');
+const {Transform} = require('stream');
+const _ = require('lodash');
 
 const gatherFiles = function(box) {
   return new Transform({

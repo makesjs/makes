@@ -1,7 +1,7 @@
-import test from 'ava';
-import whenFileExists from '../../lib/write-project/when-file-exists';
-import Vinyl from 'vinyl';
-import mockfs from 'mock-fs';
+const test = require('ava');
+const whenFileExists = require('../../lib/write-project/when-file-exists');
+const Vinyl = require('vinyl');
+const mockfs = require('mock-fs');
 
 test.afterEach(() => {
   mockfs.restore();

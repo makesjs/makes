@@ -1,5 +1,5 @@
-import test from 'ava';
-import {text} from './_prompt-under-test';
+const test = require('ava');
+const {text} = require('./_prompt-under-test');
 
 test('text prompt returns default value', async (t) => {
   const answer = await text({

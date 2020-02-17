@@ -1,5 +1,5 @@
-import {text as _text, select as _select} from '../../lib/prompts';
-import {Readable, Writable} from 'stream';
+const prompts = require('../../lib/prompts');
+const {Readable, Writable} = require('stream');
 
 function delay() {
   return new Promise(resolve => {
@@ -39,6 +39,6 @@ function wrap(prompt) {
   };
 }
 
-const text = wrap(_text);
-const select = wrap(_select);
-export {delay, pressKeys, text, select};
+const text = wrap(prompts.text);
+const select = wrap(prompts.select);
+module.exports = {delay, pressKeys, text, select};

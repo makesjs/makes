@@ -1,10 +1,10 @@
-import test from 'ava';
-import dest from '../../lib/write-project/dest';
-import mockfs from 'mock-fs';
-import fs from 'fs';
-import path from 'path';
-import {PassThrough} from 'stream';
-import Vinyl from 'vinyl';
+const test = require('ava');
+const dest = require('../../lib/write-project/dest');
+const mockfs = require('mock-fs');
+const fs = require('fs');
+const path = require('path');
+const {PassThrough} = require('stream');
+const Vinyl = require('vinyl');
 
 test.afterEach(() => {
   mockfs.restore();

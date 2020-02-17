@@ -1,7 +1,7 @@
-import test from 'ava';
-import makes from '../lib/index';
-import prompts from '../lib/prompts';
-import mockfs from 'mock-fs';
+const test = require('ava');
+const makes = require('../lib/index');
+const prompts = require('../lib/prompts');
+const mockfs = require('mock-fs');
 
 test.afterEach(() => {
   mockfs.restore();

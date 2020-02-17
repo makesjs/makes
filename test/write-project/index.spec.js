@@ -1,9 +1,9 @@
-import test from 'ava';
-import writeProject from '../../lib/write-project';
-import mockfs from 'mock-fs';
-import fs from 'fs';
-import path from 'path';
-import {Transform} from 'stream';
+const test = require('ava');
+const writeProject = require('../../lib/write-project');
+const mockfs = require('mock-fs');
+const fs = require('fs');
+const path = require('path');
+const {Transform} = require('stream');
 
 test.afterEach(() => {
   mockfs.restore();
