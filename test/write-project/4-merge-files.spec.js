@@ -1,6 +1,6 @@
-import test from 'ava';
-import mergeFiles from '../../lib/write-project/4-merge-files';
-import Vinyl from 'vinyl';
+const test = require('ava');
+const mergeFiles = require('../../lib/write-project/4-merge-files');
+const Vinyl = require('vinyl');
 
 test.cb('mergeFiles bypasses unique file', t => {
   const merge = mergeFiles();

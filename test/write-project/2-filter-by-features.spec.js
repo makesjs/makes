@@ -1,6 +1,6 @@
-import test from 'ava';
-import filterByFeatures from '../../lib/write-project/2-filter-by-features';
-import Vinyl from 'vinyl';
+const test = require('ava');
+const filterByFeatures = require('../../lib/write-project/2-filter-by-features');
+const Vinyl = require('vinyl');
 
 const filter = filterByFeatures(['a', 'b']);
 

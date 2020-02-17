@@ -40,11 +40,11 @@
   },
   "homepage": "https://github.com/makesjs/makes#readme",
   "devDependencies": {
-    "@rollup/plugin-replace": "^2.2.1",
+    "@rollup/plugin-replace": "^2.3.1",
     "ansi-colors": "^4.1.1",
-    "ava": "^2.4.0",
+    "ava": "^3.3.0",
     "cross-spawn": "^7.0.1",
-    "eslint": "^6.7.2",
+    "eslint": "^6.8.0",
     "gunzip-maybe": "^1.4.1",
     "hosted-git-info": "^3.0.2",
     "isutf8": "^2.1.0",
@@ -52,17 +52,17 @@
     "lodash.mergewith": "^4.6.2",
     "minimist": "^1.2.0",
     "mock-fs": "^4.10.4",
-    "nyc": "^14.1.1",
-    "rimraf": "^3.0.0",
-    "rollup": "^1.27.7",
+    "nyc": "^15.0.0",
+    "rimraf": "^3.0.2",
+    "rollup": "^1.31.1",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-terser": "^5.1.2",
+    "rollup-plugin-terser": "^5.2.0",
     "sisteransi": "^1.0.4",
-    "standard-changelog": "^2.0.18",
+    "standard-changelog": "^2.0.21",
     "tar-fs": "^2.0.0",
     "tmp": "^0.1.0",
     "vinyl": "^2.2.0",
-    "xregexp": "^4.2.4"
+    "xregexp": "^4.3.0"
   }
 }

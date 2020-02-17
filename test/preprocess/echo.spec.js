@@ -1,5 +1,5 @@
-import test from 'ava';
-import preprocess from '../../lib/preprocess';
+const test = require('ava');
+const preprocess = require('../../lib/preprocess');
 
 test('@echo resolves and echoes variable in html syntax', t => {
   t.is(

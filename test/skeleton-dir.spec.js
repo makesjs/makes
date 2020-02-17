@@ -1,8 +1,8 @@
-import test from 'ava';
-import skeletonDir from '../lib/skeleton-dir';
-import mockfs from 'mock-fs';
-import path from 'path';
-import fs from 'fs';
+const test = require('ava');
+const skeletonDir = require('../lib/skeleton-dir');
+const mockfs = require('mock-fs');
+const path = require('path');
+const fs = require('fs');
 
 function _useGitRepo() {
   throw new Error('Not implemented');

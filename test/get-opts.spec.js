@@ -1,5 +1,5 @@
-import test from 'ava';
-import getOpts from '../lib/get-opts';
+const test = require('ava');
+const getOpts = require('../lib/get-opts');
 
 function mockExit(func) {
   const oldExit = process.exit;

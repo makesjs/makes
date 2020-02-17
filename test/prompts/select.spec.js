@@ -1,5 +1,5 @@
-import test from 'ava';
-import {select} from './_prompt-under-test';
+const test = require('ava');
+const {select} = require('./_prompt-under-test');
 
 test('select prompt returns default first value', async (t) => {
   const answer = await select({

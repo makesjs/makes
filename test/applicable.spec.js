@@ -1,5 +1,5 @@
-import test from 'ava';
-import applicable from '../lib/applicable';
+const test = require('ava');
+const applicable = require('../lib/applicable');
 
 test('applicable supports logical not', t => {
   t.true(applicable(['a', 'b'], 'not_c'));

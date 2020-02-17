@@ -1,6 +1,6 @@
-import test from 'ava';
-import preprocess from '../../lib/write-project/3-preprocess';
-import Vinyl from 'vinyl';
+const test = require('ava');
+const preprocess = require('../../lib/write-project/3-preprocess');
+const Vinyl = require('vinyl');
 
 const pp = preprocess({name: 'app'}, ['a', 'b']);
 

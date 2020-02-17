@@ -1,5 +1,5 @@
-import test from 'ava';
-import preprocess from '../../lib/preprocess';
+const test = require('ava');
+const preprocess = require('../../lib/preprocess');
 
 test('@if works in html syntax', t => {
   const source = `a

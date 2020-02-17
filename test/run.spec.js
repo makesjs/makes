@@ -1,5 +1,5 @@
-import test from 'ava';
-import run from '../lib/run';
+const test = require('ava');
+const run = require('../lib/run');
 
 test('run a command', async t => {
   await run('echo', ['hello']);

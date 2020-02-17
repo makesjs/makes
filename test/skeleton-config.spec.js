@@ -1,6 +1,6 @@
-import test from 'ava';
-import config from '../lib/skeleton-config';
-import mockfs from 'mock-fs';
+const test = require('ava');
+const config = require('../lib/skeleton-config');
+const mockfs = require('mock-fs');
 
 test.afterEach(() => {
   mockfs.restore();

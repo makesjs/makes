@@ -1,6 +1,6 @@
-import test from 'ava';
-import wrap from '../../lib/write-project/wrap-transform';
-import Vinyl from 'vinyl';
+const test = require('ava');
+const wrap = require('../../lib/write-project/wrap-transform');
+const Vinyl = require('vinyl');
 
 test.cb('transform touches file', t => {
   const step = function(file) {
