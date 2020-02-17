@@ -1,4 +1,4 @@
-# makes [![Build Status](https://travis-ci.org/makesjs/makes.svg?branch=master)](https://travis-ci.org/makesjs/makes)
+# makes ![CI](https://github.com/makesjs/makes/workflows/CI/badge.svg)
 
 A tool to scaffold new projects, simple enough that you would want to define your own skeletons (aka generators).
 
