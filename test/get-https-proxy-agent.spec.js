@@ -18,6 +18,14 @@ test.serial('getHttpsProxyAgent gets proxy from npmrc', async t => {
   t.is(agent.proxy.href, 'https://domain2.com:80443/');
 });
 
+test.serial('getHttpsProxyAgent gets proxy from npmrc, but reject non-http proxy', async t => {
+  const agent = getAgent({
+    _npmrc: { 'proxy' : 'what.ever.proxy'},
+    _env: {}
+  });
+  t.is(agent, undefined);
+});
+
 test.serial('getHttpsProxyAgent gets HTTPS_PROXY from env', async t => {
   const agent = getAgent({
     _npmrc: {},
