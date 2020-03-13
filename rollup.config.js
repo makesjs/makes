@@ -20,7 +20,11 @@ export default {
     'url',
     'util',
     'constants',
-    'buffer'
+    'buffer',
+    'tty',
+    'tls',
+    'net',
+    'assert'
   ],
   output: {
     file: 'dist/index.js',
