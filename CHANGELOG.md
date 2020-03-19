@@ -1,3 +1,18 @@
+# [1.1.0](https://github.com/makesjs/makes/compare/v1.0.0...v1.1.0) (2020-03-19)
+
+
+### Bug Fixes
+
+* fix api usage on nodejs v8, fix https request path for gitlab tarball ([eedd98a](https://github.com/makesjs/makes/commit/eedd98a0d8d813d02a6c05decafb3e694c112f89))
+
+
+### Features
+
+* support proxy from npmrc or env ([da5b712](https://github.com/makesjs/makes/commit/da5b712410daa928e01df821220c65739c93d1e2)), closes [#6](https://github.com/makesjs/makes/issues/6)
+* try git clone with https after ssh failed ([9f53716](https://github.com/makesjs/makes/commit/9f53716b101288a388a70a20131a1f6523de503c))
+
+
+
 # [1.0.0](https://github.com/makesjs/makes/compare/v0.16.2...v1.0.0) (2020-02-27)
 
 
