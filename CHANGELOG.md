@@ -1,3 +1,7 @@
+# [1.2.0](https://github.com/makesjs/makes/compare/v1.1.2...v1.2.0) (2020-04-30)
+
+
+
 ## [1.1.2](https://github.com/makesjs/makes/compare/v1.1.1...v1.1.2) (2020-04-29)
 
 
