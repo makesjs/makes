@@ -19,7 +19,7 @@
     "lint": "eslint lib test",
     "preversion": "npm test",
     "version": "standard-changelog && git add CHANGELOG.md",
-    "postversion": "git push && git push --tags && npm publish --tag test",
+    "postversion": "git push && git push --tags && npm publish",
     "pretest": "npm run lint",
     "build": "ncc build lib/index.js -m",
     "prepare": "npm run build"
