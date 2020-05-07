@@ -7,8 +7,11 @@ test.afterEach(() => {
   mockfs.restore();
 });
 
-test('exports getOpts func', t => {
+test('exports some functions', t => {
   t.is(typeof makes.getOpts, 'function');
+  t.is(typeof makes.prompts.text, 'function');
+  t.is(typeof makes.prompts.select, 'function');
+  t.is(typeof makes.possibleFeatureSelections, 'function');
 });
 
 test.serial('makes complains missing project name in silent mode', async t => {
