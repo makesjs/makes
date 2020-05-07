@@ -59,7 +59,7 @@
     "sisteransi": "^1.0.5",
     "standard-changelog": "^2.0.21",
     "tar-fs": "^2.0.1",
-    "tmp": "^0.2.0",
+    "tmp": "^0.2.1",
     "vinyl": "^2.2.0",
     "xregexp": "^4.3.0"
   }
