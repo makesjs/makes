@@ -1,3 +1,12 @@
+# [1.4.0](https://github.com/makesjs/makes/compare/v1.3.1...v1.4.0) (2020-05-07)
+
+
+### Features
+
+* add helper func possibleFeatureSelections ([8eb8a27](https://github.com/makesjs/makes/commit/8eb8a270b524e181ee436e2ddd45036c73857b46))
+
+
+
 ## [1.3.1](https://github.com/makesjs/makes/compare/v1.3.0...v1.3.1) (2020-04-30)
 
 
