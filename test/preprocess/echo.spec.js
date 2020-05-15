@@ -1,6 +1,11 @@
 const test = require('ava');
 const preprocess = require('../../lib/preprocess');
 
+test('preprocess can handle empty input', t => {
+  t.is(preprocess('', {}, null, 'html'), '');
+  t.is(preprocess('', {}, null), '');
+});
+
 test('@echo resolves and echoes variable in html syntax', t => {
   t.is(
     preprocess('a<!-- @echo FINGERPRINT -->c', {FINGERPRINT: '0xDEADBEEF'}, null, 'html'),
