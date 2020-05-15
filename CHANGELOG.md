@@ -1,3 +1,12 @@
+# [1.5.0](https://github.com/makesjs/makes/compare/v1.4.0...v1.5.0) (2020-05-15)
+
+
+### Features
+
+* print better error message on unpaired [@if](https://github.com/if) ([0126c48](https://github.com/makesjs/makes/commit/0126c48b245f99d40267963b99ee7da29fa09fa0))
+
+
+
 # [1.4.0](https://github.com/makesjs/makes/compare/v1.3.1...v1.4.0) (2020-05-07)
 
 
