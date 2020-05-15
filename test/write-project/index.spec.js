@@ -164,7 +164,7 @@ test.serial('writeProject reports error', async t => {
       targetDir: 'here'
     });
   } catch (e) {
-    t.truthy(e.message.startsWith(`Error in skeleton file: ${path.join('skeleton', 'feature1', 'file.js')}\nCould not find a ending @endif for the @if`));
+    t.truthy(e.message.startsWith(`Error in skeleton file: ${path.join('skeleton', 'feature1', 'file.js')}\nCould not find an ending @endif for the @if`));
     return;
   }
 
