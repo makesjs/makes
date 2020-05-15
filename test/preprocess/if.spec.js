@@ -23,6 +23,17 @@ c`;
   t.throws(() => preprocess(source, null, ['bar'], 'html'));
 });
 
+test('@if complains about missing starting in html syntax', t => {
+  const source = `a
+<!-- if foo -->
+b
+<!-- @endif -->
+c`;
+
+  t.throws(() => preprocess(source, null, ['foo'], 'html'));
+  t.throws(() => preprocess(source, null, ['bar'], 'html'));
+});
+
 test('@if works in html syntax with hidden syntax', t => {
   const source = `a
 <!-- @if foo !>
@@ -39,6 +50,17 @@ test('@if complains about missing ending in html syntax with hidden syntax', t =
 <!-- @if foo !>
 b
 <!-- endif -->
+c`;
+
+  t.throws(() => preprocess(source, null, ['foo'], 'html'));
+  t.throws(() => preprocess(source, null, ['bar'], 'html'));
+});
+
+test('@if complains about missing starting in html syntax with hidden syntax', t => {
+  const source = `a
+<!-- if foo !>
+b
+<!-- @endif -->
 c`;
 
   t.throws(() => preprocess(source, null, ['foo'], 'html'));
@@ -88,6 +110,17 @@ c`;
   t.throws(() => preprocess(source, null, ['bar']));
 });
 
+test('@if complains about missing starting in js syntax', t => {
+  const source = `a
+// if foo
+b
+// @endif
+c`;
+
+  t.throws(() => preprocess(source, null, ['foo']));
+  t.throws(() => preprocess(source, null, ['bar']));
+});
+
 test('@if works in js syntax with hidden syntax (block comment)', t => {
   const source = `a
 /* @if foo **
@@ -104,6 +137,17 @@ test('@if complains about missing ending in js syntax with hidden syntax (block 
 /* @if foo **
 b
 /* endif */
+c`;
+
+  t.throws(() => preprocess(source, null, ['foo']));
+  t.throws(() => preprocess(source, null, ['bar']));
+});
+
+test('@if complains about missing starting in js syntax with hidden syntax (block comment)', t => {
+  const source = `a
+/* if foo **
+b
+/* @endif */
 c`;
 
   t.throws(() => preprocess(source, null, ['foo']));
