@@ -42,9 +42,9 @@
   "devDependencies": {
     "@zeit/ncc": "^0.22.1",
     "ansi-colors": "^4.1.1",
-    "ava": "^3.8.1",
+    "ava": "^3.8.2",
     "cross-spawn": "^7.0.2",
-    "eslint": "^6.8.0",
+    "eslint": "^7.0.0",
     "gunzip-maybe": "^1.4.2",
     "hosted-git-info": "^3.0.4",
     "https-proxy-agent": "^5.0.0",
@@ -57,8 +57,8 @@
     "nyc": "^15.0.1",
     "rimraf": "^3.0.2",
     "sisteransi": "^1.0.5",
-    "standard-changelog": "^2.0.21",
-    "tar-fs": "^2.0.1",
+    "standard-changelog": "^2.0.24",
+    "tar-fs": "^2.1.0",
     "tmp": "^0.2.1",
     "vinyl": "^2.2.0",
     "xregexp": "^4.3.0"
