@@ -1,3 +1,12 @@
+## [1.5.1](https://github.com/makesjs/makes/compare/v1.5.0...v1.5.1) (2020-08-11)
+
+
+### Bug Fixes
+
+* avoid undefined key in win32 terminal ([0d5e48e](https://github.com/makesjs/makes/commit/0d5e48ec4a9b23e5bfb10662cd4a29cf0688f476)), closes [#10](https://github.com/makesjs/makes/issues/10)
+
+
+
 # [1.5.0](https://github.com/makesjs/makes/compare/v1.4.0...v1.5.0) (2020-05-15)
 
 
