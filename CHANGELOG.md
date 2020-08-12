@@ -1,3 +1,12 @@
+## [1.6.1](https://github.com/makesjs/makes/compare/v1.6.0...v1.6.1) (2020-08-12)
+
+
+### Bug Fixes
+
+* **prompts:** fix ctrl-w behaviour when the cursor is not at the end ([f7ad92b](https://github.com/makesjs/makes/commit/f7ad92b8e5bcc04dc64bbdc8c356f11ccf996748))
+
+
+
 # [1.6.0](https://github.com/makesjs/makes/compare/v1.5.1...v1.6.0) (2020-08-12)
 
 
