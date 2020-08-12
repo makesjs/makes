@@ -97,3 +97,54 @@ test('text prompt support terminal cursor short-cut', async (t) => {
 
   t.is(answer, 'dbcfeg');
 });
+
+test('text prompt support terminal cursor short-cut, case 2', async (t) => {
+  const answer = await text({
+    message: 'prompt',
+    validate: input => !input.includes('*')
+  }, [
+    'a', 'b', 'c', ' ', 'd', 'e', ' ',
+    {name: 'w', ctrl: true}, // delete word
+    'f', '-', '3', ' ', ' ',
+    {name: 'w', ctrl: true}, // delete word
+    'e', 'f', 'g',
+    {name: 'left'},
+    {name: 'left'},
+    {name: 'left'},
+    {name: 'u', ctrl: true}, // delete to beginning
+    {name: 'return'}
+  ]);
+
+  t.is(answer, 'efg');
+});
+
+test('text prompt support terminal cursor short-cut, case 3', async (t) => {
+  const answer = await text({
+    message: 'prompt',
+    validate: input => !input.includes('*')
+  }, [
+    'a', 'b', 'c', ' ', ' ', 'd', 'e',
+    {name: 'w', ctrl: true}, // delete word
+    {name: 'w', ctrl: true}, // delete word
+    'e', 'f',
+    {name: 'return'}
+  ]);
+
+  t.is(answer, 'ef');
+});
+
+test('text prompt support terminal cursor short-cut, case 4', async (t) => {
+  const answer = await text({
+    message: 'prompt',
+    validate: input => !input.includes('*')
+  }, [
+    'a', 'b', 'c', ' ', 'd', 'e', ' ',
+    {name: 'left'},
+    {name: 'left'},
+    {name: 'k', ctrl: true}, // delete to end
+    {name: 'return'}
+  ]);
+
+  t.is(answer, 'abc d');
+});
+
