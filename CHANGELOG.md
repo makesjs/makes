@@ -1,3 +1,12 @@
+# [1.6.0](https://github.com/makesjs/makes/compare/v1.5.1...v1.6.0) (2020-08-12)
+
+
+### Features
+
+* **prompts:** add support of ctrl-w, ctrl-u, and ctrl-k ([e38ba9d](https://github.com/makesjs/makes/commit/e38ba9d6dac3a67e200f0592ff760ca020b679ed))
+
+
+
 ## [1.5.1](https://github.com/makesjs/makes/compare/v1.5.0...v1.5.1) (2020-08-11)
 
 
