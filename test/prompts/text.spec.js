@@ -124,13 +124,14 @@ test('text prompt support terminal cursor short-cut, case 3', async (t) => {
     validate: input => !input.includes('*')
   }, [
     'a', 'b', 'c', ' ', ' ', 'd', 'e',
+    {name: 'left'},
     {name: 'w', ctrl: true}, // delete word
     {name: 'w', ctrl: true}, // delete word
     'e', 'f',
     {name: 'return'}
   ]);
 
-  t.is(answer, 'ef');
+  t.is(answer, 'efe');
 });
 
 test('text prompt support terminal cursor short-cut, case 4', async (t) => {
