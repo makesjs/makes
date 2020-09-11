@@ -36,7 +36,7 @@ test.serial.cb('src reads nothing from empty folders', t => {
     });
 });
 
-test.serial.cb('src reads deep files from empty folders', t => {
+test.serial.cb('src reads deep files', t => {
   mockfs({
     'common/file-a': 'a',
     'common/f1/file-b': 'b',
