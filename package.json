@@ -41,7 +41,7 @@
   "homepage": "https://github.com/makesjs/makes#readme",
   "devDependencies": {
     "@babel/code-frame": "^7.10.4",
-    "@vercel/ncc": "^0.24.0",
+    "@vercel/ncc": "^0.23.0",
     "ansi-colors": "^4.1.1",
     "ava": "^3.12.1",
     "cross-spawn": "^7.0.3",
