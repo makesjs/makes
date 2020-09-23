@@ -1,3 +1,17 @@
+# [2.0.0](https://github.com/makesjs/makes/compare/v1.6.1...v2.0.0) (2020-09-23)
+
+
+### chore
+
+* use nodejs v10 api stream.pipeline ([e32ef3f](https://github.com/makesjs/makes/commit/e32ef3f538c9c27a3d978aab9955bf19c0f6d3b9))
+
+
+### BREAKING CHANGES
+
+* drop nodejs v8 support
+
+
+
 ## [1.6.1](https://github.com/makesjs/makes/compare/v1.6.0...v1.6.1) (2020-08-12)
 
 
