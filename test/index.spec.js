@@ -36,7 +36,9 @@ test.serial('makes checks target folder', async t => {
     _skeletonConfig: () => ({
       nameQuestion: {
         name: 'name',
-        message: 'Name:'
+        message: 'Name:',
+        validate: value => value.match(/^[a-zA-Z0-9_-]+$/) ? null :
+          'Please only use letters, numbers, dash(-) and underscore(_).'
       },
       questions: [
         {
@@ -66,10 +68,62 @@ test.serial('makes checks target folder', async t => {
   });
 });
 
+test.serial('makes rejects invalid folder name', async t => {
+  let captured;
+
+  mockfs({app: {}});
+
+  await t.throwsAsync(async () => makes('supplier', {
+    predefinedProperties: {name: 'app:1'},
+    unattended: true
+  }, {
+    _skeletonDir: () => 'skeleton',
+    _skeletonConfig: () => ({
+      nameQuestion: {
+        name: 'name',
+        message: 'Name:',
+        validate: value => value.match(/^[a-zA-Z0-9_-]+$/) ? null :
+          'Please only use letters, numbers, dash(-) and underscore(_).'
+      },
+      questions: []
+    }),
+    _writeProject: result => {
+      captured = result;
+    }
+  }));
+
+  t.is(captured, undefined);
+});
+
 test.serial('makes rejects existing folder', async t => {
   let captured;
 
   mockfs({app: {}});
+
+  await t.throwsAsync(async () => makes('supplier', {
+    predefinedProperties: {name: 'app'},
+    unattended: true
+  }, {
+    _skeletonDir: () => 'skeleton',
+    _skeletonConfig: () => ({
+      nameQuestion: {
+        name: 'name',
+        message: 'Name:'
+      },
+      questions: []
+    }),
+    _writeProject: result => {
+      captured = result;
+    }
+  }));
+
+  t.is(captured, undefined);
+});
+
+test.serial('makes rejects target folder on existing file', async t => {
+  let captured;
+
+  mockfs({app: ''});
 
   await t.throwsAsync(async () => makes('supplier', {
     predefinedProperties: {name: 'app'},

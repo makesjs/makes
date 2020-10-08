@@ -104,3 +104,31 @@ test.serial.cb('dest writes files, appends existing files', t => {
 
   rs.end();
 });
+
+test.serial.cb('dest ignores conflicting file and folder', t => {
+  mockfs({
+    'target/a': 'old-a'
+  });
+
+  const rs = new PassThrough({objectMode: true});
+
+  rs.pipe(dest('target'))
+    .once('error', t.end)
+    .once('finish', () => {
+      t.deepEqual(
+        fs.readdirSync('target').sort(),
+        ['a']
+      );
+
+      t.is(fs.readFileSync(path.join('target', 'a'), 'utf8'), 'old-a');
+      t.end();
+    });
+
+  rs.write(new Vinyl({
+    base: 'skeleton/common',
+    path: 'skeleton/common/a/file.js',
+    contents: Buffer.from('a')
+  }));
+
+  rs.end();
+});
