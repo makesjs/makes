@@ -82,6 +82,37 @@ test('possibleFeatureSelections returns possible selections with conditions', as
   ]);
 });
 
+test('possibleFeatureSelections returns possible selections with conditions, case 2', async t => {
+  const questions = [
+    {
+      choices: [
+        { value: 'a' },
+        { value: 'b'}
+      ]
+    },
+    {
+      choices: [
+        { if: 'a', value: 'c' },
+        { if: 'a', value: 'd' }
+      ]
+    },
+    {
+      choices: [
+        { value: 'e' },
+        { value: 'f', if: 'b' },
+        { value: 'g', if: 'd' }
+      ]
+    },
+  ];
+  t.deepEqual(pfs(questions), [
+    ['a', 'c', 'e'],
+    ['a', 'd', 'e'],
+    ['a', 'd', 'g'],
+    ['b', 'e'],
+    ['b', 'f'],
+  ]);
+});
+
 test('possibleFeatureSelections returns possible selections with multi-select', async t => {
   const questions = [
     {

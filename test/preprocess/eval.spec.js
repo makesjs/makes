@@ -78,7 +78,22 @@ test('@eval allows ommitting of whitespaces before and after @eval (line comment
   );
 });
 
-
 test('@eval complains about broken js syntax', t => {
   t.throws(() => preprocess('a\n//@eval FINGERPRINT+\nc', {FINGERPRINT: '0xDEADBEEF'}));
+});
+
+test('@eval treats undefined/null/NaN as empty string', t => {
+  t.is(
+    preprocess('a\n//@eval undefined\nc', {}),
+    'a\n\nc'
+  );
+  t.is(
+    preprocess('a\n//@eval null\nc', {}),
+    'a\n\nc'
+  );
+  // NaN
+  t.is(
+    preprocess('a\n//@eval 0 / 0 \nc', {}),
+    'a\n\nc'
+  );
 });

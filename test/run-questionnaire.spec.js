@@ -273,3 +273,20 @@ test('run ignores name field on selection question', async t => {
   let result = await run([{name: 'foo', choices: [{value: 'a'}]}], {});
   t.deepEqual(result, [{}, ['a'], []]);
 });
+
+test('run rejects wrong choices', async t => {
+  await t.throwsAsync(async () => run([{
+    choices: 'lorem'
+  }], {}));
+});
+
+test('run rejects multi-select with missing value', async t => {
+  await t.throwsAsync(async () => run([{
+    multiple: true,
+    choices: [
+      {},
+      {value: 'postcss'},
+      {value: 'sass', selected: true}
+    ]
+  }], {}));
+});

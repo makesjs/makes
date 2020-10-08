@@ -152,3 +152,20 @@ test('getOpts gets here mode', t => {
   });
 });
 
+test('getOpts ignores excessive arguments', t => {
+  t.deepEqual(getOpts(['a', 'app', 'ignored', '--here']), {
+    supplier: 'a',
+    predefinedProperties: {name: 'app'},
+    preselectedFeatures: [],
+    unattended: false,
+    here: true
+  });
+
+  t.deepEqual(getOpts(['a', '--here', 'app', '-s=x,y', 'ignored', 'ignored2']), {
+    supplier: 'a',
+    predefinedProperties: {name: 'app'},
+    preselectedFeatures: ['x', 'y'],
+    unattended: true,
+    here: true
+  });
+});

@@ -53,7 +53,7 @@ test.serial('getHttpsProxyAgent gets HTTP_PROXY from env', async t => {
 test.serial('getHttpsProxyAgent gets http_proxy from env', async t => {
   const agent = getAgent({
     _npmrc: {},
-    _env: {HTTP_PROXY: 'http://domain6.com'}
+    _env: {http_proxy: 'http://domain6.com'}
   });
   t.is(agent.proxy.href, 'http://domain6.com/');
 });

@@ -54,3 +54,10 @@ test('@echo allows ommitting of whitespaces before and after @echo (line comment
     'a\n0xDEADBEEF\nc'
   );
 });
+
+test('@echo shows missing property as empty string', t => {
+  t.is(
+    preprocess('a/*@echo FINGERPRINT*/c', {}),
+    'ac'
+  );
+});

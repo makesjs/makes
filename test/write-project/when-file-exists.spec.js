@@ -90,7 +90,7 @@ test.serial.cb('whenFileExists merges package.json no matter what is existing wr
     cwd: '/',
     base: '/test/',
     path: '/test/package.json',
-    contents: Buffer.from('{"dependencies":{"lo":"3.0.0", "bar":"1.0.0"},"version":"0.1.0","name":"app","other":"field"}'),
+    contents: Buffer.from('{"dependencies":{"lo":"3.0.0", "bar":"1.0.0"},"version":"0.1.0","name":"app","other":"field","devDependencies":{"lorem":"1.0.0"}}'),
     writePolicy: 'skip'
   });
 
@@ -103,7 +103,8 @@ test.serial.cb('whenFileExists merges package.json no matter what is existing wr
     t.deepEqual(JSON.parse(file.contents.toString()), {
       name: 'app',
       version: '1.1.2',
-      dependencies: {foo: '1.0.0', bar: '1.0.0', lo: '3.0.0'}
+      dependencies: {foo: '1.0.0', bar: '1.0.0', lo: '3.0.0'},
+      devDependencies:{lorem: '1.0.0'}
     });
     t.end();
   });
