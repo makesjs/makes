@@ -100,7 +100,7 @@ test.cb('transform skips file not in buffer mode', t => {
   ts.end();
 });
 
-test.cb.only('transform rethrows error', t => {
+test.cb('transform rethrows error', t => {
   const step = function() {
     throw new Error('lorem');
   };
