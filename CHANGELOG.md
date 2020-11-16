@@ -1,3 +1,12 @@
+# [2.1.0](https://github.com/makesjs/makes/compare/v2.0.1...v2.1.0) (2020-11-16)
+
+
+### Features
+
+* vi style navigation for select prompt ([9ae1524](https://github.com/makesjs/makes/commit/9ae1524fbe7dab1942f5b151dbde9c6e37b85dd1))
+
+
+
 ## [2.0.1](https://github.com/makesjs/makes/compare/v2.0.0...v2.0.1) (2020-09-23)
 
 
