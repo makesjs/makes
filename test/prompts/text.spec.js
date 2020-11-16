@@ -149,3 +149,17 @@ test('text prompt support terminal cursor short-cut, case 4', async (t) => {
   t.is(answer, 'abc d');
 });
 
+test('vi keybinds does not break text input', async (t) => {
+  const answer = await text({
+    message: 'prompt',
+    validate: input => !input.includes('*')
+  }, [
+    'h', 'j', 'k', ' ', 'l', 'e', ' ',
+    {name: 'left'},
+    {name: 'left'},
+    {name: 'k', ctrl: true}, // delete to end
+    {name: 'return'}
+  ]);
+
+  t.is(answer, 'hjk l');
+});

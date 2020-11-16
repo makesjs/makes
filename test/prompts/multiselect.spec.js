@@ -218,6 +218,30 @@ test('multiselect prompt supports left/right toggle', async (t) => {
   t.deepEqual(answer, ['one', 'three']);
 });
 
+test('multiselect prompt supports vi keybind toggle', async (t) => {
+  const answer = await select({
+    multiple: true,
+    message: 'prompt',
+    choices: [
+      {value: 'one', title: 'One'},
+      {value: 'two', title: 'Two'},
+      {value: 'three', title: 'Three'}
+    ]
+  }, [
+    '2',
+    {name: 'j'},
+    {name: 'h'},
+    {name: 'j'},
+    {name: 'l'},
+    {name: 'k'},
+    {name: 'k'},
+    {name: 'l'},
+    {name: 'enter'}
+  ]);
+
+  t.deepEqual(answer, ['one', 'three']);
+});
+
 test('multiselect prompt limits selection with max', async (t) => {
   const answer = await select({
     multiple: true,
