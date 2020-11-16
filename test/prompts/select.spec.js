@@ -193,3 +193,16 @@ test('select prompt supports space to submit', async (t) => {
 
   t.is(answer, 'two');
 });
+
+test('select prompt supports vi keybinds', async (t) => {
+  const answer = await select({
+    message: 'prompt',
+    choices: [
+      {value: 'one', title: 'One'},
+      {value: 'two', title: 'Two'},
+      {value: 'three', title: 'Three'}
+    ]
+  }, [{name: 'j'}, {name: 'j'}, {name: 'k'}, ' ']);
+
+  t.is(answer, 'two');
+});
