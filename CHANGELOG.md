@@ -1,3 +1,12 @@
+## [2.1.1](https://github.com/makesjs/makes/compare/v2.1.0...v2.1.1) (2020-11-17)
+
+
+### Bug Fixes
+
+* bypass windows argument rewrite issue ([f48092d](https://github.com/makesjs/makes/commit/f48092db52aaad156fddb09f2ef08b7bb5585a37)), closes [aurelia/cli#1188](https://github.com/aurelia/cli/issues/1188)
+
+
+
 # [2.1.0](https://github.com/makesjs/makes/compare/v2.0.1...v2.1.0) (2020-11-16)
 
 
