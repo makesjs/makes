@@ -1,3 +1,12 @@
+## [2.1.2](https://github.com/makesjs/makes/compare/v2.1.1...v2.1.2) (2021-01-17)
+
+
+### Bug Fixes
+
+* bypass libnpmconfig bug on win32 ([47947da](https://github.com/makesjs/makes/commit/47947dadee624adc19e2656fe495730727567da0))
+
+
+
 ## [2.1.1](https://github.com/makesjs/makes/compare/v2.1.0...v2.1.1) (2020-11-17)
 
 
