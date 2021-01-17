@@ -50,7 +50,6 @@
     "hosted-git-info": "^3.0.5",
     "https-proxy-agent": "^5.0.0",
     "isutf8": "^3.1.1",
-    "libnpmconfig": "^1.2.1",
     "lodash.camelcase": "^4.3.0",
     "lodash.mergewith": "^4.6.2",
     "minimist": "^1.2.5",
@@ -61,5 +60,8 @@
     "tar-fs": "^2.1.0",
     "tmp": "^0.2.1",
     "vinyl": "^2.2.1"
+  },
+  "ava": {
+    "concurrency": 1
   }
 }
