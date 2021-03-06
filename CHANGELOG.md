@@ -1,3 +1,12 @@
+## [2.1.3](https://github.com/makesjs/makes/compare/v2.1.2...v2.1.3) (2021-03-06)
+
+
+### Bug Fixes
+
+* replace minimist with mri to avoid number conversion issue ([c1b5cf6](https://github.com/makesjs/makes/commit/c1b5cf619b351d17d0c87e2715d5b71f6908fdba))
+
+
+
 ## [2.1.2](https://github.com/makesjs/makes/compare/v2.1.1...v2.1.2) (2021-01-17)
 
 
