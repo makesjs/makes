@@ -38,7 +38,7 @@ test.serial('makes checks target folder', async t => {
         name: 'name',
         message: 'Name:',
         validate: value => value.match(/^[a-zA-Z0-9_-]+$/) ? null :
-          'Please only use letters, numbers, dash(-) and underscore(_).'
+          'Please only use letters, numbers, dot(.), dash(-) and underscore(_).'
       },
       questions: [
         {
@@ -83,7 +83,7 @@ test.serial('makes rejects invalid folder name', async t => {
         name: 'name',
         message: 'Name:',
         validate: value => value.match(/^[a-zA-Z0-9_-]+$/) ? null :
-          'Please only use letters, numbers, dash(-) and underscore(_).'
+          'Please only use letters, numbers, dot(.), dash(-) and underscore(_).'
       },
       questions: []
     }),
