@@ -1,3 +1,12 @@
+## [2.1.4](https://github.com/makesjs/makes/compare/v2.1.3...v2.1.4) (2021-03-25)
+
+
+### Bug Fixes
+
+* allow . in default name regex, fix bitbucket tarball check ([5b746c6](https://github.com/makesjs/makes/commit/5b746c6823aba4db9ac43e0c0d05d4f6deb0feb3)), closes [#13](https://github.com/makesjs/makes/issues/13)
+
+
+
 ## [2.1.3](https://github.com/makesjs/makes/compare/v2.1.2...v2.1.3) (2021-03-06)
 
 
