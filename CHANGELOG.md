@@ -1,3 +1,12 @@
+## [2.1.5](https://github.com/makesjs/makes/compare/v2.1.4...v2.1.5) (2021-04-24)
+
+
+### Bug Fixes
+
+* avoid extra foler in private git clone ([7d69fe3](https://github.com/makesjs/makes/commit/7d69fe3ab299da0417ef0764c51a93d453ab67aa)), closes [#14](https://github.com/makesjs/makes/issues/14)
+
+
+
 ## [2.1.4](https://github.com/makesjs/makes/compare/v2.1.3...v2.1.4) (2021-03-25)
 
 
