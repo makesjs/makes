@@ -1,3 +1,17 @@
+# [3.0.0](https://github.com/makesjs/makes/compare/v2.1.5...v3.0.0) (2022-04-02)
+
+
+### chore
+
+* nodejs v12 only ([16a052b](https://github.com/makesjs/makes/commit/16a052b34a96f79d34be7ad810eaf6c9df4a72f5))
+
+
+### BREAKING CHANGES
+
+* drop Nodejs v10 support
+
+
+
 ## [2.1.5](https://github.com/makesjs/makes/compare/v2.1.4...v2.1.5) (2021-04-24)
 
 
