@@ -6,3 +6,4 @@ coverage
 /__play.js
 /tmp
 /dist
+.parcel-cache

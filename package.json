@@ -2,7 +2,15 @@
   "name": "makes",
   "version": "2.1.5",
   "description": "A tool to scaffold new projects, simple enough that you would want to define your own skeletons (aka generators).",
+  "source": "lib/index.js",
   "main": "dist/index.js",
+  "targets": {
+    "main": {
+      "includeNodeModules": true,
+      "sourceMap": false,
+      "optimize": true
+    }
+  },
   "files": [
     "dist",
     "bin"
@@ -21,7 +29,7 @@
     "version": "standard-changelog && git add CHANGELOG.md",
     "postversion": "git push && git push --tags && npm publish",
     "pretest": "npm run lint",
-    "build": "ncc build lib/index.js -m",
+    "build": "parcel build",
     "prepare": "npm run build"
   },
   "repository": {
@@ -40,21 +48,21 @@
   },
   "homepage": "https://github.com/makesjs/makes#readme",
   "devDependencies": {
-    "@babel/code-frame": "^7.12.13",
-    "@vercel/ncc": "^0.28.3",
+    "@babel/code-frame": "^7.16.7",
     "ansi-colors": "^4.1.1",
     "ava": "^3.15.0",
     "cross-spawn": "^7.0.3",
-    "eslint": "^7.25.0",
+    "eslint": "^8.12.0",
     "gunzip-maybe": "^1.4.2",
-    "hosted-git-info": "^4.0.2",
+    "hosted-git-info": "^5.0.0",
     "https-proxy-agent": "^5.0.0",
-    "isutf8": "^3.1.1",
+    "isutf8": "^4.0.0",
     "lodash.camelcase": "^4.3.0",
     "lodash.mergewith": "^4.6.2",
-    "mock-fs": "^4.14.0",
-    "mri": "^1.1.6",
+    "mock-fs": "^5.1.2",
+    "mri": "^1.2.0",
     "nyc": "^15.1.0",
+    "parcel": "^2.4.1",
     "sisteransi": "^1.0.5",
     "standard-changelog": "^2.0.27",
     "tar-fs": "^2.1.1",
