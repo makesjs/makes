@@ -2,15 +2,7 @@
   "name": "makes",
   "version": "3.0.0",
   "description": "A tool to scaffold new projects, simple enough that you would want to define your own skeletons (aka generators).",
-  "source": "lib/index.js",
   "main": "dist/index.js",
-  "targets": {
-    "main": {
-      "includeNodeModules": true,
-      "sourceMap": false,
-      "optimize": true
-    }
-  },
   "files": [
     "dist",
     "bin"
@@ -29,7 +21,7 @@
     "version": "standard-changelog && git add CHANGELOG.md",
     "postversion": "git push && git push --tags && npm publish",
     "pretest": "npm run lint",
-    "build": "parcel build",
+    "build": "ncc build lib/index.js -m",
     "prepublishOnly": "npm run build"
   },
   "repository": {
@@ -49,6 +41,7 @@
   "homepage": "https://github.com/makesjs/makes#readme",
   "devDependencies": {
     "@babel/code-frame": "^7.16.7",
+    "@vercel/ncc": "^0.33.3",
     "ansi-colors": "^4.1.1",
     "ava": "^3.15.0",
     "cross-spawn": "^7.0.3",
@@ -62,7 +55,6 @@
     "mock-fs": "^5.1.2",
     "mri": "^1.2.0",
     "nyc": "^15.1.0",
-    "parcel": "^2.4.1",
     "sisteransi": "^1.0.5",
     "standard-changelog": "^2.0.27",
     "tar-fs": "^2.1.1",
