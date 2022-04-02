@@ -30,7 +30,7 @@
     "postversion": "git push && git push --tags && npm publish",
     "pretest": "npm run lint",
     "build": "parcel build",
-    "prepare": "npm run build"
+    "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",
