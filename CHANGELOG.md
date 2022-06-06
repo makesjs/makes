@@ -1,3 +1,12 @@
+## [3.0.3](https://github.com/makesjs/makes/compare/v3.0.2...v3.0.3) (2022-06-06)
+
+
+### Bug Fixes
+
+* keep unknown properties from predefinedProperties ([915a543](https://github.com/makesjs/makes/commit/915a5433ab384a23042b3821630862c302dc845d))
+
+
+
 ## [3.0.2](https://github.com/makesjs/makes/compare/v3.0.1...v3.0.2) (2022-04-05)
 
 
