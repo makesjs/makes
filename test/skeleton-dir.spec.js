@@ -57,7 +57,8 @@ test.serial('skeletonDir returns tmp folder untar bitbucket repo', async t => {
   t.truthy(fs.readFileSync(path.join(dir, 'README.md'), 'utf8').includes('debug repo for npm'));
 });
 
-test.serial('skeletonDir returns tmp folder untar gitlab repo', async t => {
+// Found at 25/04/2021: now somehow GitLab asks login before downloading tarball.
+test.serial.skip('skeletonDir returns tmp folder untar gitlab repo', async t => {
   const repo = 'gitlab:huochunpeng/debug-npm';
 
   const dir = await skeletonDir(repo, {_useGitRepo});

@@ -23,8 +23,8 @@ test.serial('skeletonConfig runs npm install when required', async t => {
   delete result.nameQuestion.validate;
 
   t.is(validate('ab-1_2'), null);
-  t.is(validate(' a'), 'Please only use letters, numbers, dash(-) and underscore(_).');
-  t.is(validate('@a'), 'Please only use letters, numbers, dash(-) and underscore(_).');
+  t.is(validate(' a'), 'Please only use letters, numbers, dot(.), dash(-) and underscore(_).');
+  t.is(validate('@a'), 'Please only use letters, numbers, dot(.), dash(-) and underscore(_).');
   t.deepEqual(result, {
     nameQuestion: {
       name: 'name',
@@ -57,8 +57,8 @@ test.serial('skeletonConfig does not run npm install when node_modules exists', 
   delete result.nameQuestion.validate;
 
   t.is(validate('ab-1_2'), null);
-  t.is(validate(' a'), 'Please only use letters, numbers, dash(-) and underscore(_).');
-  t.is(validate('@a'), 'Please only use letters, numbers, dash(-) and underscore(_).');
+  t.is(validate(' a'), 'Please only use letters, numbers, dot(.), dash(-) and underscore(_).');
+  t.is(validate('@a'), 'Please only use letters, numbers, dot(.), dash(-) and underscore(_).');
   t.deepEqual(result, {
     nameQuestion: {
       name: 'name',
@@ -90,8 +90,8 @@ test.serial('skeletonConfig does not run npm install for devDependencies', async
   delete result.nameQuestion.validate;
 
   t.is(validate('ab-1_2'), null);
-  t.is(validate(' a'), 'Please only use letters, numbers, dash(-) and underscore(_).');
-  t.is(validate('@a'), 'Please only use letters, numbers, dash(-) and underscore(_).');
+  t.is(validate(' a'), 'Please only use letters, numbers, dot(.), dash(-) and underscore(_).');
+  t.is(validate('@a'), 'Please only use letters, numbers, dot(.), dash(-) and underscore(_).');
   t.deepEqual(result, {
     nameQuestion: {
       name: 'name',
@@ -123,8 +123,8 @@ test.serial('skeletonConfig skip npm install when not required', async t => {
   delete result.nameQuestion.validate;
 
   t.is(validate('ab-1_2'), null);
-  t.is(validate(' a'), 'Please only use letters, numbers, dash(-) and underscore(_).');
-  t.is(validate('@a'), 'Please only use letters, numbers, dash(-) and underscore(_).');
+  t.is(validate(' a'), 'Please only use letters, numbers, dot(.), dash(-) and underscore(_).');
+  t.is(validate('@a'), 'Please only use letters, numbers, dot(.), dash(-) and underscore(_).');
   t.deepEqual(result, {
     nameQuestion: {
       name: 'name',
@@ -156,8 +156,8 @@ test.serial('skeletonConfig skip npm install when no packge.json', async t => {
   delete result.nameQuestion.validate;
 
   t.is(validate('ab-1_2'), null);
-  t.is(validate(' a'), 'Please only use letters, numbers, dash(-) and underscore(_).');
-  t.is(validate('@a'), 'Please only use letters, numbers, dash(-) and underscore(_).');
+  t.is(validate(' a'), 'Please only use letters, numbers, dot(.), dash(-) and underscore(_).');
+  t.is(validate('@a'), 'Please only use letters, numbers, dot(.), dash(-) and underscore(_).');
   t.deepEqual(result, {
     nameQuestion: {
       name: 'name',
@@ -200,8 +200,8 @@ test.serial('skeletonConfig reads questions, and transforms', async t => {
   delete result.nameQuestion.validate;
 
   t.is(validate('ab-1_2'), null);
-  t.is(validate(' a'), 'Please only use letters, numbers, dash(-) and underscore(_).');
-  t.is(validate('@a'), 'Please only use letters, numbers, dash(-) and underscore(_).');
+  t.is(validate(' a'), 'Please only use letters, numbers, dot(.), dash(-) and underscore(_).');
+  t.is(validate('@a'), 'Please only use letters, numbers, dot(.), dash(-) and underscore(_).');
   t.deepEqual(result, {
     nameQuestion: {
       name: 'name',
@@ -245,8 +245,8 @@ test.serial('skeletonConfig does not inject question for project name if user pr
   delete result.nameQuestion.validate;
 
   t.is(validate('ab-1_2'), null);
-  t.is(validate(' a'), 'Please only use letters, numbers, dash(-) and underscore(_).');
-  t.is(validate('@a'), 'Please only use letters, numbers, dash(-) and underscore(_).');
+  t.is(validate(' a'), 'Please only use letters, numbers, dot(.), dash(-) and underscore(_).');
+  t.is(validate('@a'), 'Please only use letters, numbers, dot(.), dash(-) and underscore(_).');
   t.deepEqual(result, {
     nameQuestion: {name: 'name', message: 'Name', default: 'my-app'},
     questions: [
@@ -282,8 +282,8 @@ test.serial('skeletonConfig reads before and after tasks', async t => {
   delete result.nameQuestion.validate;
 
   t.is(validate('ab-1_2'), null);
-  t.is(validate(' a'), 'Please only use letters, numbers, dash(-) and underscore(_).');
-  t.is(validate('@a'), 'Please only use letters, numbers, dash(-) and underscore(_).');
+  t.is(validate(' a'), 'Please only use letters, numbers, dot(.), dash(-) and underscore(_).');
+  t.is(validate('@a'), 'Please only use letters, numbers, dot(.), dash(-) and underscore(_).');
   t.deepEqual(result, {
     nameQuestion: {
       name: 'name',
@@ -309,8 +309,8 @@ test.serial('skeletonConfig reads banner', async t => {
   delete result.nameQuestion.validate;
 
   t.is(validate('ab-1_2'), null);
-  t.is(validate(' a'), 'Please only use letters, numbers, dash(-) and underscore(_).');
-  t.is(validate('@a'), 'Please only use letters, numbers, dash(-) and underscore(_).');
+  t.is(validate(' a'), 'Please only use letters, numbers, dot(.), dash(-) and underscore(_).');
+  t.is(validate('@a'), 'Please only use letters, numbers, dot(.), dash(-) and underscore(_).');
   t.deepEqual(result, {
     nameQuestion: {
       name: 'name',

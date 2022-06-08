@@ -109,6 +109,16 @@ test('getOpts gets predefined properties', t => {
     here: false
   });
 
+  // minimist converts "123" to number 123.
+  // We switched to mri to avoid that issue.
+  t.deepEqual(getOpts(['a', '123']), {
+    supplier: 'a',
+    predefinedProperties: {name: '123'},
+    preselectedFeatures: [],
+    unattended: false,
+    here: false
+  });
+
   t.deepEqual(getOpts(['bitbucket:name/a', 'app', '--foo-bar', 'loo']), {
     supplier: 'bitbucket:name/a',
     predefinedProperties: {name: 'app', 'foo-bar': 'loo', 'fooBar': 'loo'},

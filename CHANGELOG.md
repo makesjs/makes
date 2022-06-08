@@ -1,3 +1,61 @@
+## [3.0.3](https://github.com/makesjs/makes/compare/v3.0.2...v3.0.3) (2022-06-06)
+
+
+### Bug Fixes
+
+* keep unknown properties from predefinedProperties ([915a543](https://github.com/makesjs/makes/commit/915a5433ab384a23042b3821630862c302dc845d))
+
+
+
+## [3.0.2](https://github.com/makesjs/makes/compare/v3.0.1...v3.0.2) (2022-04-05)
+
+
+
+## [3.0.1](https://github.com/makesjs/makes/compare/v3.0.0...v3.0.1) (2022-04-02)
+
+
+
+# [3.0.0](https://github.com/makesjs/makes/compare/v2.1.5...v3.0.0) (2022-04-02)
+
+
+### chore
+
+* nodejs v12 only ([16a052b](https://github.com/makesjs/makes/commit/16a052b34a96f79d34be7ad810eaf6c9df4a72f5))
+
+
+### BREAKING CHANGES
+
+* drop Nodejs v10 support
+
+
+
+## [2.1.5](https://github.com/makesjs/makes/compare/v2.1.4...v2.1.5) (2021-04-24)
+
+
+### Bug Fixes
+
+* avoid extra foler in private git clone ([7d69fe3](https://github.com/makesjs/makes/commit/7d69fe3ab299da0417ef0764c51a93d453ab67aa)), closes [#14](https://github.com/makesjs/makes/issues/14)
+
+
+
+## [2.1.4](https://github.com/makesjs/makes/compare/v2.1.3...v2.1.4) (2021-03-25)
+
+
+### Bug Fixes
+
+* allow . in default name regex, fix bitbucket tarball check ([5b746c6](https://github.com/makesjs/makes/commit/5b746c6823aba4db9ac43e0c0d05d4f6deb0feb3)), closes [#13](https://github.com/makesjs/makes/issues/13)
+
+
+
+## [2.1.3](https://github.com/makesjs/makes/compare/v2.1.2...v2.1.3) (2021-03-06)
+
+
+### Bug Fixes
+
+* replace minimist with mri to avoid number conversion issue ([c1b5cf6](https://github.com/makesjs/makes/commit/c1b5cf619b351d17d0c87e2715d5b71f6908fdba))
+
+
+
 ## [2.1.2](https://github.com/makesjs/makes/compare/v2.1.1...v2.1.2) (2021-01-17)
 
 

@@ -237,6 +237,19 @@ test('run runs through questionnaire in unattended mode with preselectedFeatures
   ]);
 });
 
+test('run runs through questionnaire in unattended mode with preselectedFeatures and predefinedProperties, and keeps unknown properties', async t => {
+  const result = await run(questions, {
+    unattended: true,
+    preselectedFeatures: ['postcss'],
+    predefinedProperties: {name: 'new-app', foo: 'bar'}
+  });
+  t.deepEqual(result, [
+    {name: 'new-app', description: '', foo: 'bar'},
+    ['webpack', 'postcss'],
+    ['postcss']
+  ]);
+});
+
 test('run runs through questionnaire', async t => {
   let result = await run(questions, {_debug: ['new-app', 2, [1, 2]]});
   t.deepEqual(result, [
@@ -260,6 +273,19 @@ test('run runs through questionnaire with preselectedFeatures and predefinedProp
   });
   t.deepEqual(result, [
     {name: 'new-app'},
+    ['dumber', 'postcss'],
+    ['dumber', 'postcss']
+  ]);
+});
+
+test('run runs through questionnaire with preselectedFeatures and predefinedProperties, and keeps unknown properties', async t => {
+  const result = await run(questions, {
+    preselectedFeatures: ['postcss'],
+    predefinedProperties: {name: 'new-app', foo: 'bar'},
+    _debug: [2]
+  });
+  t.deepEqual(result, [
+    {name: 'new-app', foo: 'bar'},
     ['dumber', 'postcss'],
     ['dumber', 'postcss']
   ]);
