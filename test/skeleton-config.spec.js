@@ -16,7 +16,10 @@ test.serial('skeletonConfig runs npm install when required', async t => {
     installed = dir;
   }
 
-  const result = await config('skeleton', {_npmInstall: npmInstall});
+  const result = await config('skeleton', {
+    _npmInstall: npmInstall,
+    _import: async () => undefined
+  });
   t.truthy(installed);
 
   const {validate} = result.nameQuestion;
@@ -51,7 +54,10 @@ test.serial('skeletonConfig does not run npm install when node_modules exists', 
     installed = dir;
   }
 
-  const result = await config('skeleton', {_npmInstall: npmInstall});
+  const result = await config('skeleton', {
+    _npmInstall: npmInstall,
+    _import: async () => undefined
+  });
   t.falsy(installed);
   const {validate} = result.nameQuestion;
   delete result.nameQuestion.validate;
@@ -84,7 +90,10 @@ test.serial('skeletonConfig does not run npm install for devDependencies', async
     installed = dir;
   }
 
-  const result = await config('skeleton', {_npmInstall: npmInstall});
+  const result = await config('skeleton', {
+    _npmInstall: npmInstall,
+    _import: async () => undefined
+  });
   t.falsy(installed);
   const {validate} = result.nameQuestion;
   delete result.nameQuestion.validate;
@@ -117,7 +126,10 @@ test.serial('skeletonConfig skip npm install when not required', async t => {
     installed = dir;
   }
 
-  const result = await config('skeleton', {_npmInstall: npmInstall});
+  const result = await config('skeleton', {
+    _npmInstall: npmInstall,
+    _import: async () => undefined
+  });
   t.falsy(installed);
   const {validate} = result.nameQuestion;
   delete result.nameQuestion.validate;
@@ -150,7 +162,10 @@ test.serial('skeletonConfig skip npm install when no packge.json', async t => {
     installed = dir;
   }
 
-  const result = await config('skeleton', {_npmInstall: npmInstall});
+  const result = await config('skeleton', {
+    _npmInstall: npmInstall,
+    _import: async () => undefined
+  });
   t.falsy(installed);
   const {validate} = result.nameQuestion;
   delete result.nameQuestion.validate;
@@ -175,18 +190,19 @@ test.serial('skeletonConfig skip npm install when no packge.json', async t => {
 
 test.serial('skeletonConfig reads questions, and transforms', async t => {
   mockfs({
-    'skeleton/questions.js': '',
-    'skeleton/transforms.js': ''
+    'skeleton/.keep': ''
   });
 
-  function mockRequire(m) {
+  async function mockImport(m) {
     m = m.replace(/\\/g, '/');
-    if (m === 'skeleton/questions.js') {
-      return [
-        {name: 'description', message: 'Des'},
-        {choices: [{value: 'one'}], message: 'Choose'}
-      ];
-    } else if (m === 'skeleton/transforms.js') {
+    if (m === 'skeleton/questions') {
+      return {
+        'default': [
+          {name: 'description', message: 'Des'},
+          {choices: [{value: 'one'}], message: 'Choose'}
+        ]
+      };
+    } else if (m === 'skeleton/transforms') {
       return {
         prepend: 'fake',
         append: ['fake2', 'fake3']
@@ -195,7 +211,7 @@ test.serial('skeletonConfig reads questions, and transforms', async t => {
   }
 
 
-  const result = await config('skeleton', {_require: mockRequire});
+  const result = await config('skeleton', {_import: mockImport});
   const {validate} = result.nameQuestion;
   delete result.nameQuestion.validate;
 
@@ -222,25 +238,23 @@ test.serial('skeletonConfig reads questions, and transforms', async t => {
 
 test.serial('skeletonConfig does not inject question for project name if user provided one', async t => {
   mockfs({
-    'skeleton/questions.js': '',
-    'skeleton/transforms.js': ''
+    'skeleton/.keep': ''
   });
 
-  function mockRequire(m) {
+  async function mockImport(m) {
     m = m.replace(/\\/g, '/');
-    if (m === 'skeleton/questions.js') {
-      return [
-        {name: 'name', message: 'Name'},
-        {name: 'description', message: 'Des'},
-        {choices: [{value: 'one'}], message: 'Choose'}
-      ];
-    } else if (m === 'skeleton/transforms.js') {
+    if (m === 'skeleton/questions') {
       return {
+        'default': [
+          {name: 'name', message: 'Name'},
+          {name: 'description', message: 'Des'},
+          {choices: [{value: 'one'}], message: 'Choose'}
+        ]
       };
     }
   }
 
-  const result = await config('skeleton', {_require: mockRequire});
+  const result = await config('skeleton', {_import: mockImport});
   const {validate} = result.nameQuestion;
   delete result.nameQuestion.validate;
 
@@ -263,21 +277,20 @@ test.serial('skeletonConfig does not inject question for project name if user pr
 
 test.serial('skeletonConfig reads before and after tasks', async t => {
   mockfs({
-    'skeleton/before.js': '',
-    'skeleton/after.js': ''
+    'skeleton/.keep': ''
   });
 
-  function mockRequire(m) {
+  function mockImport(m) {
     m = m.replace(/\\/g, '/');
-    if (m === 'skeleton/before.js') {
-      return 'before';
-    } else if (m === 'skeleton/after.js') {
-      return 'after';
+    if (m === 'skeleton/before') {
+      return { 'default': 'before' };
+    } else if (m === 'skeleton/after') {
+      return { 'default': 'after' };
     }
   }
 
 
-  const result = await config('skeleton', {_require: mockRequire});
+  const result = await config('skeleton', {_import: mockImport});
   const {validate} = result.nameQuestion;
   delete result.nameQuestion.validate;
 
@@ -304,7 +317,7 @@ test.serial('skeletonConfig reads banner', async t => {
     'skeleton/banner': 'lorem'
   });
 
-  const result = await config('skeleton');
+  const result = await config('skeleton', {_import: async () => undefined});
   const {validate} = result.nameQuestion;
   delete result.nameQuestion.validate;
 
