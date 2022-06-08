@@ -6,10 +6,10 @@ const path = require('path');
 const help = fs.readFileSync(path.join(__dirname, 'help.txt'), 'utf8');
 
 let makes;
-try {
+if (process.env.MAKES_RUN_SRC) {
   // only for local source debug
   makes = require('../lib');
-} catch (e) {
+} else {
   // for production
   makes = require('../dist');
 }
