@@ -9,6 +9,7 @@ function _useGitRepo() {
 }
 
 test.afterEach(() => {
+  // Only first two tests uses mockfs
   mockfs.restore();
 });
 
@@ -41,38 +42,26 @@ test.serial('skeletonDir complains about non-existing repo', async t => {
 });
 
 test.serial('skeletonDir returns tmp folder untar github repo', async t => {
-  mockfs({
-    'tmp/.keep': ''
-  });
-
   const repo = '3cp/debug-npm#v1.0.0';
 
-  const dir = await skeletonDir(repo, {_tmpFolder: 'tmp', _useGitRepo});
+  const dir = await skeletonDir(repo, {_useGitRepo});
   t.truthy(fs.readdirSync(dir).includes('README.md'));
   t.truthy(fs.readFileSync(path.join(dir, 'README.md'), 'utf8').includes('debug repo for npm'));
 });
 
 test.serial('skeletonDir returns tmp folder untar bitbucket repo', async t => {
-  mockfs({
-    'tmp/.keep': ''
-  });
-
   const repo = 'bitbucket:huochunpeng/debug-npm#v1.0.0';
 
-  const dir = await skeletonDir(repo, {_tmpFolder: 'tmp', _useGitRepo});
+  const dir = await skeletonDir(repo, {_useGitRepo});
   t.truthy(fs.readdirSync(dir).includes('README.md'));
   t.truthy(fs.readFileSync(path.join(dir, 'README.md'), 'utf8').includes('debug repo for npm'));
 });
 
 // Found at 25/04/2021: now somehow GitLab asks login before downloading tarball.
 test.serial.skip('skeletonDir returns tmp folder untar gitlab repo', async t => {
-  mockfs({
-    'tmp/.keep': ''
-  });
-
   const repo = 'gitlab:huochunpeng/debug-npm';
 
-  const dir = await skeletonDir(repo, {_tmpFolder: 'tmp', _useGitRepo});
+  const dir = await skeletonDir(repo, {_useGitRepo});
   t.truthy(fs.readdirSync(dir).includes('README.md'));
   t.truthy(fs.readFileSync(path.join(dir, 'README.md'), 'utf8').includes('debug repo for npm'));
 });
