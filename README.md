@@ -4,6 +4,10 @@ A tool to scaffold new projects, simple enough that you would want to define you
 
 **Document site: https://makes.js.org**
 
+# Limitation on Windows
+
+"makes" on Windows requires native "tar" command in Windows 10 (or later). It cannot run on some early version of Windows 10 or any older Windows.
+
 ## Run "makes"
 
 "makes" is designed to be used without any installation, as long as you have [Node.js](https://nodejs.org). To run "makes", do:
