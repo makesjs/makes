@@ -278,16 +278,16 @@ test('run runs through questionnaire with preselectedFeatures and predefinedProp
   ]);
 });
 
-test('run runs through questionnaire with preselectedFeatures and predefinedProperties, and keeps unknown properties', async t => {
+test('run runs through questionnaire with preselectedFeatures and predefinedProperties, and keeps unknown properties and selection', async t => {
   const result = await run(questions, {
-    preselectedFeatures: ['postcss'],
+    preselectedFeatures: ['postcss', 'lorem', 'abc', 'lorem'],
     predefinedProperties: {name: 'new-app', foo: 'bar'},
     _debug: [2]
   });
   t.deepEqual(result, [
     {name: 'new-app', foo: 'bar'},
-    ['dumber', 'postcss'],
-    ['dumber', 'postcss']
+    ['dumber', 'postcss', 'lorem', 'abc'],
+    ['dumber', 'postcss', 'lorem', 'abc']
   ]);
 });
 
