@@ -1,3 +1,19 @@
+# [3.1.0](https://github.com/makesjs/makes/compare/v3.0.3...v3.1.0) (2022-06-09)
+
+
+### Bug Fixes
+
+* use absolute specifier for dynamic import ([26ea6fe](https://github.com/makesjs/makes/commit/26ea6fe2bc36f9ee9b04edddc300a466effedcc7))
+
+
+### Features
+
+* retain unknown features from command line and before.js ([72a0c79](https://github.com/makesjs/makes/commit/72a0c79fa50ffd7353cb83b51c0f06f5ff2711ae))
+* support esm format for all skeleton code ([d9b7560](https://github.com/makesjs/makes/commit/d9b7560914a4ec54511be189e85b45f8af82e517))
+* warn user/designer about missing property ([6716fd8](https://github.com/makesjs/makes/commit/6716fd89c1dce6e456b687b72ce03a671859325b))
+
+
+
 ## [3.0.3](https://github.com/makesjs/makes/compare/v3.0.2...v3.0.3) (2022-06-06)
 
 
