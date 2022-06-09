@@ -60,6 +60,9 @@
     "vinyl": "^2.2.1"
   },
   "ava": {
-    "concurrency": 1
+    "concurrency": 1,
+    "files": [
+      "test/**/*.spec.js"
+    ]
   }
 }
