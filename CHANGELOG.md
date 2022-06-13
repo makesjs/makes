@@ -1,3 +1,12 @@
+## [3.1.1](https://github.com/makesjs/makes/compare/v3.1.0...v3.1.1) (2022-06-13)
+
+
+### Bug Fixes
+
+* unknown features should checked against all possible features ([40d8732](https://github.com/makesjs/makes/commit/40d87328e241628651239cdd88ea05da8dee349b))
+
+
+
 # [3.1.0](https://github.com/makesjs/makes/compare/v3.0.3...v3.1.0) (2022-06-09)
 
 
