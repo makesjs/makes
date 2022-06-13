@@ -280,7 +280,7 @@ test('run runs through questionnaire with preselectedFeatures and predefinedProp
 
 test('run runs through questionnaire with preselectedFeatures and predefinedProperties, and keeps unknown properties and selection', async t => {
   const result = await run(questions, {
-    preselectedFeatures: ['postcss', 'lorem', 'abc', 'lorem'],
+    preselectedFeatures: ['webpack', 'dumber', 'postcss', 'lorem', 'abc', 'lorem'],
     predefinedProperties: {name: 'new-app', foo: 'bar'},
     _debug: [2]
   });
