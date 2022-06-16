@@ -1,4 +1,4 @@
-const test = require('ava');
+const {test} = require('zora');
 const pfs = require('../lib/possible-feature-selections');
 
 test('possibleFeatureSelections returns empty array for empty questions', async t => {

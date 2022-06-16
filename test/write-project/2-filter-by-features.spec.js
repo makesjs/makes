@@ -1,4 +1,4 @@
-const test = require('ava');
+const {test} = require('zora');
 const filterByFeatures = require('../../lib/write-project/2-filter-by-features');
 const Vinyl = require('vinyl');
 

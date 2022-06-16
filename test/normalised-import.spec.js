@@ -1,4 +1,4 @@
-const test = require('ava');
+const {test} = require('zora');
 const path = require('path');
 const normalisedImport = require('../lib/normalised-import');
 

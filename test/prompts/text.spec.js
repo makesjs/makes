@@ -1,4 +1,4 @@
-const test = require('ava');
+const {test} = require('zora');
 const {text} = require('./_prompt-under-test');
 
 test('text prompt returns default value', async (t) => {
@@ -37,13 +37,16 @@ test('text prompt returns user input', async (t) => {
 });
 
 test('text prompt rejects invalid input', async (t) => {
-  await t.throwsAsync(text({
-    message: 'prompt',
-    validate: input => !input.includes('*')
-  }, ['a', '*', 'c', {name: 'return'}, {name: 'abort'}]), {
-    name: 'SoftError',
-    message: /abort with answer a\*c/
-  });
+  try {
+    await text({
+      message: 'prompt',
+      validate: input => !input.includes('*')
+    }, ['a', '*', 'c', {name: 'return'}, {name: 'abort'}]);
+    t.fail('should not pass');
+  } catch (e) {
+    t.is(e.name, 'SoftError');
+    t.ok(e.message.match(/abort with answer a\*c/), e.message);
+  }
 });
 
 test('text prompt rejects invalid input, allows correction', async (t) => {

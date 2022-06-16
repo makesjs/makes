@@ -1,18 +1,14 @@
-const test = require('ava');
-const skeletonDir = require('../lib/skeleton-dir');
-const mockfs = require('mock-fs');
-const path = require('path');
-const fs = require('fs');
+import {test, skip} from 'zora';
+import skeletonDir from '../lib/skeleton-dir.js';
+import mockfs from 'mock-fs';
+import path from 'path';
+import fs from 'fs';
 
 function _useGitRepo() {
   throw new Error('Not implemented');
 }
 
-test.afterEach(() => {
-  mockfs.restore();
-});
-
-test.serial('skeletonDir simply returns local dir', async t => {
+await test('skeletonDir simply returns local dir', async t => {
   mockfs({
     '../my/dir/.keep': '',
     './my/dir/.keep': '',
@@ -21,26 +17,44 @@ test.serial('skeletonDir simply returns local dir', async t => {
   t.is(await skeletonDir('../my/dir', {_useGitRepo}), '../my/dir');
   t.is(await skeletonDir('./my/dir', {_useGitRepo}), './my/dir');
   t.is(await skeletonDir('/my/dir', {_useGitRepo}), '/my/dir');
+  mockfs.restore();
 });
 
-test.serial('skeletonDir complains about missing local dir', async t => {
+await test('skeletonDir complains about missing local dir', async t => {
   mockfs();
-  await t.throwsAsync(async() => skeletonDir('./my/dir', {_useGitRepo}));
+  try {
+    await skeletonDir('./my/dir', {_useGitRepo});
+    t.fail('should not pass');
+  } catch (e) {
+    t.ok(e, e.message);
+  }
+  mockfs.restore();
 });
 
-test.serial('skeletonDir complains about unresolved repo', async t => {
+await test('skeletonDir complains about unresolved repo', async t => {
   function resolveRepo() {}
 
-  await t.throwsAsync(async() => skeletonDir('something', {
-    _resolve: resolveRepo, _useGitRepo
-  }));
+  try {
+    await skeletonDir('something', {
+      _resolve: resolveRepo, _useGitRepo
+    });
+    t.fail('should not pass');
+  } catch (e) {
+    t.ok(e, e.message);
+  }
+  mockfs.restore();
 });
 
-test.serial('skeletonDir complains about non-existing repo', async t => {
-  await t.throwsAsync(async() => skeletonDir('3cp/not-exist', {_useGitRepo}));
+await test('skeletonDir complains about non-existing repo', async t => {
+  try {
+    await skeletonDir('3cp/not-exist', {_useGitRepo});
+    t.fail('should not pass');
+  } catch (e) {
+    t.ok(e, e.message);
+  }
 });
 
-test.serial('skeletonDir returns tmp folder untar github repo', async t => {
+await test('skeletonDir returns tmp folder untar github repo', async t => {
   mockfs({
     'tmp/.keep': ''
   });
@@ -50,9 +64,10 @@ test.serial('skeletonDir returns tmp folder untar github repo', async t => {
   const dir = await skeletonDir(repo, {_tmpFolder: 'tmp', _useGitRepo});
   t.truthy(fs.readdirSync(dir).includes('README.md'));
   t.truthy(fs.readFileSync(path.join(dir, 'README.md'), 'utf8').includes('debug repo for npm'));
+  mockfs.restore();
 });
 
-test.serial('skeletonDir returns tmp folder untar bitbucket repo', async t => {
+await test('skeletonDir returns tmp folder untar bitbucket repo', async t => {
   mockfs({
     'tmp/.keep': ''
   });
@@ -62,10 +77,11 @@ test.serial('skeletonDir returns tmp folder untar bitbucket repo', async t => {
   const dir = await skeletonDir(repo, {_tmpFolder: 'tmp', _useGitRepo});
   t.truthy(fs.readdirSync(dir).includes('README.md'));
   t.truthy(fs.readFileSync(path.join(dir, 'README.md'), 'utf8').includes('debug repo for npm'));
+  mockfs.restore();
 });
 
 // Found at 25/04/2021: now somehow GitLab asks login before downloading tarball.
-test.serial.skip('skeletonDir returns tmp folder untar gitlab repo', async t => {
+await skip('skeletonDir returns tmp folder untar gitlab repo', async t => {
   mockfs({
     'tmp/.keep': ''
   });
@@ -75,4 +91,5 @@ test.serial.skip('skeletonDir returns tmp folder untar gitlab repo', async t => 
   const dir = await skeletonDir(repo, {_tmpFolder: 'tmp', _useGitRepo});
   t.truthy(fs.readdirSync(dir).includes('README.md'));
   t.truthy(fs.readFileSync(path.join(dir, 'README.md'), 'utf8').includes('debug repo for npm'));
+  mockfs.restore();
 });

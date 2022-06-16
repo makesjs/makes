@@ -1,12 +1,8 @@
-const test = require('ava');
-const config = require('../lib/skeleton-config');
-const mockfs = require('mock-fs');
+import {test} from 'zora';
+import config from '../lib/skeleton-config.js';
+import mockfs from 'mock-fs';
 
-test.afterEach(() => {
-  mockfs.restore();
-});
-
-test.serial('skeletonConfig runs npm install when required', async t => {
+await test('skeletonConfig runs npm install when required', async t => {
   mockfs({
     'skeleton/package.json': '{"dependencies":{"foo":"1.0.0"}}'
   });
@@ -41,9 +37,10 @@ test.serial('skeletonConfig runs npm install when required', async t => {
     before: undefined,
     after: undefined
   });
+  mockfs.restore();
 });
 
-test.serial('skeletonConfig does not run npm install when node_modules exists', async t => {
+await test('skeletonConfig does not run npm install when node_modules exists', async t => {
   mockfs({
     'skeleton/package.json': '{"dependencies":{"foo":"1.0.0"}}',
     'skeleton/node_modules': {}
@@ -78,9 +75,10 @@ test.serial('skeletonConfig does not run npm install when node_modules exists', 
     before: undefined,
     after: undefined
   });
+  mockfs.restore();
 });
 
-test.serial('skeletonConfig does not run npm install for devDependencies', async t => {
+await test('skeletonConfig does not run npm install for devDependencies', async t => {
   mockfs({
     'skeleton/package.json': '{"devDpendencies":{"foo":"1.0.0"}}'
   });
@@ -114,9 +112,10 @@ test.serial('skeletonConfig does not run npm install for devDependencies', async
     before: undefined,
     after: undefined
   });
+  mockfs.restore();
 });
 
-test.serial('skeletonConfig skip npm install when not required', async t => {
+await test('skeletonConfig skip npm install when not required', async t => {
   mockfs({
     'skeleton/package.json': '{}'
   });
@@ -150,9 +149,10 @@ test.serial('skeletonConfig skip npm install when not required', async t => {
     before: undefined,
     after: undefined
   });
+  mockfs.restore();
 });
 
-test.serial('skeletonConfig skip npm install when no packge.json', async t => {
+await test('skeletonConfig skip npm install when no packge.json', async t => {
   mockfs({
     'skeleton/.keep': ''
   });
@@ -186,9 +186,10 @@ test.serial('skeletonConfig skip npm install when no packge.json', async t => {
     before: undefined,
     after: undefined
   });
+  mockfs.restore();
 });
 
-test.serial('skeletonConfig reads questions, and transforms', async t => {
+await test('skeletonConfig reads questions, and transforms', async t => {
   mockfs({
     'skeleton/.keep': ''
   });
@@ -209,7 +210,6 @@ test.serial('skeletonConfig reads questions, and transforms', async t => {
       };
     }
   }
-
 
   const result = await config('skeleton', {_import: mockImport});
   const {validate} = result.nameQuestion;
@@ -234,9 +234,10 @@ test.serial('skeletonConfig reads questions, and transforms', async t => {
     before: undefined,
     after: undefined
   });
+  mockfs.restore();
 });
 
-test.serial('skeletonConfig does not inject question for project name if user provided one', async t => {
+await test('skeletonConfig does not inject question for project name if user provided one', async t => {
   mockfs({
     'skeleton/.keep': ''
   });
@@ -273,9 +274,10 @@ test.serial('skeletonConfig does not inject question for project name if user pr
     before: undefined,
     after: undefined
   });
+  mockfs.restore();
 });
 
-test.serial('skeletonConfig reads before and after tasks', async t => {
+await test('skeletonConfig reads before and after tasks', async t => {
   mockfs({
     'skeleton/.keep': ''
   });
@@ -310,9 +312,10 @@ test.serial('skeletonConfig reads before and after tasks', async t => {
     before: 'before',
     after: 'after'
   });
+  mockfs.restore();
 });
 
-test.serial('skeletonConfig reads banner', async t => {
+await test('skeletonConfig reads banner', async t => {
   mockfs({
     'skeleton/banner': 'lorem'
   });
@@ -337,4 +340,5 @@ test.serial('skeletonConfig reads banner', async t => {
     before: undefined,
     after: undefined
   });
+  mockfs.restore();
 });

@@ -1,15 +1,11 @@
-const test = require('ava');
-const writeProject = require('../../lib/write-project');
-const mockfs = require('mock-fs');
-const fs = require('fs');
-const path = require('path');
-const {Transform} = require('stream');
+import {test} from 'zora';
+import writeProject from '../../lib/write-project/index.js';
+import mockfs from 'mock-fs';
+import fs from 'fs';
+import path from 'path';
+import {Transform} from 'stream';
 
-test.afterEach(() => {
-  mockfs.restore();
-});
-
-test.serial('writeProject merges all features folders', async t => {
+await test('writeProject merges all features folders', async t => {
   mockfs({
     'skeleton/common/file-a.js': 'file-a',
     'skeleton/feature1/file-b.js': 'file-b',
@@ -37,9 +33,10 @@ test.serial('writeProject merges all features folders', async t => {
     fs.readFileSync(path.join('here', 'folder', 'file-b2.js'), 'utf8'),
     'file-b2'
   );
+  mockfs.restore();
 });
 
-test.serial('writeProject filters, preprocess, skips/appends file', async t => {
+await test('writeProject filters, preprocess, skips/appends file', async t => {
   mockfs({
     'skeleton/common/file-a.js__skip-if-exists': 'file-a',
     'skeleton/common/file-a2.js__append-if-exists__if_feature1': 'file-a2',
@@ -79,9 +76,10 @@ test.serial('writeProject filters, preprocess, skips/appends file', async t => {
     fs.readFileSync(path.join('here', 'folder', 'file-b2.js'), 'utf8'),
     'file-b2-app'
   );
+  mockfs.restore();
 });
 
-test.serial('writeProject supports prependTransforms and appendTransforms', async t => {
+await test('writeProject supports prependTransforms and appendTransforms', async t => {
   mockfs({
     'skeleton/common/intro.md': 'intro',
     'skeleton/feature1/folder/file-b.ext__if_feature3': 'file-b',
@@ -149,9 +147,10 @@ test.serial('writeProject supports prependTransforms and appendTransforms', asyn
     fs.readFileSync(path.join('here', 'folder', 'file-b.f3'), 'utf8'),
     'file-b'
   );
+  mockfs.restore();
 });
 
-test.serial('writeProject reports error', async t => {
+await test('writeProject reports error', async t => {
   mockfs({
     'skeleton/feature1/file.js': '// @if feature2\na\n',
   });
@@ -163,10 +162,10 @@ test.serial('writeProject reports error', async t => {
       skeletonDir: 'skeleton',
       targetDir: 'here'
     });
+    t.fail('should not be here');
   } catch (e) {
     t.truthy(e.message.startsWith(`Error in skeleton file: ${path.join('skeleton', 'feature1', 'file.js')}\nCould not find an ending @endif for the @if`));
-    return;
   }
 
-  t.fail('should not be here');
+  mockfs.restore();
 });

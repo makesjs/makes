@@ -1,4 +1,4 @@
-const test = require('ava');
+const {test} = require('zora');
 const {select} = require('./_prompt-under-test');
 
 test('multiselect prompt returns default empty selection', async (t) => {
@@ -138,18 +138,21 @@ test('multiselect prompt can reset', async (t) => {
 });
 
 test('multiselect prompt can abort', async (t) => {
-  await t.throwsAsync(select({
-    multiple: true,
-    message: 'prompt',
-    choices: [
-      {value: 'one', title: 'One'},
-      {value: 'two', title: 'Two'},
-      {value: 'three', title: 'Three'}
-    ]
-  }, ['1', '3', {name: 'c', ctrl: true}]), {
-    name: 'SoftError',
-    message: /abort with answer one,three/
-  });
+  try {
+    await select({
+      multiple: true,
+      message: 'prompt',
+      choices: [
+        {value: 'one', title: 'One'},
+        {value: 'two', title: 'Two'},
+        {value: 'three', title: 'Three'}
+      ]
+    }, ['1', '3', {name: 'c', ctrl: true}]);
+    t.fail('should not pass');
+  } catch (e) {
+    t.is(e.name, 'SoftError');
+    t.ok(e.message.match(/abort with answer one,three/), e.message);
+  }
 });
 
 test('multiselect prompt supports terminal short-cut to start', async (t) => {

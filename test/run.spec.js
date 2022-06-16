@@ -1,4 +1,4 @@
-const test = require('ava');
+const {test} = require('zora');
 const run = require('../lib/run');
 
 const ls = process.platform === 'win32' ? 'dir' : 'ls';
@@ -6,32 +6,34 @@ const cmdThatWait = process.platform === 'win32' ? 'cmd' : 'cat';
 
 test('run a command', async t => {
   await run('echo', ['hello']);
-  t.pass('successfully run a command');
+  t.ok(true, 'successfully run a command');
 });
 
 test('run a command in a different cwd', async t => {
   await run(ls, ['index.js'], 'lib');
-  t.pass('successfully run a command in a different cwd');
+  t.ok(true, 'successfully run a command in a different cwd');
 });
 
 test('run a command, catch failure', async t => {
-  await t.throwsAsync(async () => run(ls, ['no-such-file'], 'lib'));
+  try {
+    await run(ls, ['no-such-file'], 'lib');
+    t.fail('Should not pass');
+  } catch (err) {
+    t.ok(err, err.message);
+  }
 });
 
-test.cb('run a command, catch signal on exit', t => {
+test('run a command, catch signal on exit', async t => {
   const cmd = run(cmdThatWait);
-  cmd.then(
-    () => {
-      t.fail('Should not pass');
-      t.end();
-    },
-    err => {
-      t.is(err.message, cmdThatWait + ' exit signal: SIGTERM');
-      t.end();
-    }
-  );
 
   setTimeout(() => {
     cmd.proc.kill();
   }, 200);
+
+  try {
+    await cmd;
+    t.fail('Should not pass');
+  } catch (err) {
+    t.is(err.message, cmdThatWait + ' exit signal: SIGTERM');
+  }
 });

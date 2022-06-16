@@ -1,4 +1,4 @@
-const test = require('ava');
+const {test} = require('zora');
 const markWritePolicy = require('../../lib/write-project/1-mark-write-policy');
 const Vinyl = require('vinyl');
 

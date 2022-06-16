@@ -1,4 +1,4 @@
-const test = require('ava');
+const {test} = require('zora');
 const getOpts = require('../lib/get-opts');
 
 function mockExit(func) {

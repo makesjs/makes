@@ -1,4 +1,4 @@
-const test = require('ava');
+const {test} = require('zora');
 const {select} = require('./_prompt-under-test');
 
 test('select prompt returns default first value', async (t) => {
@@ -129,17 +129,20 @@ test('select prompt can reset', async (t) => {
 });
 
 test('select prompt can abort', async (t) => {
-  await t.throwsAsync(select({
-    message: 'prompt',
-    choices: [
-      {value: 'one', title: 'One'},
-      {value: 'two', title: 'Two'},
-      {value: 'three', title: 'Three'}
-    ]
-  }, ['3', {name: 'c', ctrl: true}]), {
-    name: 'SoftError',
-    message: /abort with answer three/
-  });
+  try {
+    await select({
+      message: 'prompt',
+      choices: [
+        {value: 'one', title: 'One'},
+        {value: 'two', title: 'Two'},
+        {value: 'three', title: 'Three'}
+      ]
+    }, ['3', {name: 'c', ctrl: true}]);
+    t.fail('should not pass');
+  } catch (e) {
+    t.is(e.name, 'SoftError');
+    t.ok(e.message.match(/abort with answer three/), e.message);
+  }
 });
 
 test('select prompt supports terminal short-cut to start', async (t) => {

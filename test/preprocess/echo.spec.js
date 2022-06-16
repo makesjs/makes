@@ -1,4 +1,4 @@
-const test = require('ava');
+const {test} = require('zora');
 const preprocess = require('../../lib/preprocess');
 
 test('preprocess can handle empty input', t => {

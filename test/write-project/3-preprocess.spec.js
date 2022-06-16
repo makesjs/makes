@@ -1,4 +1,4 @@
-const test = require('ava');
+const {test} = require('zora');
 const preprocess = require('../../lib/write-project/3-preprocess');
 const Vinyl = require('vinyl');
 

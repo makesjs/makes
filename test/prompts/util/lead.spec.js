@@ -1,4 +1,4 @@
-const test = require('ava');
+const {test} = require('zora');
 const lead = require('../../../lib/prompts/util/lead');
 const color = require('ansi-colors');
 

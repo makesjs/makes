@@ -1,11 +1,7 @@
-const test = require('ava');
-const makes = require('../lib/index');
-const prompts = require('../lib/prompts');
-const mockfs = require('mock-fs');
-
-test.afterEach(() => {
-  mockfs.restore();
-});
+import {test} from 'zora';
+import makes from '../lib/index.js';
+import prompts from '../lib/prompts/index.js';
+import mockfs from 'mock-fs';
 
 test('exports some functions', t => {
   t.is(typeof makes.getOpts, 'function');
@@ -14,16 +10,22 @@ test('exports some functions', t => {
   t.is(typeof makes.possibleFeatureSelections, 'function');
 });
 
-test.serial('makes complains missing project name in silent mode', async t => {
+await test('makes complains missing project name in silent mode', async t => {
   mockfs();
 
-  await t.throwsAsync(async () => makes('supplier', {
-    predefinedProperties: {},
-    unattended: true
-  }));
+  try {
+    await makes('supplier', {
+      predefinedProperties: {},
+      unattended: true
+    });
+    t.fail('should not pass');
+  } catch (e) {
+    t.ok(e, e.message);
+  }
+  mockfs.restore();
 });
 
-test.serial('makes checks target folder', async t => {
+await test('makes checks target folder', async t => {
   let captured;
 
   mockfs();
@@ -66,86 +68,104 @@ test.serial('makes checks target folder', async t => {
     prependTransforms: 'mock-prepend',
     appendTransforms: 'mock-append'
   });
+  mockfs.restore();
 });
 
-test.serial('makes rejects invalid folder name', async t => {
+await test('makes rejects invalid folder name', async t => {
   let captured;
 
   mockfs({app: {}});
 
-  await t.throwsAsync(async () => makes('supplier', {
-    predefinedProperties: {name: 'app:1'},
-    unattended: true
-  }, {
-    _skeletonDir: () => 'skeleton',
-    _skeletonConfig: () => ({
-      nameQuestion: {
-        name: 'name',
-        message: 'Name:',
-        validate: value => value.match(/^[a-zA-Z0-9_-]+$/) ? null :
-          'Please only use letters, numbers, dot(.), dash(-) and underscore(_).'
-      },
-      questions: []
-    }),
-    _writeProject: result => {
-      captured = result;
-    }
-  }));
-
+  try {
+    await makes('supplier', {
+      predefinedProperties: {name: 'app:1'},
+      unattended: true
+    }, {
+      _skeletonDir: () => 'skeleton',
+      _skeletonConfig: () => ({
+        nameQuestion: {
+          name: 'name',
+          message: 'Name:',
+          validate: value => value.match(/^[a-zA-Z0-9_-]+$/) ? null :
+            'Please only use letters, numbers, dot(.), dash(-) and underscore(_).'
+        },
+        questions: []
+      }),
+      _writeProject: result => {
+        captured = result;
+      }
+    });
+    t.fail('should not pass');
+  } catch (e) {
+    t.ok(e, e.message);
+  }
   t.is(captured, undefined);
+  mockfs.restore();
 });
 
-test.serial('makes rejects existing folder', async t => {
+await test('makes rejects existing folder', async t => {
   let captured;
 
   mockfs({app: {}});
 
-  await t.throwsAsync(async () => makes('supplier', {
-    predefinedProperties: {name: 'app'},
-    unattended: true
-  }, {
-    _skeletonDir: () => 'skeleton',
-    _skeletonConfig: () => ({
-      nameQuestion: {
-        name: 'name',
-        message: 'Name:'
-      },
-      questions: []
-    }),
-    _writeProject: result => {
-      captured = result;
-    }
-  }));
+  try {
+    await makes('supplier', {
+      predefinedProperties: {name: 'app'},
+      unattended: true
+    }, {
+      _skeletonDir: () => 'skeleton',
+      _skeletonConfig: () => ({
+        nameQuestion: {
+          name: 'name',
+          message: 'Name:'
+        },
+        questions: []
+      }),
+      _writeProject: result => {
+        captured = result;
+      }
+    });
+    t.fail('should not pass');
+  } catch (e) {
+    t.ok(e, e.message);
+  }
 
   t.is(captured, undefined);
+  mockfs.restore();
 });
 
-test.serial('makes rejects target folder on existing file', async t => {
+await test('makes rejects target folder on existing file', async t => {
   let captured;
 
   mockfs({app: ''});
 
-  await t.throwsAsync(async () => makes('supplier', {
-    predefinedProperties: {name: 'app'},
-    unattended: true
-  }, {
-    _skeletonDir: () => 'skeleton',
-    _skeletonConfig: () => ({
-      nameQuestion: {
-        name: 'name',
-        message: 'Name:'
-      },
-      questions: []
-    }),
-    _writeProject: result => {
-      captured = result;
-    }
-  }));
+  try {
+    await makes('supplier', {
+      predefinedProperties: {name: 'app'},
+      unattended: true
+    }, {
+      _skeletonDir: () => 'skeleton',
+      _skeletonConfig: () => ({
+        nameQuestion: {
+          name: 'name',
+          message: 'Name:'
+        },
+        questions: []
+      }),
+      _writeProject: result => {
+        captured = result;
+      }
+    });
+    t.fail('should not pass');
+  } catch (e) {
+    t.ok(e, e.message);
+  }
 
   t.is(captured, undefined);
+  mockfs.restore();
 });
 
-test.serial('makes writes to existing folder with --here', async t => {
+await test('makes writes to existing folder with --here', async t => {
   let captured;
 
   mockfs();
@@ -187,9 +207,10 @@ test.serial('makes writes to existing folder with --here', async t => {
     prependTransforms: 'mock-prepend',
     appendTransforms: 'mock-append'
   });
+  mockfs.restore();
 });
 
-test.serial('makes supports "before" task to change conditions', async t => {
+await test('makes supports "before" task to change conditions', async t => {
   let captured;
 
   mockfs();
@@ -254,9 +275,10 @@ test.serial('makes supports "before" task to change conditions', async t => {
     prependTransforms: 'mock-prepend',
     appendTransforms: 'mock-append'
   });
+  mockfs.restore();
 });
 
-test.serial('makes supports "after" task', async t => {
+await test('makes supports "after" task', async t => {
   let captured, captured2;
 
   mockfs();
@@ -313,7 +335,8 @@ test.serial('makes supports "after" task', async t => {
   t.deepEqual(captured2.notDefaultFeatures, ['b']);
   t.is(typeof captured2.ansiColors.red, 'function');
   t.is(typeof captured2.sisteransi.cursor.to, 'function');
-  t.true(captured2.unattended);
+  t.truthy(captured2.unattended);
   t.is(captured2.prompts, prompts);
   t.is(typeof captured2.run, 'function');
+  mockfs.restore();
 });
