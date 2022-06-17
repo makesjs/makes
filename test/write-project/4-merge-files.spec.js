@@ -1,7 +1,7 @@
-const {test} = require('zora');
-const {once} = require('events');
-const mergeFiles = require('../../lib/write-project/4-merge-files');
-const Vinyl = require('vinyl');
+import {test} from 'zora';
+import {once} from 'events';
+import Vinyl from 'vinyl';
+import mergeFiles from '../../lib/write-project/4-merge-files.js';
 
 test('mergeFiles bypasses unique file', async t => {
   const merge = mergeFiles();

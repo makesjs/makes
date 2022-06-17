@@ -1,6 +1,6 @@
-const {test} = require('zora');
-const filterByFeatures = require('../../lib/write-project/2-filter-by-features');
-const Vinyl = require('vinyl');
+import {test} from 'zora';
+import Vinyl from 'vinyl';
+import filterByFeatures from '../../lib/write-project/2-filter-by-features.js';
 
 const filter = filterByFeatures(['a', 'b']);
 

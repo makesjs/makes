@@ -1,6 +1,6 @@
-const {test} = require('zora');
-const wrap = require('../../lib/write-project/wrap-transform');
-const Vinyl = require('vinyl');
+import {test} from 'zora';
+import Vinyl from 'vinyl';
+import wrap from '../../lib/write-project/wrap-transform.js';
 
 test('transform touches file', async t => {
   return new Promise((resolve) => {

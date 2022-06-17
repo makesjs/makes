@@ -1,5 +1,5 @@
-const {test} = require('zora');
-const preprocess = require('../../lib/preprocess');
+import {test} from 'zora';
+import preprocess from '../../lib/preprocess/index.js';
 
 test('@if works in html syntax', t => {
   const source = `a

@@ -1,5 +1,5 @@
-const {test} = require('zora');
-const {select} = require('./_prompt-under-test');
+import {test} from 'zora';
+import {select} from './_prompt-under-test.js';
 
 test('multiselect prompt returns default empty selection', async (t) => {
   const answer = await select({

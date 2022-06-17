@@ -1,5 +1,5 @@
-const {test} = require('zora');
-const applicable = require('../lib/applicable');
+import {test} from 'zora';
+import applicable from '../lib/applicable.js';
 
 test('applicable supports logical not', t => {
   t.truthy(applicable(['a', 'b'], 'not_c'));

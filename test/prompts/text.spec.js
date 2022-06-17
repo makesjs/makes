@@ -1,5 +1,5 @@
-const {test} = require('zora');
-const {text} = require('./_prompt-under-test');
+import {test} from 'zora';
+import {text} from './_prompt-under-test.js';
 
 test('text prompt returns default value', async (t) => {
   const answer = await text({

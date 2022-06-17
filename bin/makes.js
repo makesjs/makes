@@ -1,20 +1,19 @@
 #!/usr/bin/env node
 /* eslint-disable no-console */
-'use strict';
-const fs = require('fs');
-const path = require('path');
-const help = fs.readFileSync(path.join(__dirname, 'help.txt'), 'utf8');
+import fs from 'fs';
+const meta = fs.readFileSync(new URL('../package.json', import.meta.url), 'utf8');
+const { version } = JSON.parse(meta);
+const help = fs.readFileSync(new URL('./help.txt', import.meta.url), 'utf8');
 
 let makes;
 if (process.env.MAKES_RUN_SRC) {
   // only for local source debug
-  makes = require('../lib');
+  makes = (await import('../lib/index.js'));
 } else {
   // for production
-  makes = require('../dist');
+  makes = (await import('../dist/index.js'));
 }
 
-const {version} = require('../package.json');
 console.log(`makes v${version} https://makes.js.org`);
 
 const {
@@ -25,16 +24,18 @@ const {
   here
 } = makes.getOpts(process.argv.slice(2), help);
 
-makes(supplier, {
-  predefinedProperties,
-  preselectedFeatures,
-  unattended,
-  here
-}).catch(error => {
-  if (error.name === 'SoftError') {
-    console.error(error.message);
+try {
+  await makes.default(supplier, {
+    predefinedProperties,
+    preselectedFeatures,
+    unattended,
+    here
+  });
+} catch(e) {
+  if (e.name === 'SoftError') {
+    console.error(e.message);
   } else {
-    console.error(error);
+    console.error(e);
   }
   process.exit(1);
-});
+}

@@ -1,5 +1,5 @@
-const {test} = require('zora');
-const run = require('../lib/run');
+import {test} from 'zora';
+import run from '../lib/run.js';
 
 const ls = process.platform === 'win32' ? 'dir' : 'ls';
 const cmdThatWait = process.platform === 'win32' ? 'cmd' : 'cat';

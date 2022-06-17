@@ -1,5 +1,5 @@
-const {test} = require('zora');
-const getOpts = require('../lib/get-opts');
+import {test} from 'zora';
+import getOpts from '../lib/get-opts.js';
 
 function mockExit(func) {
   const oldExit = process.exit;

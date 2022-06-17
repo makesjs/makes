@@ -1,8 +1,7 @@
-const {test} = require('zora');
-const {Readable, Writable} = require('stream');
-const {pressKeys} = require('./prompts/_prompt-under-test');
-const run = require('../lib/run-questionnaire');
-const {textPrompt, selectPrompt} = run;
+import {test} from 'zora';
+import {Readable, Writable} from 'stream';
+import {pressKeys} from './prompts/_prompt-under-test.js';
+import {default as run, textPrompt, selectPrompt} from '../lib/run-questionnaire.js';
 
 test('textPrompt rejects invalid name', async t => {
   try {

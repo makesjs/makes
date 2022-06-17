@@ -1,5 +1,5 @@
-const {test} = require('zora');
-const {select} = require('./_prompt-under-test');
+import {test} from 'zora';
+import {select} from './_prompt-under-test.js';
 
 test('select prompt returns default first value', async (t) => {
   const answer = await select({
