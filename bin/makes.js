@@ -24,18 +24,16 @@ const {
   here
 } = makes.getOpts(process.argv.slice(2), help);
 
-try {
-  await makes.default(supplier, {
-    predefinedProperties,
-    preselectedFeatures,
-    unattended,
-    here
-  });
-} catch(e) {
+makes.default(supplier, {
+  predefinedProperties,
+  preselectedFeatures,
+  unattended,
+  here
+}).catch(e => {
   if (e.name === 'SoftError') {
     console.error(e.message);
   } else {
     console.error(e);
   }
   process.exit(1);
-}
+});
