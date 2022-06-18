@@ -1,5 +1,6 @@
 import {test, skip} from 'zora';
 import skeletonDir from '../lib/skeleton-dir.js';
+import { cleanup } from '../lib/tmp-dir.js';
 import mockfs from 'mock-fs';
 import os from 'os';
 import path from 'path';
@@ -23,6 +24,7 @@ await test('skeletonDir simply returns local dir', async t => {
   t.is(await skeletonDir('./my/dir', {_useGitRepo}), './my/dir');
   t.is(await skeletonDir('/my/dir', {_useGitRepo}), '/my/dir');
 
+  cleanup();
   mockfs.restore();
 });
 
@@ -38,6 +40,7 @@ await test('skeletonDir complains about missing local dir', async t => {
     t.ok(e, e.message);
   }
 
+  cleanup();
   mockfs.restore();
 });
 
@@ -57,6 +60,7 @@ await test('skeletonDir complains about unresolved repo', async t => {
     t.ok(e, e.message);
   }
 
+  cleanup();
   mockfs.restore();
 });
 
@@ -72,6 +76,7 @@ await test('skeletonDir complains about non-existing repo', async t => {
     t.ok(e, e.message);
   }
 
+  cleanup();
   mockfs.restore();
 });
 
@@ -85,6 +90,8 @@ await test('skeletonDir returns tmp folder untar github repo', async t => {
   const dir = await skeletonDir(repo, {_useGitRepo});
   t.truthy(fs.readdirSync(dir).includes('README.md'));
   t.truthy(fs.readFileSync(path.join(dir, 'README.md'), 'utf8').includes('debug repo for npm'));
+
+  cleanup();
   mockfs.restore();
 });
 
@@ -98,6 +105,8 @@ await test('skeletonDir returns tmp folder untar bitbucket repo', async t => {
   const dir = await skeletonDir(repo, {_useGitRepo});
   t.truthy(fs.readdirSync(dir).includes('README.md'));
   t.truthy(fs.readFileSync(path.join(dir, 'README.md'), 'utf8').includes('debug repo for npm'));
+
+  cleanup();
   mockfs.restore();
 });
 
@@ -112,5 +121,7 @@ await skip('skeletonDir returns tmp folder untar gitlab repo', async t => {
   const dir = await skeletonDir(repo, {_useGitRepo});
   t.truthy(fs.readdirSync(dir).includes('README.md'));
   t.truthy(fs.readFileSync(path.join(dir, 'README.md'), 'utf8').includes('debug repo for npm'));
+
+  cleanup();
   mockfs.restore();
 });
