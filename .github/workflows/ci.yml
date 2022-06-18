@@ -14,6 +14,9 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
+        # makes can still run in Nodejs v12
+        # But unit tests can only run on v14.8.0+ because of
+        # usage of top-level-await
         node_version: ['14', '16', '18']
         os: [ubuntu-latest, windows-latest, macOS-latest]
 

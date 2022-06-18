@@ -9,7 +9,7 @@
     "bin"
   ],
   "engines": {
-    "node": ">=14.8.0"
+    "node": ">=12.10.0"
   },
   "bin": {
     "makes": "bin/makes.js"
