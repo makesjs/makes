@@ -15,8 +15,8 @@
     "makes": "bin/makes.js"
   },
   "scripts": {
-    "test": "pta \"test/**/*.spec.js\"",
-    "coverage": "nyc pta \"test/**/*.spec.js\"",
+    "test": "pta",
+    "coverage": "c8 pta",
     "lint": "eslint lib test",
     "preversion": "npm test",
     "version": "standard-changelog && git add CHANGELOG.md",
@@ -44,6 +44,7 @@
     "@babel/code-frame": "^7.16.7",
     "@vercel/ncc": "^0.34.0",
     "ansi-colors": "^4.1.3",
+    "c8": "^7.11.3",
     "cross-spawn": "^7.0.3",
     "eslint": "^8.17.0",
     "hosted-git-info": "^5.0.0",
@@ -53,7 +54,6 @@
     "lodash.mergewith": "^4.6.2",
     "mock-fs": "^5.1.2",
     "mri": "^1.2.0",
-    "nyc": "^15.1.0",
     "pta": "^1.1.0",
     "sisteransi": "^1.0.5",
     "standard-changelog": "^2.0.27",
