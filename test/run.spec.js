@@ -2,7 +2,7 @@ import {test} from 'zora';
 import run from '../lib/run.js';
 
 const ls = process.platform === 'win32' ? 'dir' : 'ls';
-const cmdThatWait = process.platform === 'win32' ? 'cmd' : 'cat';
+const cmdThatWait = process.platform === 'win32' ? 'cmd' : 'tail';
 
 test('run a command', async t => {
   await run('echo', ['hello']);
