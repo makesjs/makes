@@ -1,8 +1,8 @@
-const test = require('ava');
-const src = require('../../lib/write-project/src');
-const mockfs = require('mock-fs');
-const {Transform} = require('stream');
-const _ = require('lodash');
+import {test} from 'zora';
+import src from '../../lib/write-project/src.js';
+import mockfs from 'mock-fs';
+import {Transform} from 'stream';
+import _ from 'lodash';
 
 const gatherFiles = function(box) {
   return new Transform({
@@ -19,24 +19,27 @@ const gatherFiles = function(box) {
   });
 };
 
-test.afterEach(() => {
-  mockfs.restore();
-});
-
-test.serial.cb('src reads nothing from empty folders', t => {
+await test('src reads nothing from empty folders', async t => {
   mockfs();
   const box = [];
 
-  src()
-    .pipe(gatherFiles(box))
-    .once('error', t.end)
-    .once('finish', () => {
-      t.deepEqual(box, []);
-      t.end();
-    });
+  await new Promise(resolve => {
+    src()
+      .pipe(gatherFiles(box))
+      .once('error', err => {
+        t.fail(err.message);
+        resolve();
+      })
+      .once('finish', () => {
+        t.deepEqual(box, []);
+        resolve();
+      });
+  });
+
+  mockfs.restore();
 });
 
-test.serial.cb('src reads deep files', t => {
+await test('src reads deep files', async t => {
   mockfs({
     'common/file-a': 'a',
     'common/f1/file-b': 'b',
@@ -48,19 +51,26 @@ test.serial.cb('src reads deep files', t => {
   });
   const box = [];
 
-  src(['common', 'feature1', 'feature3'])
-    .pipe(gatherFiles(box))
-    .once('error', t.end)
-    .once('finish', () => {
-      t.deepEqual(_.sortBy(box, 'path'), [
-        {path: 'f1/f2/file-d', contents: 'd'},
-        {path: 'f1/f2/file-d', contents: 'd2'},
-        {path: 'f1/f3/file-e', contents: 'e'},
-        {path: 'f1/file-b', contents: 'b'},
-        {path: 'f1/file-c', contents: 'c'},
-        {path: 'file-a', contents: 'a'},
-        {path: 'file-a', contents: 'a2'},
-      ]);
-      t.end();
-    });
+  await new Promise(resolve => {
+    src(['common', 'feature1', 'feature3'])
+      .pipe(gatherFiles(box))
+      .once('error', err => {
+        t.fail(err.message);
+        resolve();
+      })
+      .once('finish', () => {
+        t.deepEqual(_.sortBy(box, 'path'), [
+          {path: 'f1/f2/file-d', contents: 'd'},
+          {path: 'f1/f2/file-d', contents: 'd2'},
+          {path: 'f1/f3/file-e', contents: 'e'},
+          {path: 'f1/file-b', contents: 'b'},
+          {path: 'f1/file-c', contents: 'c'},
+          {path: 'file-a', contents: 'a'},
+          {path: 'file-a', contents: 'a2'},
+        ]);
+        resolve();
+      });
+  });
+
+  mockfs.restore();
 });

@@ -1,6 +1,6 @@
-const test = require('ava');
-const markWritePolicy = require('../../lib/write-project/1-mark-write-policy');
-const Vinyl = require('vinyl');
+import {test} from 'zora';
+import Vinyl from 'vinyl';
+import markWritePolicy from '../../lib/write-project/1-mark-write-policy.js';
 
 test('markWritePolicy skips file without policy mark', t => {
   const file = new Vinyl({

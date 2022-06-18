@@ -1,5 +1,5 @@
-const test = require('ava');
-const pfs = require('../lib/possible-feature-selections');
+import {test} from 'zora';
+import pfs from '../lib/possible-feature-selections.js';
 
 test('possibleFeatureSelections returns empty array for empty questions', async t => {
   t.deepEqual(pfs(), []);

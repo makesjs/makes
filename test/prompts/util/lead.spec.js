@@ -1,6 +1,6 @@
-const test = require('ava');
-const lead = require('../../../lib/prompts/util/lead');
-const color = require('ansi-colors');
+import {test} from 'zora';
+import color from 'ansi-colors';
+import lead from '../../../lib/prompts/util/lead.js';
 
 test('lead returns original string if no lead required', t => {
   t.is(lead('Lorem ipsum dolor.', 0, 10), 'Lorem ipsum dolor.');

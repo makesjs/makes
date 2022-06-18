@@ -1,12 +1,22 @@
-const test = require('ava');
-const {Readable, Writable} = require('stream');
-const {pressKeys} = require('./prompts/_prompt-under-test');
-const run = require('../lib/run-questionnaire');
-const {textPrompt, selectPrompt} = run;
+import {test} from 'zora';
+import {Readable, Writable} from 'stream';
+import {pressKeys} from './prompts/_prompt-under-test.js';
+import {default as run, textPrompt, selectPrompt} from '../lib/run-questionnaire.js';
 
 test('textPrompt rejects invalid name', async t => {
-  await t.throwsAsync(async () => textPrompt({name: 'a&b'}, {predefinedProperties: {}}));
-  await t.throwsAsync(async () => textPrompt({name: 'a b'}, {predefinedProperties: {}}));
+  try {
+    await textPrompt({name: 'a&b'}, {predefinedProperties: {}});
+    t.fail('should not pass');
+  } catch (e) {
+    t.ok(e, e.message);
+  }
+
+  try {
+    await textPrompt({name: 'a b'}, {predefinedProperties: {}});
+    t.fail('should not pass');
+  } catch (e) {
+    t.ok(e, e.message);
+  }
 });
 
 test('textPrompt returns predefined value without prompting', async t => {
@@ -20,27 +30,33 @@ test('textPrompt returns predefined value in unattended mode without prompting',
 });
 
 test('textPrompt rejects invalid predefined value in unattended mode without prompting', async t => {
-  await t.throwsAsync(async () => textPrompt({
-    name: 'lorem',
-    default: 'bar',
-    validate: v => !!v.match(/^[a-z]+$/),
-  }, {predefinedProperties: {lorem: '123'}, unattended: true}), {
-    message: /Invalid value in "lorem"/
-  });
+  try {
+    await textPrompt({
+      name: 'lorem',
+      default: 'bar',
+      validate: v => !!v.match(/^[a-z]+$/),
+    }, {predefinedProperties: {lorem: '123'}, unattended: true});
+    t.fail('should not pass');
+  } catch (e) {
+    t.ok(e.message.match(/Invalid value in "lorem"/), e.message);
+  }
 });
 
 test('textPrompt rejects invalid predefined value with error message in unattended mode without prompting', async t => {
-  await t.throwsAsync(async () => textPrompt({
-    name: 'lorem',
-    default: 'bar',
-    validate: v => {
-      if (!v.match(/^[a-z]+$/)) {
-        return 'only accept letters';
+  try {
+    await textPrompt({
+      name: 'lorem',
+      default: 'bar',
+      validate: v => {
+        if (!v.match(/^[a-z]+$/)) {
+          return 'only accept letters';
+        }
       }
-    }
-  }, {predefinedProperties: {lorem: '123'}, unattended: true}), {
-    message: /only accept letters/
-  });
+    }, {predefinedProperties: {lorem: '123'}, unattended: true});
+    t.fail('should not pass');
+  } catch (e) {
+    t.ok(e.message.match(/only accept letters/), e.message);
+  }
 });
 
 test('textPrompt returns default value in unattended mode without prompting', async t => {
@@ -84,13 +100,54 @@ test('textPrompt validates user input', async t => {
 });
 
 test('selectPrompt rejects invalid choice value', async t => {
-  await t.throwsAsync(async () => selectPrompt({choices:[{value:'a&b'}]}, [], {preselectedFeatures: []}));
-  await t.throwsAsync(async () => selectPrompt({choices:[{value:'a b'}]}, [], {preselectedFeatures: []}));
-  await t.throwsAsync(async () => selectPrompt({choices:[{value:'and'}]}, [], {preselectedFeatures: []}));
-  await t.throwsAsync(async () => selectPrompt({choices:[{value:'or'}]}, [], {preselectedFeatures: []}));
-  await t.throwsAsync(async () => selectPrompt({choices:[{value:'not'}]}, [], {preselectedFeatures: []}));
-  await t.throwsAsync(async () => selectPrompt({choices:[{value:'true'}]}, [], {preselectedFeatures: []}));
-  await t.throwsAsync(async () => selectPrompt({choices:[{value:'false'}]}, [], {preselectedFeatures: []}));
+  try {
+    await selectPrompt({choices:[{value:'a&b'}]}, [], {preselectedFeatures: []});
+    t.fail('should not pass');
+  } catch (e) {
+    t.ok(e, e.message);
+  }
+
+  try {
+    await selectPrompt({choices:[{value:'a b'}]}, [], {preselectedFeatures: []});
+    t.fail('should not pass');
+  } catch (e) {
+    t.ok(e, e.message);
+  }
+
+  try {
+    await selectPrompt({choices:[{value:'and'}]}, [], {preselectedFeatures: []});
+    t.fail('should not pass');
+  } catch (e) {
+    t.ok(e, e.message);
+  }
+
+  try {
+    await selectPrompt({choices:[{value:'or'}]}, [], {preselectedFeatures: []});
+    t.fail('should not pass');
+  } catch (e) {
+    t.ok(e, e.message);
+  }
+
+  try {
+    await selectPrompt({choices:[{value:'not'}]}, [], {preselectedFeatures: []});
+    t.fail('should not pass');
+  } catch (e) {
+    t.ok(e, e.message);
+  }
+
+  try {
+    await selectPrompt({choices:[{value:'true'}]}, [], {preselectedFeatures: []});
+    t.fail('should not pass');
+  } catch (e) {
+    t.ok(e, e.message);
+  }
+
+  try {
+    await selectPrompt({choices:[{value:'false'}]}, [], {preselectedFeatures: []});
+    t.fail('should not pass');
+  } catch (e) {
+    t.ok(e, e.message);
+  }
 });
 
 test('selectPrompt returns value of the only choice without prompting', async t => {
@@ -292,7 +349,12 @@ test('run runs through questionnaire with preselectedFeatures and predefinedProp
 });
 
 test('run rejects missing name/choices', async t => {
-  await t.throwsAsync(async () => run([{}], {}));
+  try {
+    await run([{}], {});
+    t.fail('should not pass');
+  } catch (e) {
+    t.ok(e, e.message);
+  }
 });
 
 test('run ignores name field on selection question', async t => {
@@ -301,18 +363,28 @@ test('run ignores name field on selection question', async t => {
 });
 
 test('run rejects wrong choices', async t => {
-  await t.throwsAsync(async () => run([{
-    choices: 'lorem'
-  }], {}));
+  try {
+    await run([{
+      choices: 'lorem'
+    }], {});
+    t.fail('should not pass');
+  } catch (e) {
+    t.ok(e, e.message);
+  }
 });
 
 test('run rejects multi-select with missing value', async t => {
-  await t.throwsAsync(async () => run([{
-    multiple: true,
-    choices: [
-      {},
-      {value: 'postcss'},
-      {value: 'sass', selected: true}
-    ]
-  }], {}));
+  try {
+    await run([{
+      multiple: true,
+      choices: [
+        {},
+        {value: 'postcss'},
+        {value: 'sass', selected: true}
+      ]
+    }], {});
+    t.fail('should not pass');
+  } catch (e) {
+    t.ok(e, e.message);
+  }
 });
