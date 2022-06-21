@@ -3,6 +3,7 @@
     "es6": true,
     "node": true
   },
+  "files": ["lib/**/*.js", "test/**/*.{mjs,js}"],
   "extends": "eslint:recommended",
   "parserOptions": {
     "ecmaVersion": 2022,

@@ -16,7 +16,7 @@
   "scripts": {
     "test": "pta --module-loader=es 'test/**/*.spec.mjs'",
     "coverage": "c8 pta --module-loader=es 'test/**/*.spec.mjs'",
-    "lint": "eslint lib 'test/**/*.mjs'",
+    "lint": "eslint",
     "preversion": "npm test",
     "version": "standard-changelog && git add CHANGELOG.md",
     "postversion": "git push && git push --tags && npm publish",
