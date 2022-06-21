@@ -1,5 +1,5 @@
 import {test} from 'zora';
-import { default as tmpdir, cleanup } from '../lib/tmp-dir.js';
+import tmpDir from '../lib/tmp-dir.js';
 import mockfs from 'mock-fs';
 import os from 'os';
 import fs from 'fs';
@@ -12,7 +12,7 @@ await test('tmpDir creates dir and cleanup', t => {
     [systemTmpDir]: {}
   });
 
-  const dir = tmpdir();
+  const dir = tmpDir();
 
   t.ok(fs.existsSync(dir));
   const stat = fs.statSync(dir);
@@ -22,7 +22,7 @@ await test('tmpDir creates dir and cleanup', t => {
   fs.writeFileSync(fp, 'a');
   t.ok(fs.existsSync(fp));
 
-  cleanup();
+  tmpDir.cleanup();
   t.notOk(fs.existsSync(dir));
   t.notOk(fs.existsSync(fp));
 

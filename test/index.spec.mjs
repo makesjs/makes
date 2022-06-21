@@ -1,10 +1,10 @@
 import {test} from 'zora';
-import * as makes from '../lib/index.js';
-import * as prompts from '../lib/prompts/index.js';
+import makes from '../lib/index.js';
+import prompts from '../lib/prompts/index.js';
 import mockfs from 'mock-fs';
 
 test('exports some functions', t => {
-  t.is(typeof makes.default, 'function');
+  t.is(typeof makes, 'function');
   t.is(typeof makes.getOpts, 'function');
   t.is(typeof makes.prompts.text, 'function');
   t.is(typeof makes.prompts.select, 'function');
@@ -15,7 +15,7 @@ await test('makes complains missing project name in silent mode', async t => {
   mockfs();
 
   try {
-    await makes.default('supplier', {
+    await makes('supplier', {
       predefinedProperties: {},
       unattended: true
     });
@@ -31,7 +31,7 @@ await test('makes checks target folder', async t => {
 
   mockfs();
 
-  await makes.default('supplier', {
+  await makes('supplier', {
     predefinedProperties: {name: 'app'},
     unattended: true
   }, {
@@ -78,7 +78,7 @@ await test('makes rejects invalid folder name', async t => {
   mockfs({app: {}});
 
   try {
-    await makes.default('supplier', {
+    await makes('supplier', {
       predefinedProperties: {name: 'app:1'},
       unattended: true
     }, {
@@ -110,7 +110,7 @@ await test('makes rejects existing folder', async t => {
   mockfs({app: {}});
 
   try {
-    await makes.default('supplier', {
+    await makes('supplier', {
       predefinedProperties: {name: 'app'},
       unattended: true
     }, {
@@ -141,7 +141,7 @@ await test('makes rejects target folder on existing file', async t => {
   mockfs({app: ''});
 
   try {
-    await makes.default('supplier', {
+    await makes('supplier', {
       predefinedProperties: {name: 'app'},
       unattended: true
     }, {
@@ -171,7 +171,7 @@ await test('makes writes to existing folder with --here', async t => {
 
   mockfs();
 
-  await makes.default('supplier', {
+  await makes('supplier', {
     predefinedProperties: {name: 'app'},
     unattended: true,
     here: true
@@ -216,7 +216,7 @@ await test('makes supports "before" task to change conditions', async t => {
 
   mockfs();
 
-  await makes.default('supplier', {
+  await makes('supplier', {
     predefinedProperties: {},
     preselectedFeatures: ['a'],
   }, {
@@ -284,7 +284,7 @@ await test('makes supports "after" task', async t => {
 
   mockfs();
 
-  await makes.default('supplier', {
+  await makes('supplier', {
     predefinedProperties: {name: 'app'},
     preselectedFeatures: ['b'],
     unattended: true

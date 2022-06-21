@@ -1,4 +1,4 @@
-import * as prompts from '../../lib/prompts/index.js';
+import prompts from '../../lib/prompts/index.js';
 import {Readable, Writable} from 'stream';
 
 function delay() {

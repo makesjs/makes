@@ -1,7 +1,8 @@
 import {test} from 'zora';
 import {Readable, Writable} from 'stream';
-import {pressKeys} from './prompts/_prompt-under-test.js';
-import {default as run, textPrompt, selectPrompt} from '../lib/run-questionnaire.js';
+import {pressKeys} from './prompts/_prompt-under-test.mjs';
+import run from '../lib/run-questionnaire.js';
+const {textPrompt, selectPrompt} = run;
 
 test('textPrompt rejects invalid name', async t => {
   try {

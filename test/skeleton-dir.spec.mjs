@@ -1,11 +1,12 @@
 import {test, skip} from 'zora';
 import skeletonDir from '../lib/skeleton-dir.js';
-import { cleanup } from '../lib/tmp-dir.js';
+import tmpDir from '../lib/tmp-dir.js';
 import mockfs from 'mock-fs';
 import os from 'os';
 import path from 'path';
 import fs from 'fs';
 
+const {cleanup} = tmpDir;
 const systemTmpDir = os.tmpdir();
 
 function _useGitRepo() {

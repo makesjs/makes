@@ -1,5 +1,5 @@
 import {test} from 'zora';
-import {text} from './_prompt-under-test.js';
+import {text} from './_prompt-under-test.mjs';
 
 test('text prompt returns default value', async (t) => {
   const answer = await text({

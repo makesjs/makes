@@ -1,5 +1,5 @@
 import {test} from 'zora';
-import {select} from './_prompt-under-test.js';
+import {select} from './_prompt-under-test.mjs';
 
 test('select prompt returns default first value', async (t) => {
   const answer = await select({
