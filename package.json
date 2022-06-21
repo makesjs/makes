@@ -21,7 +21,7 @@
     "version": "standard-changelog && git add CHANGELOG.md",
     "postversion": "git push && git push --tags && npm publish",
     "pretest": "npm run lint",
-    "build": "ncc build lib/index.js",
+    "build": "ncc build lib/index.js -m",
     "prepublishOnly": "npm run build"
   },
   "repository": {
