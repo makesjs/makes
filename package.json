@@ -14,8 +14,8 @@
     "makes": "bin/makes.js"
   },
   "scripts": {
-    "test": "pta 'test/**/*.spec.mjs'",
-    "coverage": "c8 pta 'test/**/*.spec.mjs'",
+    "test": "pta --module-loader=es 'test/**/*.spec.mjs'",
+    "coverage": "c8 pta --module-loader=es 'test/**/*.spec.mjs'",
     "lint": "eslint lib 'test/**/*.mjs'",
     "preversion": "npm test",
     "version": "standard-changelog && git add CHANGELOG.md",
