@@ -24,6 +24,7 @@ test('run a command, catch failure', async t => {
 });
 
 test('run a command, catch signal on exit', async t => {
+  // Note github online workspace Linux doesn't have ping command.
   const cmd = run('ping', [(isWin32 ? '-n' : '-c'), '100', 'example.com']);
 
   setTimeout(() => {
