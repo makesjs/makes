@@ -1,3 +1,12 @@
+## [3.1.5](https://github.com/makesjs/makes/compare/v3.1.4...v3.1.5) (2023-03-21)
+
+
+### Bug Fixes
+
+* turn on options.shell for cross-spawn ([33fc826](https://github.com/makesjs/makes/commit/33fc826275ffab26cc1f01cae4346a719c4f34b6)), closes [#19](https://github.com/makesjs/makes/issues/19)
+
+
+
 ## [3.1.4](https://github.com/makesjs/makes/compare/v3.1.3...v3.1.4) (2022-06-21)
 
 
