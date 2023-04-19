@@ -1,3 +1,12 @@
+# [3.2.0](https://github.com/makesjs/makes/compare/v3.1.5...v3.2.0) (2023-04-19)
+
+
+### Features
+
+* support internal private git server ([77feb1c](https://github.com/makesjs/makes/commit/77feb1cb00822c8373c920501992aa7c7055b129))
+
+
+
 ## [3.1.5](https://github.com/makesjs/makes/compare/v3.1.4...v3.1.5) (2023-03-21)
 
 
