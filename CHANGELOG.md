@@ -1,3 +1,17 @@
+# [4.0.0](https://github.com/makesjs/makes/compare/v3.2.0...v4.0.0) (2026-11-11)
+
+### Bug Fixes
+
+* use rmSync to replace deprecated rmdirSync ([4cbadc4](https://github.com/makesjs/makes/commit/4cbadc48ed4899d7c634e412406b6030ed9caf7b))
+
+### chore
+
+* upgrade deps ([5d25017](https://github.com/makesjs/makes/commit/5d250178b06b71b7a05a599d99110e714565f2d8))
+
+### BREAKING CHANGES
+
+* drop support of nodejs before 22.18.0
+
 # [3.2.0](https://github.com/makesjs/makes/compare/v3.1.5...v3.2.0) (2023-04-19)
 
 
