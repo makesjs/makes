@@ -2,7 +2,6 @@ import {test} from 'zora';
 import src from '../../lib/write-project/src.js';
 import mockfs from 'mock-fs';
 import {Transform} from 'stream';
-import _ from 'lodash';
 
 const gatherFiles = function(box) {
   return new Transform({
@@ -59,7 +58,8 @@ await test('src reads deep files', async t => {
         resolve();
       })
       .once('finish', () => {
-        t.deepEqual(_.sortBy(box, 'path'), [
+        box.sort((a, b) => a.path.localeCompare(b.path));
+        t.deepEqual(box, [
           {path: 'f1/f2/file-d', contents: 'd'},
           {path: 'f1/f2/file-d', contents: 'd2'},
           {path: 'f1/f3/file-e', contents: 'e'},

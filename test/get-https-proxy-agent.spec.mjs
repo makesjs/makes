@@ -31,10 +31,10 @@ await test('getHttpsProxyAgent gets https-proxy from npmrc', async t => {
 
 await test('getHttpsProxyAgent gets proxy from npmrc', async t => {
   const agent = getAgentWith({
-    npmrc: { 'proxy' : 'https://domain2.com:80443'},
+    npmrc: { 'proxy' : 'https://domain2.com:8044'},
     env: {}
   });
-  t.is(agent.proxy.href, 'https://domain2.com:80443/');
+  t.is(agent.proxy.href, 'https://domain2.com:8044/');
 });
 
 await test('getHttpsProxyAgent gets proxy from npmrc, but reject non-http proxy', async t => {
